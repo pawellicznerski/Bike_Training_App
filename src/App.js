@@ -3,84 +3,14 @@ import './App.css';
 import {BrowserRouter as Router,Route,Link,NavLink, Switch} from 'react-router-dom';
 import {EntryForm} from './components/entryForm.js';
 import {FillInForm} from './components/fillInForm.js';
-
-const linkToNewAccount = ({to, activeOnlyWhenExact }) => (
-  <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => (
-    <li className={match ? 'active' : ''}>
-      <NavLink activeClassName="selected" to={to}>{match ? 'Nowe konto 232' : 'Nowe konto 2'}oiuhjoihjoi</Link>
-  </li>
-  )}/>
-)
-
+const welcomeText = "witamy w trainig planie";
 const Home =({ match  })=> (
   <Router>
     <div>
-      <p>witamy w trainig planie</p>
-      <linkToNewAccount activeOnlyWhenExact={true} to="/nowekonto"/>
-      <li><NavLink to="/nowekonto">nowe konto</NavLink></li>
-      <li><NavLink to="/nowekonto">nowe konto</NavLink></li>
-      <Route path="/nowekonto" component={FillInForm}/>
+      {welcomeText}
     </div>
   </Router>
 )
-
-
-
-
-//
-// import React from 'react'
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   Link
-// } from 'react-router-dom'
-//
-// const CustomLinkExample = () => (
-//   <Router>
-//     <div>
-//       <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home"/>
-//       <OldSchoolMenuLink to="/about" label="About"/>
-//       <hr/>
-//       <Route exact path="/" component={Home}/>
-//       <Route path="/about" component={About}/>
-//     </div>
-//   </Router>
-// )
-//
-// const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
-//   <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => (
-//     <div className={match ? 'active' : ''}>
-//       {match ? '> ' : ''}<Link to={to}>{label}</Link>
-//     </div>
-//   )}/>
-// )
-//
-// const Home = () => (
-//   <div>
-//     <h2>Home</h2>
-//   </div>
-// )
-//
-// const About = () => (
-//   <div>
-//     <h2>About</h2>
-//   </div>
-// )
-//
-// export default CustomLinkExample
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class App extends Component {
   render() {
@@ -96,6 +26,8 @@ class App extends Component {
               </nav>
               <Route exact path="/" component={Home}/>
               <Route path="/logowanie" component={EntryForm}/>
+              <NavLink exact to="/nowekonto" activeStyle={{display:'none'}}>nowe konto</NavLink>
+              <Route path="/nowekonto" component={FillInForm}/>
           </div>
         </div>
       </Router>
