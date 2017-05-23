@@ -1,14 +1,15 @@
 import React, { Component }  from 'react';
 import {stringsFillInForm} from './strings.js';
 import {TrainingPlan} from './trainingPlan.js';
+import {Prompt} from 'react-router-dom';
 
 export class FillInForm extends Component {
   constructor(props) {
   super(props);
   //Pierwsza wartość inputa ustawiona na '':
   this.state = {
+      isBlocking: false,
       loading: true,
-      trainingPlanLoaded: false,
       correctlyFilledForm: true,
       login: '',
       email: '',
@@ -29,12 +30,18 @@ export class FillInForm extends Component {
         border: '1px solid black'
       }
     };
+    this.returnToMenu = this.returnToMenu.bind(this);
+
 } //props end
 
 
 
 handleRegistrationData = (e) => {
   e.preventDefault();
+  e.target.reset()
+  this.setState({
+    isBlocking: false
+  })
 
   if(this.state.fullName===""){
     alert("wypełnj piste pola")
@@ -92,60 +99,66 @@ textValidationFn=()=>{
 
 handleEmailChange=(e)=>{
   e.preventDefault();
-  this.setState({email: e.target.value});
+  this.setState({
+    email: e.target.value,
+    isBlocking: e.target.value.length > 0
+  });
   console.log(this.state.email);
 }
 handleWeightChange=(e)=>{
   e.preventDefault();
-  this.setState({weight: e.target.value});
+  this.setState({
+    weight: e.target.value,
+    isBlocking: e.target.value.length > 0
+  });
   console.log(this.state.weight);
 }
 handleHeightChange=(e)=>{
   e.preventDefault();
-  this.setState({height: e.target.value});
+  this.setState({
+    height: e.target.value,
+    isBlocking: e.target.value.length > 0
+  });
   console.log(this.state.height);
 }
 handleTrainingTypeChange=(e)=>{
   e.preventDefault();
-  this.setState({trainingType: e.target.value});
+  this.setState({
+    trainingType: e.target.value,
+    isBlocking: e.target.value.length > 0
+  });
   console.log(this.state.trainingType);
 }
 handleStartDateChange=(e)=>{
   e.preventDefault();
-  this.setState({dateStart: e.target.value});
+  this.setState({
+    dateStart: e.target.value,
+    isBlocking: e.target.value.length > 0
+  });
 }
 handleEndDateChange=(e)=>{
   e.preventDefault();
-  this.setState({dateEnd: e.target.value});
-}
-
-handleReturnToEntry=(e)=>{
-  e.preventDefault();
-  if ( typeof this.props.returnClick === 'function' ){
-      this.props.returnClick()
-  }
+  this.setState({
+    dateEnd: e.target.value,
+    isBlocking: e.target.value.length > 0
+  });
 }
 
 handleLogin=(e)=>{
   e.preventDefault();
-  this.setState({login: e.target.value});
+  this.setState({
+    login: e.target.value,
+    isBlocking: e.target.value.length > 0
+  });
   console.log(this.state.login);
 }
 
+returnToMenu=(e)=>{
+  e.preventDefault();
+  this.props.history.push('/');
+}
 
 
-
-
-
-
-
-//
-//
-//
-//
-//
-//
-//
 //
 // //code from the internet
 //
@@ -242,11 +255,14 @@ handleLogin=(e)=>{
 
 
 render(){
-    if(this.state.trainingPlanLoaded===false)
-    {
-    return <div>
+    const { isBlocking } = this.state;
+    return (
+      <div>
+        <Prompt
+          when={isBlocking}
+          message={stringsFillInForm.leavingFillInSiteWarning}
+        />
           <div style={this.state.style}>
-
           <form onSubmit={this.handleRegistrationData}>
 
             <div style={this.state.style2}>
@@ -348,17 +364,10 @@ render(){
           <div style={this.state.style2}>
             <input type="submit" value={stringsFillInForm.inputSubmitValue} />
           </div>
-
         </form>
       </div>
-      <div>
-        <button onClick={this.handleReturnToEntry}>Powrót do menu głownego</button>
-      </div>
-      </div>
-    } else if (this.state.trainingPlanLoaded===true){
-      return <div>
-                <TrainingPlan/>
-              </div>
-    }
+      <button onClick={this.returnToMenu}>{stringsFillInForm.backToMenuFillInForm}</button>
+    </div>
+    )
   }//end of render
 }//registration form end

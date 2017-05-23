@@ -6,6 +6,8 @@ export const stringsLoginForm ={
   loginErrorWrongNameOrEmail: "Login lub email jest nieprawidlowy",
   newProfileDescrip: "Nie mam konta",
   newProfile: "Nowy profil",
+  backToMenuLoginForm: "Powrot do strony glownej",
+
 }
 
 export const stringsFillInForm ={
@@ -19,8 +21,8 @@ export const stringsFillInForm ={
   dateFillInText: "Data szczytowej formy:",
   inputSubmitValue: "Wyswietl plan",
   dateStartFillInText: "Data rozpoczecia treningu:",
-
-
+  backToMenuFillInForm: "Powrot do strony glownej",
+  leavingFillInSiteWarning: "Masz wypelnione niektore pola. Czy na pewno chcesz opuscic strone?",
 }
 
 export const stringsTrainingPlan ={

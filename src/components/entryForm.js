@@ -10,7 +10,6 @@ export class EntryForm extends Component {
   //Pierwsza wartość inputa ustawiona na '':
   this.state = {
       loading: false,
-      loadedFileNo: 1,
       login: '',
       email: '',
       style:{
@@ -71,61 +70,42 @@ handleEmailChange=(e)=>{
   this.setState({email: e.target.value});
 }
 
-handleEntryButtonNewProfile=()=>{
-  this.setState({loadedFileNo: 2})
-}
-
-handleReturnToEntrySite=()=>{
-  this.setState({loadedFileNo: 1})
+returnToMenu=(e)=>{
+  e.preventDefault();
+  this.props.history.push('/');
 }
 
 render(){
-      if (this.state.loadedFileNo === 1)
-      {
-        return <div>
-                  <div style={this.state.style}>
-                    <form onSubmit={this.handleRegistrationData}>
+  return <div>
+            <div style={this.state.style}>
+              <form onSubmit={this.handleRegistrationData}>
 
-                      <div style={this.state.style2}>
-                        <label>
-                          {stringsLoginForm.nameLoginText}
-                          <input type="text"
-                          value={this.state.login}
-                          onChange={this.handleNameChange}
-                          />
-                        </label>
-                      </div>
-
-                      <div style={this.state.style2}>
-                        <label>
-                        {stringsLoginForm.emailText}
-                          <input type="text"
-                          value={this.state.email}
-                          onChange={this.handleEmailChange}
-                          />
-                        </label>
-                      </div>
-
-                      <div style={this.state.style2}>
-                        <input type="submit" value={stringsLoginForm.inputSubmitValue} />
-                      </div>
-                    </form>
-                  </div>
-
-                  <div>
-                    <h1>{stringsLoginForm.newProfileDescrip}</h1>
-                    <button onClick={this.handleEntryButtonNewProfile} style={this.state.style3}>{stringsLoginForm.newProfile}</button>
-                  </div>
-              </div>
-      } else if (this.state.loadedFileNo===2){
-        return <div>
-                  <FillInForm returnClick={this.handleReturnToEntrySite}/>
+                <div style={this.state.style2}>
+                  <label>
+                    {stringsLoginForm.nameLoginText}
+                    <input type="text"
+                    value={this.state.login}
+                    onChange={this.handleNameChange}
+                    />
+                  </label>
                 </div>
-      } else if (this.state.loadedFileNo===3){
-          return <div>
-                  <TrainingPlan/>
+
+                <div style={this.state.style2}>
+                  <label>
+                  {stringsLoginForm.emailText}
+                    <input type="text"
+                    value={this.state.email}
+                    onChange={this.handleEmailChange}
+                    />
+                  </label>
                 </div>
-        }
+
+                <div style={this.state.style2}>
+                  <input type="submit" value={stringsLoginForm.inputSubmitValue} />
+                </div>
+              </form>
+            </div>
+            <button onClick={this.returnToMenu}>{stringsLoginForm.backToMenuLoginForm}</button>
+        </div>
       }
-
 }//registration form end

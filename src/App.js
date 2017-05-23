@@ -15,7 +15,7 @@ const Home =({ match  })=> (
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router history={history}>
         <div className="App">
           <div>
               <nav>
