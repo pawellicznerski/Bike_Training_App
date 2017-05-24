@@ -1,39 +1,75 @@
 import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter as Router,Route,Link,NavLink, Switch} from 'react-router-dom';
-import {EntryForm} from './components/entryForm.js';
-import {FillInForm} from './components/fillInForm.js';
+import { BrowserRouter as Router,Route,Link,NavLink, Switch } from 'react-router-dom';
+import { EntryForm } from './components/entryForm.js';
+import { FillInForm } from './components/fillInForm.js';
+import { stringsApp } from './components/strings.js';
+import { NoMatch } from './components/noMatch.js';
+
 const welcomeText = "witamy w trainig planie";
-const Home =({ match  })=> (
+const Home =({ match, changeOfDisplayedNavEl })=> (
   <Router>
     <div>
       {welcomeText}
+      <button onClick={changeOfDisplayedNavEl}><NavLink to={`/${this.state.nextLabel}`}>{this.state.nextLabel}</NavLink></button>
+        <Route exact path="/logowanie" component={EntryForm}/>
+        <Route exact path="/nowekonto" component={FillInForm}/>
+
     </div>
   </Router>
 )
 
 class App extends Component {
-  render() {
-    return (
-      <Router history={history}>
-        <div className="App">
-          <div>
-              <nav>
-                <ul>
-                  <li><NavLink to="/" >menu</NavLink></li>
-                  <li><NavLink to="/logowanie">logowanie</NavLink></li>
-                </ul>
-              </nav>
-              <Route exact path="/" component={Home}/>
-              <Route path="/logowanie" component={EntryForm}/>
-              <NavLink exact to="/nowekonto" activeStyle={{display:'none'}}>nowe konto</NavLink>
-              <Route path="/nowekonto" component={FillInForm}/>
-          </div>
-        </div>
-      </Router>
-    );
+  constructor(props) {
+  super(props);
+  this.state = {
+    currentLabel: stringsApp.appLoginButton,
+    nextLabel: stringsApp.appNewAccountButton,
+    }
+}
+
+changeOfDisplayedNavEl=(e)=>{
+  e.preventDefault();
+  if (this.state.currentLabel===stringsApp.appLoginButton){
+    this.setState({
+      currentLabel:stringsApp.appNewAccountButton,
+      nextLabel:stringsApp.appLoginButton
+    })
+  }else{
+    this.setState({
+      currentLabel:stringsApp.appLoginButton,
+      nextLabel:stringsApp.appNewAccountButton
+    })
   }
 }
+
+
+render() {
+  return (
+    <Router history={history}>
+      <div className="App">
+        <div>
+            <nav>
+              <div>
+                <NavLink to="/" changeOfDisplayedNavEl={this.changeOfDisplayedNavEl.bind(this)} >menu</NavLink>
+              </div>
+              <button onClick={this.changeOfDisplayedNavEl}><NavLink to={`/${this.state.currentLabel}`}>{this.state.currentLabel}</NavLink></button>
+            </nav>
+
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route exact path="/logowanie" component={EntryForm}/>
+              <Route exact path="/nowekonto" component={FillInForm}/>
+              <Route component={NoMatch}/>
+            </Switch>
+
+        </div>
+      </div>
+    </Router>
+  );
+}
+
+}//end of App
 
 export default App;
 

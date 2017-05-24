@@ -31,7 +31,6 @@ export class FillInForm extends Component {
       }
     };
     this.returnToMenu = this.returnToMenu.bind(this);
-
 } //props end
 
 

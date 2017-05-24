@@ -18,10 +18,7 @@ export class TrainingPlan extends Component {
       this.makingTrainingPeriods();
   }
 
-
-
   makingTrainingPeriods=()=>{
-
   }
 
   preparingTrainingPlan=()=>{
@@ -29,8 +26,6 @@ export class TrainingPlan extends Component {
   }
   // let dateMs = new Date(this.state.date).getTime();
   // console.log(dateMs);
-
-
   render(){
     if(this.state.loading){
       return <div>Loading...</div>

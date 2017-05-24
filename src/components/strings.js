@@ -7,7 +7,11 @@ export const stringsLoginForm ={
   newProfileDescrip: "Nie mam konta",
   newProfile: "Nowy profil",
   backToMenuLoginForm: "Powrot do strony glownej",
+}
 
+export const stringsApp ={
+  appLoginButton: "logowanie",
+  appNewAccountButton: "nowekonto",
 }
 
 export const stringsFillInForm ={
@@ -26,5 +30,4 @@ export const stringsFillInForm ={
 }
 
 export const stringsTrainingPlan ={
-
 }

@@ -76,36 +76,38 @@ returnToMenu=(e)=>{
 }
 
 render(){
-  return <div>
-            <div style={this.state.style}>
-              <form onSubmit={this.handleRegistrationData}>
+  return (
+    <div>
+        <div style={this.state.style}>
+          <form onSubmit={this.handleRegistrationData}>
 
-                <div style={this.state.style2}>
-                  <label>
-                    {stringsLoginForm.nameLoginText}
-                    <input type="text"
-                    value={this.state.login}
-                    onChange={this.handleNameChange}
-                    />
-                  </label>
-                </div>
-
-                <div style={this.state.style2}>
-                  <label>
-                  {stringsLoginForm.emailText}
-                    <input type="text"
-                    value={this.state.email}
-                    onChange={this.handleEmailChange}
-                    />
-                  </label>
-                </div>
-
-                <div style={this.state.style2}>
-                  <input type="submit" value={stringsLoginForm.inputSubmitValue} />
-                </div>
-              </form>
+            <div style={this.state.style2}>
+              <label>
+                {stringsLoginForm.nameLoginText}
+                <input type="text"
+                value={this.state.login}
+                onChange={this.handleNameChange}
+                />
+              </label>
             </div>
-            <button onClick={this.returnToMenu}>{stringsLoginForm.backToMenuLoginForm}</button>
+
+            <div style={this.state.style2}>
+              <label>
+              {stringsLoginForm.emailText}
+                <input type="text"
+                value={this.state.email}
+                onChange={this.handleEmailChange}
+                />
+              </label>
+            </div>
+
+            <div style={this.state.style2}>
+              <input type="submit" value={stringsLoginForm.inputSubmitValue} />
+            </div>
+          </form>
         </div>
-      }
+        <button onClick={this.returnToMenu}>{stringsLoginForm.backToMenuLoginForm}</button>
+    </div>
+    )
+  }
 }//registration form end
