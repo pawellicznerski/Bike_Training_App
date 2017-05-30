@@ -1,14 +1,14 @@
 import React, { Component }  from 'react';
 import {stringsLoginForm} from './strings.js';
-import {FillInForm} from './fillInForm.js';
 import {TrainingPlan} from './trainingPlan.js';
+import {Prompt} from 'react-router-dom';
 
 
 export class EntryForm extends Component {
   constructor(props) {
   super(props);
-  //Pierwsza wartość inputa ustawiona na '':
   this.state = {
+      isBlocking: false,
       loading: false,
       login: '',
       email: '',
@@ -63,11 +63,18 @@ handleRegistrationData = (e) => {
 }//end of handleRegistrationData
 
 handleNameChange=(e)=>{
-  this.setState({login: e.target.value});
+  this.setState({
+    login: e.target.value,
+    isBlocking: e.target.value.length > 0
+  });
 }
 
 handleEmailChange=(e)=>{
-  this.setState({email: e.target.value});
+  this.setState({
+    email: e.target.value,
+    isBlocking: e.target.value.length > 0
+  });
+
 }
 
 returnToMenu=(e)=>{
@@ -76,38 +83,43 @@ returnToMenu=(e)=>{
 }
 
 render(){
+  const { isBlocking } = this.state;
   return (
-    <div>
-        <div style={this.state.style}>
-          <form onSubmit={this.handleRegistrationData}>
+      <div>
+        <Prompt
+          when={isBlocking}
+          message={stringsLoginForm.leavingLoginFormWarning}
+        />
+          <div style={this.state.style}>
+            <form onSubmit={this.handleRegistrationData}>
 
-            <div style={this.state.style2}>
-              <label>
-                {stringsLoginForm.nameLoginText}
-                <input type="text"
-                value={this.state.login}
-                onChange={this.handleNameChange}
-                />
-              </label>
-            </div>
+              <div style={this.state.style2}>
+                <label>
+                  {stringsLoginForm.nameLoginText}
+                  <input type="text"
+                  value={this.state.login}
+                  onChange={this.handleNameChange}
+                  />
+                </label>
+              </div>
 
-            <div style={this.state.style2}>
-              <label>
-              {stringsLoginForm.emailText}
-                <input type="text"
-                value={this.state.email}
-                onChange={this.handleEmailChange}
-                />
-              </label>
-            </div>
+              <div style={this.state.style2}>
+                <label>
+                {stringsLoginForm.emailText}
+                  <input type="text"
+                  value={this.state.email}
+                  onChange={this.handleEmailChange}
+                  />
+                </label>
+              </div>
 
-            <div style={this.state.style2}>
-              <input type="submit" value={stringsLoginForm.inputSubmitValue} />
-            </div>
-          </form>
-        </div>
-        <button onClick={this.returnToMenu}>{stringsLoginForm.backToMenuLoginForm}</button>
-    </div>
+              <div style={this.state.style2}>
+                <input type="submit" value={stringsLoginForm.inputSubmitValue} />
+              </div>
+            </form>
+          </div>
+          <button onClick={this.returnToMenu}>{stringsLoginForm.backToMenuLoginForm}</button>
+      </div>
     )
   }
 }//registration form end

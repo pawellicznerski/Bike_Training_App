@@ -1,23 +1,22 @@
 import React, { Component }  from 'react';
 import {stringsFillInForm} from './strings.js';
 import {TrainingPlan} from './trainingPlan.js';
+import {DescribingTarget} from './describingTarget.js';
 import {Prompt} from 'react-router-dom';
+import { BrowserRouter as Router,Route,Link,NavLink, Switch } from 'react-router-dom';
+
 
 export class FillInForm extends Component {
   constructor(props) {
   super(props);
-  //Pierwsza wartość inputa ustawiona na '':
   this.state = {
       isBlocking: false,
       loading: true,
-      correctlyFilledForm: true,
+      describingTargetLoaded: false,
       login: '',
       email: '',
-      weight: '',
-      height: '',
-      trainingType: '',
-      dateStart: '',
-      dateEnd: '',
+      onBlurLoginWarning:'',
+      onBlurEmailWarning:'',
       style:{
         border: '4px solid black',
         width:'500px',
@@ -39,60 +38,90 @@ handleRegistrationData = (e) => {
   e.preventDefault();
   e.target.reset()
   this.setState({
-    isBlocking: false
+    isBlocking: false,
+    describingTargetLoaded:true
   })
-
-  if(this.state.fullName===""){
-    alert("wypełnj piste pola")
-  } else if (this.state.email===""){
-    alert("wypełnj piste pola")
-  } else if (this.state.weight===""){
-    alert("wypełnj piste pola")
-  } else if (this.state.height===""){
-    alert("wypełnj piste pola")
-  } else if (this.state.trainingType===""){
-    alert("wypełnj piste pola")
-  } else if (this.state.date===""){
-    alert("wypełnj piste pola")
-  } else {
-    this.setState({trainingPlanLoaded:true});
-    console.log(this.state.trainingPlanLoaded);
-    // fetch(`http://localhost:3000/people?name=dedeed&id=1`).then(resp => resp.json())//szukamy takich samych name i email
-    //   .then(data => {
-    //     console.log(data);
-    //     if(data.length===0){
-    //       this.state.trainingPlanLoaded=true;
-    //     } else {
-    //       var someAlert = "Wybrany login lub email jest już zajety";
-    //     }
-    //       alert(someAlert);
-    //   });
-  }
-
-
-  console.log(this.state.login);
-  console.log(this.state.email);
-  console.log(this.state.weight);
-  console.log(this.state.height);
-  console.log(this.state.trainingType);
-  console.log(this.state.date);
 };
 
-textValidationFn=()=>{
+// describingTargetLoaded = (e) => {
+//   e.preventDefault();
+// };
 
+handleOnBlurLogin =(e)=>{
+  e.preventDefault();
 
+  console.log("blur login dziala");
+  console.log(this.state.login);
+  if(this.state.login===""){
+    this.setState({
+      onBlurLoginWarning: "wypełnj piste pola chamie",
+    })
+    console.log("zalapal if login");
+    return false;
+  } else if (!/(?=.*\d)(?=.*[A-Za-z]).{4,15}/.test(this.state.login)) {
+    this.setState({
+      isBlocking: true > 0,
+      onBlurLoginWarning: "Login musi zawierać między 4 a 15 znaków, chociaż jedną literę i liczbę",
+    })
+    return false;
+    } else {
+      this.setState({
+        onBlurLoginWarning: "",
+      })
+
+    fetch(`http://localhost:3000/people?name=${this.state.login}`).then(resp => resp.json())
+      .then(data => {
+        if(data.length===0){
+          console.log("nie ma w bazie");
+        } else if (data.length!==0){
+          console.log("jest w bazie");
+        }
+    });
+  }
 }
-// function validation()
-// {
-//     var re = /[a-zA-Z]{3}/; // 1
-//
-//     if (!re.test(document.getElementById('example').value)) // 2
-//     {
-//         alert('Wpisz co najmniej 3 znaki');
-//         return false;
-//     }
-//     return true;
-// }
+
+handleOnFocusLogin=(e)=>{
+  e.preventDefault();
+  this.setState({
+  })
+}
+
+handleOnBlurEmail =(e)=>{
+  e.preventDefault();
+
+  if(this.state.email===""){
+    this.setState({
+      onBlurEmailWarning: "wypełnj piste pola chamie",
+    })
+  } else if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.state.email)) {
+    this.setState({
+      isBlocking: true > 0,
+      onBlurEmailWarning: "Wpisz prawidłowy adres e-mail",
+    })
+  } else {
+    this.setState({
+      onBlurEmailWarning: "",
+    })
+    fetch(`http://localhost:3000/people?name=${this.state.email}`).then(resp => resp.json())
+      .then(data => {
+        console.log(data);
+        if(data.length===0){
+          this.setState({
+            onBlurLoginWarning:'Wybrany login już isnieje',
+          })
+        } else if (data.length!==0){
+
+        }
+    });
+  }//else
+}//if
+
+handleOnFocusEmail=(e)=>{
+  e.preventDefault();
+  this.setState({
+  })
+}
+
 
 
 
@@ -100,45 +129,6 @@ handleEmailChange=(e)=>{
   e.preventDefault();
   this.setState({
     email: e.target.value,
-    isBlocking: e.target.value.length > 0
-  });
-  console.log(this.state.email);
-}
-handleWeightChange=(e)=>{
-  e.preventDefault();
-  this.setState({
-    weight: e.target.value,
-    isBlocking: e.target.value.length > 0
-  });
-  console.log(this.state.weight);
-}
-handleHeightChange=(e)=>{
-  e.preventDefault();
-  this.setState({
-    height: e.target.value,
-    isBlocking: e.target.value.length > 0
-  });
-  console.log(this.state.height);
-}
-handleTrainingTypeChange=(e)=>{
-  e.preventDefault();
-  this.setState({
-    trainingType: e.target.value,
-    isBlocking: e.target.value.length > 0
-  });
-  console.log(this.state.trainingType);
-}
-handleStartDateChange=(e)=>{
-  e.preventDefault();
-  this.setState({
-    dateStart: e.target.value,
-    isBlocking: e.target.value.length > 0
-  });
-}
-handleEndDateChange=(e)=>{
-  e.preventDefault();
-  this.setState({
-    dateEnd: e.target.value,
     isBlocking: e.target.value.length > 0
   });
 }
@@ -149,7 +139,6 @@ handleLogin=(e)=>{
     login: e.target.value,
     isBlocking: e.target.value.length > 0
   });
-  console.log(this.state.login);
 }
 
 returnToMenu=(e)=>{
@@ -157,216 +146,56 @@ returnToMenu=(e)=>{
   this.props.history.push('/');
 }
 
-
-//
-// //code from the internet
-//
-// var Input = React.createClass({
-//   getInitialState: function(){
-//     // we don't want to validate the input until the user starts typing
-//     return {
-//       validationStarted: false
-//     };
-//   },
-//
-//
-//   prepareToValidate: function(){},
-//   componentWillMount: function(){
-//     var startValidation = function(){
-//       this.setState({
-//         validationStarted: true
-//       })
-//     }.bind(this);
-//
-//     // if non-blank value: validate now
-//     if (this.props.value) {
-//       startValidation();
-//     }
-//     // wait until they start typing, and then stop
-//     else {
-//       this.prepareToValidate = _.debounce(startValidation, 1000);
-//     }
-//   },
-//
-//
-//   handleChange: function(e){
-//     if (!this.state.validationStarted) {
-//       this.prepareToValidate();
-//     }
-//     this.props.onChange && this.props.onChange(e);
-//   },
-//
-//
-//   render: function(){
-//     var className = "";
-//     if (this.state.validationStarted) {
-//        className = (this.props.valid ? "valid" : "invalid");
-//     }
-//
-//     return this.transferPropsTo(<input
-//         className={className}
-//         onChange={this.handleChange} />);
-//   }
-// });
-//
-//
-// var App = React.createClass({
-//   getInitialState: function(){
-//     return {value: "", price: ""};
-//   },
-//   handleChange: function(e){
-//     this.setState({
-//       value: e.target.value
-//     })
-//   },
-//   handlePriceChange: function(e){
-//     this.setState({
-//       price: e.target.value
-//     })
-//   },
-//   validate: function(state){
-//     return {
-//       value: state.value.indexOf('react') !== -1,
-//       price: /^\$\d+\.\d+$/.test(state.price)
-//     }
-//   },
-//   render: function(){
-//     var valid = this.validate(this.state);
-//     return (
-//       <div>
-//         <Input valid={valid.value}
-//                className='foobar'
-//                value={this.state.value}
-//                onChange={this.handleChange}
-//                placeholder="something with 'react'"/>
-//         <Input valid={valid.price}
-//               value={this.state.price}
-//               onChange={this.handlePriceChange}
-//               placeholder="$0.00" />
-//       </div>
-//     );
-//   }
-// });
-//
-// React.render(<App />, document.body);
-//
-//
-
-
 render(){
     const { isBlocking } = this.state;
-    return (
-      <div>
-        <Prompt
-          when={isBlocking}
-          message={stringsFillInForm.leavingFillInSiteWarning}
-        />
-          <div style={this.state.style}>
-          <form onSubmit={this.handleRegistrationData}>
+      return (
+        <div>
+          <Prompt
+            when={isBlocking}
+            message={stringsFillInForm.leavingFillInSiteWarning}
+          />
+            <div style={this.state.style}>
+            <form onSubmit={this.handleRegistrationData}>
 
-            <div style={this.state.style2}>
-              <label>
-                {stringsFillInForm.loginFillInText}
-                <input type="text"
-                value={this.state.login}
-                onChange={this.handleLogin}
-                placeholder="Wpisz imie"
-                pattern="(?=.*\d)(?=.*[A-Za-z]).{4,15}"
-                title="Login musi zawierac co najmniej jedną liczbę, jedną literę i od 4 do 15 znaków"
-                required
-                />
-              </label>
-            </div>
+              <div
+                 style={this.state.style2}
+                 onBlur={this.handleOnBlurLogin}
+                 onFocus={this.handleOnFocusLogin}
 
-            <button>Sprawdź dostępność loginu</button>
+                 >
+                <p>{this.state.onBlurLoginWarning}</p>
+                <label>
+                  {stringsFillInForm.loginFillInText}
+                  <input type="text"
+                  value={this.state.login}
+                  placeholder="Wpisz imie"
+                  required
+                  onChange={this.handleLogin}
+                  />
+                </label>
+              </div>
 
-            <div style={this.state.style2}>
-              <label>
-                {stringsFillInForm.emailFillInText}
-                <input type="text"
-                value={this.state.email}
-                onChange={this.handleEmailChange}
-                placeholder="Wpisz swój e-mail"
-                pattern="[a-z0-9._%+-]{3,30}@[a-z0-9.-]{1-20}\.[a-z]{2,4}$"
-                title="Wpisz prawidłowy adres e-mail"
-                required
-                />
-              </label>
-            </div>
+              <div
+                style={this.state.style2}
+                onBlur={this.handleOnBlurEmail}
+                onFocus={this.handleOnFocusEmail}
 
-            <button>Sprawdź czy e-mail nie jest zajety</button>
-
-            <div style={this.state.style2}>
-              <label>
-                {stringsFillInForm.weigthFillInText}
-                <input
-                type="number"
-                value={this.state.weight}
-                onChange={this.handleWeightChange}
-                placeholder="Wpisz wagę"
-                min="30"
-                max="150"
-                pattern="[3-9]/d$"
-                title="Wpisz liczbę od 30 do 150"
-                required
-                />
-              </label>
-            </div>
-
-            <div style={this.state.style2}>
-              <label>
-                {stringsFillInForm.heightFillInText}
-                <input type="number"
-                value={this.state.height}
-                onChange={this.handleHeightChange}
-                placeholder="Wpisz wzrost"
-                min="130"
-                max="220"
-                pattern="(1[0-5]0)|(1[0-4]/d)|[3-9]/d)$"
-                title="Wpisz liczbę od 130 do 220"
-                required
-                />
-              </label>
-            </div>
-
-            <div style={this.state.style2}>
-              <select value={this.state.trainingType} onChange={this.handleTrainingTypeChange}>
-                {stringsFillInForm.trainingTypeFillInText}
-                <option value="Wyścig kolarski">Wyścig kolarski</option>
-                <option value="Maraton kolarski">Maraton kolarski</option>
-                <option value="Triatlon">Triatlon</option>
-              </select>
-            </div>
-
-            <div style={this.state.style2}>
-              <label>
-                {stringsFillInForm.dateStartFillInText}
-                <input type="date"
-                value={this.state.date}
-                onChange={this.handleStartDateChange}
-                required
-                />
-              </label>
-            </div>
-
-            <div style={this.state.style2}>
-              <label>
-                {stringsFillInForm.dateFillInText}
-                <input type="date"
-                value={this.state.date}
-                onChange={this.handleEndDateChange}
-                required
-                />
-              </label>
-            </div>
-
-          <div style={this.state.style2}>
-            <input type="submit" value={stringsFillInForm.inputSubmitValue} />
-          </div>
-        </form>
+                >
+                <p>{this.state.onBlurEmailWarning}</p>
+                <label>
+                  {stringsFillInForm.emailFillInText}
+                  <input type="text"
+                  value={this.state.email}
+                  placeholder="Wpisz swój e-mail"
+                  required
+                  onChange={this.handleEmailChange}
+                  />
+                </label>
+              </div>
+          </form>
+        </div>
+        <DescribingTarget></DescribingTarget>
       </div>
-      <button onClick={this.returnToMenu}>{stringsFillInForm.backToMenuFillInForm}</button>
-    </div>
     )
   }//end of render
 }//registration form end

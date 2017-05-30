@@ -6,15 +6,14 @@ import { FillInForm } from './components/fillInForm.js';
 import { stringsApp } from './components/strings.js';
 import { NoMatch } from './components/noMatch.js';
 
-const welcomeText = "witamy w trainig planie";
-const Home =({ match, changeOfDisplayedNavEl })=> (
+const sth = "something";
+
+const Home =()=> (
   <Router>
     <div>
-      {welcomeText}
-      <button onClick={changeOfDisplayedNavEl}><NavLink to={`/${this.state.nextLabel}`}>{this.state.nextLabel}</NavLink></button>
-        <Route exact path="/logowanie" component={EntryForm}/>
-        <Route exact path="/nowekonto" component={FillInForm}/>
-
+      {stringsApp.appWelcomeText}
+      <button ><NavLink to={`/`}>cos tu sie wpisze</NavLink></button>
+      <Route exact path={`/`}/>
     </div>
   </Router>
 )
@@ -31,15 +30,17 @@ class App extends Component {
 changeOfDisplayedNavEl=(e)=>{
   e.preventDefault();
   if (this.state.currentLabel===stringsApp.appLoginButton){
-    this.setState({
-      currentLabel:stringsApp.appNewAccountButton,
-      nextLabel:stringsApp.appLoginButton
-    })
-  }else{
-    this.setState({
-      currentLabel:stringsApp.appLoginButton,
-      nextLabel:stringsApp.appNewAccountButton
-    })
+    // this.setState({
+    //   currentLabel:stringsApp.appNewAccountButton,
+    //   nextLabel:stringsApp.appLoginButton,
+    // })
+    console.log(sth);
+  } else {
+    // this.setState({
+    //   currentLabel:stringsApp.appLoginButton,
+    //   nextLabel:stringsApp.appNewAccountButton,
+    // })
+    console.log(sth);
   }
 }
 
@@ -49,11 +50,13 @@ render() {
     <Router history={history}>
       <div className="App">
         <div>
+
             <nav>
               <div>
-                <NavLink to="/" changeOfDisplayedNavEl={this.changeOfDisplayedNavEl.bind(this)} >menu</NavLink>
+              <button><NavLink to="/">menu</NavLink></button>
               </div>
-              <button onClick={this.changeOfDisplayedNavEl}><NavLink to={`/${this.state.currentLabel}`}>{this.state.currentLabel}</NavLink></button>
+              <button><NavLink to={`/${this.state.currentLabel}`}>{this.state.currentLabel}</NavLink></button>
+              <button><NavLink to={`/${this.state.nextLabel}`}>{this.state.nextLabel}</NavLink></button>
             </nav>
 
             <Switch>
