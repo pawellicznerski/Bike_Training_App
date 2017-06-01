@@ -3,11 +3,12 @@ import {stringsFillInForm} from './strings.js';
 import {TrainingPlan} from './trainingPlan.js';
 import {Prompt} from 'react-router-dom';
 
+
 export class DescribingTarget extends Component {
   constructor(props) {
   super(props);
   this.state = {
-      isBlocking: false,
+      isBlocking: this.props.isBlocking,
       loading: true,
       correctlyFilledForm: true,
       login: this.props.login,
@@ -20,7 +21,7 @@ export class DescribingTarget extends Component {
       style:{
         border: '4px solid black',
         width:'500px',
-        height:'400px',
+        height:'200px',
         display:'flex',
         justifyContent:'middle',
         flexDirection:'column'
@@ -29,7 +30,6 @@ export class DescribingTarget extends Component {
         border: '1px solid black'
       }
     };
-    this.returnToMenu = this.returnToMenu.bind(this);
 } //props end
 
 
@@ -63,14 +63,13 @@ handleRegistrationData = (e) => {
     //       alert(someAlert);
     //   });
   }
-
   console.log(this.state.weight);
   console.log(this.state.height);
   console.log(this.state.trainingType);
   console.log(this.state.date);
 };
-
 textValidationFn=()=>{
+
 
 }
 // function validation()
@@ -133,11 +132,6 @@ handleLogin=(e)=>{
   console.log(this.state.login);
 }
 
-returnToMenu=(e)=>{
-  e.preventDefault();
-  this.props.history.push('/');
-}
-
 
 render(){
     const { isBlocking } = this.state;
@@ -147,6 +141,7 @@ render(){
           when={isBlocking}
           message={stringsFillInForm.leavingFillInSiteWarning}
         />
+
           <div style={this.state.style}>
           <form onSubmit={this.handleRegistrationData}>
             <div style={this.state.style2}>
@@ -214,11 +209,9 @@ render(){
             </div>
 
           <div style={this.state.style2}>
-            <input type="submit" value={stringsFillInForm.inputSubmitValue} />
           </div>
         </form>
       </div>
-      <button onClick={this.returnToMenu}>{stringsFillInForm.backToMenuFillInForm}</button>
     </div>
     )
   }//end of render

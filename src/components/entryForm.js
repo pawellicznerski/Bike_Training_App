@@ -27,8 +27,8 @@ export class EntryForm extends Component {
       },
       style3:{
         border: '2px solid red',
-        width:'100px',
-        height:'100px',
+        minWidth:'100px',
+        minHeight:'400px',
         display:'flex',
         justifyContent:'middle',
         flexDirection:'row',

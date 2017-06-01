@@ -30,6 +30,7 @@ export const stringsFillInForm ={
   dateStartFillInText: "Data rozpoczęcia treningu:",
   backToMenuFillInForm: "Powrót do strony głównej",
   leavingFillInSiteWarning: "Masz wypełnione niektóre pola. Czy na pewno chcesz opuścić stronę?",
+  inputSubmitValue:"jedziemy z koksem"
 }
 
 export const stringsTrainingPlan ={
