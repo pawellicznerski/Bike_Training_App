@@ -14,19 +14,14 @@ export class FillInForm extends Component {
       loading: true,
       describingTargetLoaded: false,
       login: '',
-      onBlurLoginWarning:'',
+      emptyFieldWarning:'',
       email: '',
-      onBlurEmailWarning:'',
       weight: '',
-      onBlurweightWarning:'',
       height: '',
-      onBlurheightWarning:'',
       trainingType: '',
-      onBlurtrainingTypeWarning:'',
       dateStart: '',
-      onBlurdateStartWarning:'',
       dateEnd: '',
-      onBlurdateEndWarning:'',
+
       style:{
         border: '4px solid black',
         minWidth:'100px',
@@ -43,131 +38,80 @@ export class FillInForm extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
 } //props end
 
+handleRegistrationData =(event)=>{
+  event.preventDefault();
+  const target = event.target;
 
+  for (var i = 0; i <= (target.length-1); i++) {
 
-handleRegistrationData = (e) => {
+    if(target[i].value ===""){
+      const name = target[i].name;
+      const nameWarning = `empty${name}FieldWarning`;
+      const warningString = stringsFillInForm.emptyFieldWarning;
+
+      this.setState({
+         [nameWarning]:[warningString],
+         isBlocking: false,
+       });
+    }
+  }
+}
+
+handleOnBlur =(e)=>{
   e.preventDefault();
-  this.setState({
-    isBlocking: false,
-  })
+  const name = e.target.name;
 
-  if(this.state.login===""){
-    this.setState({
-      onBlurLoginWarning: "Wpisz prawidłowy login",
-    })
-  } else if (this.state.email===""){
-    this.setState({
-      onBlurEmailWarning: "Wpisz swój e-mail",
-    })
-  } else if(this.state.weight===""){
-    this.setState({
-      onBlurweightWarning:'Wpisz swoją wagę',
-    })
-  } else if (this.state.height===""){
-    this.setState({
-      onBlurheightWarning:'Wpisz swój wzrost',
-    })
-  } else if (this.state.trainingType===""){
-    this.setState({
-      onBlurtrainingTypeWarning:'Wybierz docelowy dystans',
-    })
-  } else if (this.state.dateStart===""){
-    this.setState({
-      onBlurdateStartWarning:'Wybierz datę rozpoczęcia przygotowań',
-    })
-  } else if (this.state.dateEnd===""){
-    this.setState({
-      onBlurdateEndWarning:'Wybierz datę celu',
-    })
+  if(name==="login"){
+    const blurredFieldData = this.state.login;
+    const basicDataFormat = /(?=.*\d)(?=.*[A-Za-z]).{4,15}/;
+    const currentWarningBlurText = stringsFillInForm.loginFormatWarning ;
+    this.handleValidation(name,blurredFieldData,basicDataFormat,currentWarningBlurText);
+  } else if (name==="email"){
+    const blurredFieldData = this.state.email;
+    const basicDataFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const currentWarningBlurText = stringsFillInForm.emailFormatWarning ;
+    this.handleValidation(name,blurredFieldData,basicDataFormat,currentWarningBlurText);
   } else {
-    this.setState({trainingPlanLoaded:true});
-    console.log(this.state.trainingPlanLoaded);
-    // fetch(`http://localhost:3000/people?name=dedeed&id=1`).then(resp => resp.json())//szukamy takich samych name i email
+    console.log("Nie działa");
+  }
+
+
+}
+
+handleValidation=(name,blurredFieldData,basicDataFormat,currentWarningBlurText)=>{
+  if(blurredFieldData===""){
+    const nameWarning = `empty${name}FieldWarning`;
+    this.setState({
+      [nameWarning]: `Wpisz ${name}`,
+    })
+    return false;
+  } else if (!basicDataFormat.test(blurredFieldData)) {
+    const nameWarning = `empty${name}FieldWarning`;
+    this.setState({
+      isBlocking: true,
+      [nameWarning]: currentWarningBlurText
+    })
+    return false;
+  } else {
+    this.setState({
+      emptyloginFieldWarning: "",
+    })
+    // fetch(`http://localhost:3000/people?name=${this.state.login}`).then(resp => resp.json())
     //   .then(data => {
-    //     console.log(data);
     //     if(data.length===0){
-    //       this.state.trainingPlanLoaded=true;
-    //     } else {
-    //       var someAlert = "Wybrany login lub email jest już zajety";
+    //       console.log("nie ma w bazie");
+    //     } else if (data.length!==0){
+    //       console.log("jest w bazie");
     //     }
-    //       alert(someAlert);
     //   });
   }
 };
 
-handleOnBlurLogin =(e)=>{
-  e.preventDefault();
-
-  console.log("blur login dziala");
-  console.log(this.state.login);
-
-  if(this.state.login===""){
-    this.setState({
-      onBlurLoginWarning: "Wpisz prawidłowy login",
-    })
-    console.log("zalapal if login");
-    return false;
-  } else if (!/(?=.*\d)(?=.*[A-Za-z]).{4,15}/.test(this.state.login)) {
-    this.setState({
-      isBlocking: true,
-      onBlurLoginWarning: "Login musi zawierać między 4 a 15 znaków, chociaż jedną literę i liczbę",
-    })
-    return false;
-  } else {
-    this.setState({
-      onBlurLoginWarning: "",
-    })
-    fetch(`http://localhost:3000/people?name=${this.state.login}`).then(resp => resp.json())
-      .then(data => {
-        if(data.length===0){
-          console.log("nie ma w bazie");
-        } else if (data.length!==0){
-          console.log("jest w bazie");
-        }
-      });
-  }
-}
-
-handleOnBlurEmail =(e)=>{
-  e.preventDefault();
-
-  console.log("blur login dziala");
-  console.log(this.state.login);
-
-  if(this.state.email===""){
-    this.setState({
-      onBlurEmailWarning: "Wpisz swój e-mail",
-    })
-  } else if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.state.email)) {
-    this.setState({
-      isBlocking: true,
-      onBlurEmailWarning: "Wpisz prawidłowy adres e-mail",
-    })
-  } else {
-    this.setState({
-      onBlurEmailWarning: "",
-    })
-    fetch(`http://localhost:3000/people?email=${this.state.email}`).then(resp => resp.json())
-      .then(data => {
-        if(data.length!==0){
-          this.setState({
-            onBlurEmailWarning:'Wybrany login już isnieje',
-          })
-        } else if (data.length===0){
-          this.setState({
-            onBlurEmailWarning:'Wybrany email nie isnieje - mozna uzyć',
-          })
-        }
-      });//then
-  }//else
-}//if
-
 handleInputChange =(event)=>{
   const target = event.target;
-  const value = target.type === 'checkbox' ? target.checked : target.value;
+  const value = target.type === 'checkbox' ? target.checked : target.value;//potrzebne w razie dolączenia checkbox-a
   const name = target.name;
-  const nameString = name.toString();
-  const nameWarning = `onBlur${nameString}Warning`;
+  const nameWarning = `empty${name}FieldWarning`;
 
   this.setState({
      [name]: value,
@@ -207,12 +151,13 @@ render(){
                   value={this.state.login}
                   placeholder="Wpisz imie"
                   onChange={this.handleInputChange}
-                  onBlur={this.handleOnBlurLogin}
+                  onBlur={this.handleOnBlur}
                   onFocus={this.handleOnFocusLogin}
+                  title="Login musi zawierać między 4 a 15 znaków, chociaż jedną literę i liczbę"
                   name="login"
                 />
               </label>
-              <p>{this.state.onBlurLoginWarning}</p>
+              <p>{this.state.emptyloginFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -223,12 +168,13 @@ render(){
                   value={this.state.email}
                   placeholder="Wpisz swój e-mail"
                   onChange={this.handleInputChange}
-                  onBlur={this.handleOnBlurEmail}
+                  onBlur={this.handleOnBlur}
                   onFocus={this.handleOnFocusEmail}
+                  title="Wpisz prawidłowy adres e-mail"
                   name="email"
                 />
               </label>
-              <p>{this.state.onBlurEmailWarning}</p>
+              <p>{this.state.emptyemailFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -246,7 +192,7 @@ render(){
                   name="weight"
                 />
               </label>
-              <p>{this.state.onBlurweightWarning}</p>
+              <p>{this.state.emptyweightFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -264,7 +210,7 @@ render(){
                   name="height"
                 />
               </label>
-              <p>{this.state.onBlurheightWarning}</p>
+              <p>{this.state.emptyheightFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -274,11 +220,12 @@ render(){
                 name="trainingType"
                 >
                 {stringsFillInForm.trainingTypeFillInText}
+                <option value="">Wybierz opcje</option>
                 <option value="Wyścig kolarski">Wyścig kolarski</option>
                 <option value="Maraton kolarski">Maraton kolarski</option>
                 <option value="Triatlon">Triatlon</option>
               </select>
-              <p>{this.state.onBlurtrainingTypeWarning}</p>
+              <p>{this.state.emptytrainingTypeFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -291,7 +238,7 @@ render(){
                 name="dateStart"
                 />
               </label>
-              <p>{this.state.onBlurdateStartWarning}</p>
+              <p>{this.state.emptydateStartFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -304,7 +251,7 @@ render(){
                 name="dateEnd"
                 />
               </label>
-              <p>{this.state.onBlurdateEndWarning}</p>
+              <p>{this.state.emptydateEndFieldWarning}</p>
             </div>
 
             <input type="submit" value={stringsFillInForm.inputSubmitValue} />

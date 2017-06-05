@@ -30,7 +30,20 @@ export const stringsFillInForm ={
   dateStartFillInText: "Data rozpoczęcia treningu:",
   backToMenuFillInForm: "Powrót do strony głównej",
   leavingFillInSiteWarning: "Masz wypełnione niektóre pola. Czy na pewno chcesz opuścić stronę?",
-  inputSubmitValue:"jedziemy z koksem"
+  inputSubmitValue:"jedziemy z koksem",
+  emptyFieldWarning: "Wypełnij puste pole",
+  loginFormatWarning: "Login musi zawierać między 4 a 15 znaków, chociaż jedną literę i liczbę",
+  emailFormatWarning: "Wpisz prawidłowy adres e-mail",
+
+  //Na razie te stringi nie sa potrzebne
+
+  // emptyloginFieldWarning: "Wpisz prawidłowy login",
+  // emptyemailFieldWarning: "Wpisz swój e-mail",
+  // emptyweightFieldWarning:'Wpisz swoją wagę',
+  // emptyheightFieldWarning:'Wpisz swój wzrost',
+  // emptytrainingTypeFieldWarning:'Wybierz docelowy dystans',
+  // emptydateStartFieldWarning:'Wybierz docelowy dystans',
+  // emptydateEndFieldWarning:'Wybierz docelowy dystans',
 }
 
 export const stringsTrainingPlan ={
