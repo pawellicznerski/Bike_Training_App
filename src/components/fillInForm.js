@@ -1,7 +1,6 @@
 import React, { Component }  from 'react';
 import { stringsFillInForm } from './strings.js';
 import { TrainingPlan } from './trainingPlan.js';
-import { DescribingTarget } from './describingTarget.js';
 import { Prompt } from 'react-router-dom';
 import { BrowserRouter as Router,Route,Link,NavLink, Switch } from 'react-router-dom';
 
@@ -13,14 +12,16 @@ export class FillInForm extends Component {
       isBlocking: false,
       loading: true,
       describingTargetLoaded: false,
-      login: '',
+      login: 'Krzychu5',
       emptyFieldWarning:'',
-      email: '',
-      weight: '',
-      height: '',
-      trainingType: '',
-      dateStart: '',
-      dateEnd: '',
+      email: 'pawellicznerski@poczta.fm',
+      weight: '87',
+      height: '189',
+      trainingType: '300',
+      dateStart: '2017-06-09',
+      emptydateStartFieldWarning:"",
+      dateEnd: '2017-06-19',
+      emptydateEndFieldWarning:"",
 
       style:{
         border: '4px solid black',
@@ -41,9 +42,7 @@ export class FillInForm extends Component {
 handleRegistrationData =(event)=>{
   event.preventDefault();
   const target = event.target;
-
   for (var i = 0; i <= (target.length-1); i++) {
-
     if(target[i].value ===""){
       const name = target[i].name;
       const nameWarning = `empty${name}FieldWarning`;
@@ -52,10 +51,62 @@ handleRegistrationData =(event)=>{
       this.setState({
          [nameWarning]:[warningString],
          isBlocking: false,
+         loading:false,
        });
     }
   }
+  if (this.state.loading===true){
+    this.handleloadingTrainingPlan()
+  }
 }
+
+handleloadingTrainingPlan=()=>{
+  this.handleDates();
+}
+
+handleDates=()=>{
+  console.log("właśnie kliknąłes submit");
+  const firstDate = new Date(this.state.dateStart);
+  const secondDate = new Date(this.state.dateEnd);
+  console.log(firstDate);
+  console.log(secondDate);
+  const difference = Math.abs(firstDate - secondDate);
+  const numberOfTrainingDays = (difference/86400000);
+  const numberStartDays = Math.abs(firstDate/86400000);
+
+    if(secondDate<=firstDate ) {
+      console.log("wrong - druga data jest wczesniejsza");
+      this.setState({
+        emptydateStartFieldWarning: "Data rozpoczęcia treningu nie może byc późniejsza od daty szczutu formy",
+        emptydateEndFieldWarning: "Data rozpoczęcia treningu nie może byc późniejsza od daty szczutu formy",
+        isBlocking: true,
+        loading:false,
+       });
+    } else if(secondDate>firstDate ) {
+      console.log("wszystko gra - daty są ok");
+      this.setState({
+        emptydateStartFieldWarning: "",
+        emptydateEndFieldWarning: "",
+        isBlocking: false,
+        loading:true,
+       });
+    }
+
+}
+
+handleDateOnBlur =()=>{
+
+}
+
+handleDateOnFocus =(e)=>{
+  e.preventDefault();
+  this.setState({
+    emptydateStartFieldWarning: "",
+    emptydateEndFieldWarning: "",
+    isBlocking: false,
+    loading:true,
+   });
+}//end of focus function
 
 handleOnBlur =(e)=>{
   e.preventDefault();
@@ -72,11 +123,11 @@ handleOnBlur =(e)=>{
     const currentWarningBlurText = stringsFillInForm.emailFormatWarning ;
     this.handleValidation(name,blurredFieldData,basicDataFormat,currentWarningBlurText);
   } else {
-    console.log("Nie działa");
+    console.log("złasnie zblurowałeś datę");
+    console.log(this.state.dateStart);
+    console.log(this.state.dateEnd);
   }
-
-
-}
+}//end of blur function
 
 handleValidation=(name,blurredFieldData,basicDataFormat,currentWarningBlurText)=>{
   if(blurredFieldData===""){
@@ -92,19 +143,20 @@ handleValidation=(name,blurredFieldData,basicDataFormat,currentWarningBlurText)=
       [nameWarning]: currentWarningBlurText
     })
     return false;
-  } else {
-    this.setState({
-      emptyloginFieldWarning: "",
-    })
-    // fetch(`http://localhost:3000/people?name=${this.state.login}`).then(resp => resp.json())
-    //   .then(data => {
-    //     if(data.length===0){
-    //       console.log("nie ma w bazie");
-    //     } else if (data.length!==0){
-    //       console.log("jest w bazie");
-    //     }
-    //   });
   }
+  //   else {
+  //   fetch(`http://localhost:3000/people?name=${this.state.login}`).then(resp => resp.json())
+  //     .then(data => {
+  //       if(data.length===0){
+  //         console.log("nie ma w bazie");
+  //       } else if (data.length!==0){
+  //         console.log("jest w bazie");
+  //       }
+  //     });
+  //   this.setState({
+  //     [nameWarning]: "",
+  //   })
+  // }
 };
 
 handleInputChange =(event)=>{
@@ -124,13 +176,6 @@ returnToMenu=(e)=>{
   e.preventDefault();
   this.props.history.push('/');
 }
-
-// validateForm=(values)=>{
-//   const errors = {};
-//   if (!values.weight){
-//     errors.weight = {"Wprowadź swoją wagę"}
-//   }
-// }
 
 render(){
   const { isBlocking } = this.state;
@@ -214,17 +259,21 @@ render(){
             </div>
 
             <div style={this.state.style2}>
-              <select
-                value={this.state.trainingType}
-                onChange={this.handleInputChange}
-                name="trainingType"
-                >
-                {stringsFillInForm.trainingTypeFillInText}
-                <option value="">Wybierz opcje</option>
-                <option value="Wyścig kolarski">Wyścig kolarski</option>
-                <option value="Maraton kolarski">Maraton kolarski</option>
-                <option value="Triatlon">Triatlon</option>
-              </select>
+              {stringsFillInForm.trainingTypeFillInText}
+              <label>
+                <input
+                  value={this.state.trainingType}
+                  onChange={this.handleInputChange}
+                  name="trainingType"
+                  type="number"
+                  value={this.state.trainingType}
+                  placeholder="Wpisz dystans ultramaratonu:"
+                  min="200"
+                  max="10000"
+                  pattern="[3-9]/d$"
+                  title="Wpisz dystans od 200 do 10000"
+                />
+            </label>
               <p>{this.state.emptytrainingTypeFieldWarning}</p>
             </div>
 
@@ -236,6 +285,8 @@ render(){
                 value={this.state.dateStart}
                 onChange={this.handleInputChange}
                 name="dateStart"
+                onBlur={this.handleDateOnBlur}
+                onFocus={this.handleDateOnFocus}
                 />
               </label>
               <p>{this.state.emptydateStartFieldWarning}</p>
@@ -246,9 +297,11 @@ render(){
                 {stringsFillInForm.dateFillInText}
                 <input
                 type="date"
-                value={this.state.endDate}
+                value={this.state.dateEnd}
                 onChange={this.handleInputChange}
                 name="dateEnd"
+                onBlur={this.handleDateOnBlur}
+                onFocus={this.handleDateOnFocus}
                 />
               </label>
               <p>{this.state.emptydateEndFieldWarning}</p>

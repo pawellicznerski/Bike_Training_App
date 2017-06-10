@@ -40,7 +40,7 @@ export class EntryForm extends Component {
 handleRegistrationData = (e) => {
   e.preventDefault();
 
-  if(this.state.login===""||this.state.email===''){
+  if(this.state.login===""||this.state.email===""){
     alert("Żeby się zajerestrować musisz wpisać imię/login i email")
   } else {
       fetch(`http://localhost:3000/people?name=${this.state.login}&email=${this.state.email}`)
