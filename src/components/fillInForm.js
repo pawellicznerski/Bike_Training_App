@@ -22,6 +22,8 @@ export class FillInForm extends Component {
       emptydateStartFieldWarning:"",
       dateEnd: '2017-06-19',
       emptydateEndFieldWarning:"",
+      yourExperience:"",
+      emptyyourExperienceFieldWarning:"",
 
       style:{
         border: '4px solid black',
@@ -53,6 +55,7 @@ handleRegistrationData =(event)=>{
          isBlocking: false,
          loading:false,
        });
+       console.log(this.state.yourExperience);
     }
   }
   if (this.state.loading===true){
@@ -61,7 +64,16 @@ handleRegistrationData =(event)=>{
 }
 
 handleloadingTrainingPlan=()=>{
+  this.handleExperience();
   this.handleDates();
+}
+
+handleExperience=()=>{
+  if(!this.state.yourExperience){
+    this.setState({
+      emptyyourExperienceFieldWarning: "musisz wybrac jedną z opcji"
+    });
+   }
 }
 
 handleDates=()=>{
@@ -70,11 +82,11 @@ handleDates=()=>{
   const secondDate = new Date(this.state.dateEnd);
   console.log(firstDate);
   console.log(secondDate);
-  const difference = Math.abs(firstDate - secondDate);
-  const numberOfTrainingDays = (difference/86400000);
-  const numberStartDays = Math.abs(firstDate/86400000);
+  const difference = Math.abs((new Date(this.state.dateStart)) - (new Date(this.state.dateEnd)));
+  console.log(difference);
 
     if(secondDate<=firstDate ) {
+      console.log("wrong - druga data jest wczesniejsza");
       console.log("wrong - druga data jest wczesniejsza");
       this.setState({
         emptydateStartFieldWarning: "Data rozpoczęcia treningu nie może byc późniejsza od daty szczutu formy",
@@ -84,18 +96,15 @@ handleDates=()=>{
        });
     } else if(secondDate>firstDate ) {
       console.log("wszystko gra - daty są ok");
+      const numberOfTrainingDays = ((secondDate-firstDate)/86400000);
       this.setState({
         emptydateStartFieldWarning: "",
         emptydateEndFieldWarning: "",
-        isBlocking: false,
+        isBlocking: true,
         loading:true,
        });
+       return numberOfTrainingDays;
     }
-
-}
-
-handleDateOnBlur =()=>{
-
 }
 
 handleDateOnFocus =(e)=>{
@@ -177,7 +186,13 @@ returnToMenu=(e)=>{
   this.props.history.push('/');
 }
 
+
+
 render(){
+  const currentDateNumberMinusOneDay = Math.abs((new Date(new Date().toJSON().slice(0,10))) - 86400000);
+  const currentDate = new Date().toJSON().slice(0,10);
+  const currentDateMinusOne = new Date(currentDateNumberMinusOneDay).toJSON().slice(0,10);
+
   const { isBlocking } = this.state;
     return (
       <div>
@@ -277,6 +292,20 @@ render(){
               <p>{this.state.emptytrainingTypeFieldWarning}</p>
             </div>
 
+
+            <div style={this.state.style2}>
+              Wybierz swój poziom zaawansowania:<br/>
+              <label>
+                  Podstawowy
+                <input type="radio" name="yourExperience" value="beginner" onChange={this.handleInputChange}/><br/>
+                  Średni
+                <input type="radio" name="yourExperience" value="middle" onChange={this.handleInputChange}/><br/>
+                  Zaawansowany
+                <input type="radio" name="yourExperience" value="professional" onChange={this.handleInputChange}/>
+              </label>
+              <p>{this.state.emptyyourExperienceFieldWarning}</p>
+            </div>
+
             <div style={this.state.style2}>
               <label>
                 {stringsFillInForm.dateStartFillInText}
@@ -287,6 +316,7 @@ render(){
                 name="dateStart"
                 onBlur={this.handleDateOnBlur}
                 onFocus={this.handleDateOnFocus}
+                min={currentDateMinusOne}
                 />
               </label>
               <p>{this.state.emptydateStartFieldWarning}</p>
@@ -302,6 +332,7 @@ render(){
                 name="dateEnd"
                 onBlur={this.handleDateOnBlur}
                 onFocus={this.handleDateOnFocus}
+                min={currentDate}
                 />
               </label>
               <p>{this.state.emptydateEndFieldWarning}</p>

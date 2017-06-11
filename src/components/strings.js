@@ -34,6 +34,7 @@ export const stringsFillInForm ={
   emptyFieldWarning: "Wypełnij puste pole",
   loginFormatWarning: "Login musi zawierać między 4 a 15 znaków, chociaż jedną literę i liczbę",
   emailFormatWarning: "Wpisz prawidłowy adres e-mail",
+  emptyyourExperienceFieldWarning: "Zaznacz odpowiedni poziom zaawansowania"
 
   //Na razie te stringi nie sa potrzebne
 
