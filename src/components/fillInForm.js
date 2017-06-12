@@ -1,10 +1,10 @@
 import React, { Component }  from 'react';
-import { stringsFillInForm } from './strings.js';
+import { stringsFillInForm, stringsRenderingSuggestions } from './strings.js';
 import { TrainingPlan } from './trainingPlan.js';
 import { HandleRenderingSuggestions } from './renderingSuggestions.js';
 import { Prompt } from 'react-router-dom';
 import { BrowserRouter as Router,Route,Link,NavLink, Switch } from 'react-router-dom';
-
+import { NotEnoughTimeToPrepareWarning }  from './notEnoughTimeToPrepareWarning.js';
 
 export class FillInForm extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export class FillInForm extends Component {
       email: 'pawellicznerski@poczta.fm',
       weight: '87',
       height: '189',
-      yourExperience:"",
+      yourExperience:'',
       emptyyourExperienceFieldWarning:"",
       trainingType: '300',
       trainingTypeSuggestion: 0,
@@ -27,6 +27,8 @@ export class FillInForm extends Component {
       dateSuggestion:1,
       dateEnd: '2017-06-19',
       emptydateEndFieldWarning:"",
+      renderNotEnoughTimeToPrepare: false,
+      numberOfTrainingDays:10,
 
       style:{
         border: '4px solid black',
@@ -67,11 +69,11 @@ handleRegistrationData =(event)=>{
 }
 
 handleloadingTrainingPlan=()=>{
-  this.handleExperience();
+  this.handleYourExperience();
   this.handleDates();
 }
 
-handleExperience=()=>{
+handleYourExperience=()=>{
   if(!this.state.yourExperience){
     this.setState({
       emptyyourExperienceFieldWarning: "musisz wybrac jedną z opcji"
@@ -90,7 +92,6 @@ handleDates=()=>{
 
     if(secondDate<=firstDate ) {
       console.log("wrong - druga data jest wczesniejsza");
-      console.log("wrong - druga data jest wczesniejsza");
       this.setState({
         emptydateStartFieldWarning: "Data rozpoczęcia treningu nie może byc późniejsza od daty szczutu formy",
         emptydateEndFieldWarning: "Data rozpoczęcia treningu nie może byc późniejsza od daty szczutu formy",
@@ -99,14 +100,26 @@ handleDates=()=>{
        });
     } else if(secondDate>firstDate ) {
       console.log("wszystko gra - daty są ok");
+      const {suggestedValues} = stringsRenderingSuggestions;
       const numberOfTrainingDays = ((secondDate-firstDate)/86400000);
+      console.log(numberOfTrainingDays);
+      console.log(suggestedValues[this.state.yourExperience][this.state.dateSuggestion]);
       this.setState({
         emptydateStartFieldWarning: "",
         emptydateEndFieldWarning: "",
-        isBlocking: true,
-        loading:true,
        });
-       return numberOfTrainingDays;
+      if(numberOfTrainingDays < suggestedValues[this.state.yourExperience][this.state.dateSuggestion]){
+         this.setState({
+           numberOfTrainingDays: numberOfTrainingDays,
+           renderNotEnoughTimeToPrepare: true,
+           loading:false,
+          });
+      } else {
+        this.setState({
+          renderNotEnoughTimeToPrepare: false,
+          loading:true,
+         });
+      }
     }
 }
 
@@ -190,16 +203,17 @@ returnToMenu=(e)=>{
 }
 
 
-
-
 render(){
   const currentDateNumberMinusOneDay = Math.abs((new Date(new Date().toJSON().slice(0,10))) - 86400000);
   const currentDate = new Date().toJSON().slice(0,10);
   const currentDateMinusOne = new Date(currentDateNumberMinusOneDay).toJSON().slice(0,10);
-
   const { isBlocking } = this.state;
+  const currentSuggestedValue =(this.state.yourExperience===''||this.state.dateSuggestion==='')?"": (stringsRenderingSuggestions.suggestedValues[this.state.yourExperience][this.state.dateSuggestion]);
+
+
     return (
       <div>
+        <NotEnoughTimeToPrepareWarning renderNotEnoughTimeToPrepare={this.state.renderNotEnoughTimeToPrepare} numberOfTrainingDays={this.state.numberOfTrainingDays} suggestedValues={currentSuggestedValue}></NotEnoughTimeToPrepareWarning>
         <Prompt
           when={isBlocking}
           message={stringsFillInForm.leavingFillInSiteWarning}
@@ -281,11 +295,11 @@ render(){
               Wybierz swój poziom zaawansowania:<br/>
               <label>
                   Podstawowy
-                <input type="radio" name="yourExperience" value="beginner" onChange={this.handleInputChange}/><br/>
+                <input type="radio" name="yourExperience" value="0" onChange={this.handleInputChange}/><br/>
                   Średni
-                <input type="radio" name="yourExperience" value="middle" onChange={this.handleInputChange}/><br/>
+                <input type="radio" name="yourExperience" value="1" onChange={this.handleInputChange}/><br/>
                   Zaawansowany
-                <input type="radio" name="yourExperience" value="professional" onChange={this.handleInputChange}/>
+                <input type="radio" name="yourExperience" value="2" onChange={this.handleInputChange}/>
               </label>
               <p style={{color:'red'}}>{this.state.emptyyourExperienceFieldWarning}</p>
             </div>
@@ -307,7 +321,7 @@ render(){
                 />
             </label>
             <HandleRenderingSuggestions yourExperience={this.state.yourExperience} placeOfRendering={this.state.trainingTypeSuggestion}></HandleRenderingSuggestions>
-
+            <p style={{color:'red'}}>{this.state.emptytrainingTypeFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -324,7 +338,7 @@ render(){
                 />
               </label>
             <HandleRenderingSuggestions yourExperience={this.state.yourExperience} placeOfRendering={this.state.dateSuggestion}></HandleRenderingSuggestions>
-
+            <p style={{color:'red'}}>{this.state.emptydateStartFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -341,6 +355,7 @@ render(){
                 />
               </label>
             <HandleRenderingSuggestions yourExperience={this.state.yourExperience} placeOfRendering={this.state.dateSuggestion}></HandleRenderingSuggestions>
+            <p style={{color:'red'}}>{this.state.emptydateEndFieldWarning}</p>
             </div>
 
             <input type="submit" value={stringsFillInForm.inputSubmitValue} />

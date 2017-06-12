@@ -1,4 +1,3 @@
-
 export const stringsLoginForm ={
   nameLoginText: "Login:",
   emailText: "E-mail:",
@@ -8,7 +7,6 @@ export const stringsLoginForm ={
   newProfile: "Nowy profil",
   backToMenuLoginForm: "Powrot do strony glownej",
   leavingLoginFormWarning: "Masz wypelnione niektore pola. Czy na pewno chcesz opuscic strone?",
-
 }
 
 export const stringsApp ={
@@ -34,10 +32,8 @@ export const stringsFillInForm ={
   emptyFieldWarning: "Wypełnij puste pole",
   loginFormatWarning: "Login musi zawierać między 4 a 15 znaków, chociaż jedną literę i liczbę",
   emailFormatWarning: "Wpisz prawidłowy adres e-mail",
-  emptyyourExperienceFieldWarning: "Zaznacz odpowiedni poziom zaawansowania"
-
+  emptyyourExperienceFieldWarning: "Zaznacz odpowiedni poziom zaawansowania",
   //Na razie te stringi nie sa potrzebne
-
   // emptyloginFieldWarning: "Wpisz prawidłowy login",
   // emptyemailFieldWarning: "Wpisz swój e-mail",
   // emptyweightFieldWarning:'Wpisz swoją wagę',
@@ -47,5 +43,11 @@ export const stringsFillInForm ={
   // emptydateEndFieldWarning:'Wybierz docelowy dystans',
 }
 
-export const stringsTrainingPlan ={
+export const stringsRenderingSuggestions ={
+  suggestedValues:
+    [
+      [300,40],
+      [600,40],
+      ['no limits',30],
+    ],
 }

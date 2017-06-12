@@ -1,4 +1,5 @@
 import React, { Component }  from 'react';
+import { stringsRenderingSuggestions }  from './strings.js';
 
 export class HandleRenderingSuggestions extends Component {
 
@@ -6,26 +7,16 @@ export class HandleRenderingSuggestions extends Component {
       if(yourExperience===''){
         return <p>Wybierz najpierw poziom zaawansowania</p>
       }if(placeOfRendering===0){
-        return <p>max dystans {this.handleSubmitValue(yourExperience,placeOfRendering)}</p>
+        return <p>max dystans {this.handleSubmitValue(yourExperience,placeOfRendering)} km</p>
       } else if (placeOfRendering===1){
-        return <p>minimalny czas na przygotowania {this.handleSubmitValue(yourExperience,placeOfRendering)}</p>
+        return <p>minimalny czas na przygotowania {this.handleSubmitValue(yourExperience,placeOfRendering)} tygodni</p>
       } else {
         alert("coś nie tak z warunkiem w render suggestion");
       }
     }
   handleSubmitValue(yourExperience,placeOfRendering) {
-    const suggestedValues = {
-      beginner:[300,40],
-      middle:[600,40],
-      professional:['no limits',30],
-    }
-    if(yourExperience==="beginner"){
-      return suggestedValues.beginner[placeOfRendering]
-    } else if(yourExperience==="middle"){
-      return suggestedValues.middle[placeOfRendering]
-    } else if(yourExperience==="professional"){
-      return suggestedValues.professional[placeOfRendering]
-    }
+    const suggestedValues = stringsRenderingSuggestions.suggestedValues;
+    return suggestedValues[yourExperience][placeOfRendering]
   }
 
 
