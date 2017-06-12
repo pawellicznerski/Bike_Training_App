@@ -1,6 +1,7 @@
 import React, { Component }  from 'react';
 import { stringsFillInForm } from './strings.js';
 import { TrainingPlan } from './trainingPlan.js';
+import { HandleRenderingSuggestions } from './renderingSuggestions.js';
 import { Prompt } from 'react-router-dom';
 import { BrowserRouter as Router,Route,Link,NavLink, Switch } from 'react-router-dom';
 
@@ -17,13 +18,15 @@ export class FillInForm extends Component {
       email: 'pawellicznerski@poczta.fm',
       weight: '87',
       height: '189',
-      trainingType: '300',
-      dateStart: '2017-06-09',
-      emptydateStartFieldWarning:"",
-      dateEnd: '2017-06-19',
-      emptydateEndFieldWarning:"",
       yourExperience:"",
       emptyyourExperienceFieldWarning:"",
+      trainingType: '300',
+      trainingTypeSuggestion: 0,
+      dateStart: '2017-06-09',
+      emptydateStartFieldWarning:"",
+      dateSuggestion:1,
+      dateEnd: '2017-06-19',
+      emptydateEndFieldWarning:"",
 
       style:{
         border: '4px solid black',
@@ -126,7 +129,7 @@ handleOnBlur =(e)=>{
     const basicDataFormat = /(?=.*\d)(?=.*[A-Za-z]).{4,15}/;
     const currentWarningBlurText = stringsFillInForm.loginFormatWarning ;
     this.handleValidation(name,blurredFieldData,basicDataFormat,currentWarningBlurText);
-  } else if (name==="email"){
+  } else if(name==="email"){
     const blurredFieldData = this.state.email;
     const basicDataFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const currentWarningBlurText = stringsFillInForm.emailFormatWarning ;
@@ -188,6 +191,7 @@ returnToMenu=(e)=>{
 
 
 
+
 render(){
   const currentDateNumberMinusOneDay = Math.abs((new Date(new Date().toJSON().slice(0,10))) - 86400000);
   const currentDate = new Date().toJSON().slice(0,10);
@@ -217,7 +221,7 @@ render(){
                   name="login"
                 />
               </label>
-              <p>{this.state.emptyloginFieldWarning}</p>
+              <p style={{color:'red'}}>{this.state.emptyloginFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -234,7 +238,7 @@ render(){
                   name="email"
                 />
               </label>
-              <p>{this.state.emptyemailFieldWarning}</p>
+              <p style={{color:'red'}}>{this.state.emptyemailFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -252,7 +256,7 @@ render(){
                   name="weight"
                 />
               </label>
-              <p>{this.state.emptyweightFieldWarning}</p>
+              <p style={{color:'red'}}>{this.state.emptyweightFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -270,7 +274,20 @@ render(){
                   name="height"
                 />
               </label>
-              <p>{this.state.emptyheightFieldWarning}</p>
+              <p style={{color:'red'}}>{this.state.emptyheightFieldWarning}</p>
+            </div>
+
+            <div style={this.state.style2}>
+              Wybierz swój poziom zaawansowania:<br/>
+              <label>
+                  Podstawowy
+                <input type="radio" name="yourExperience" value="beginner" onChange={this.handleInputChange}/><br/>
+                  Średni
+                <input type="radio" name="yourExperience" value="middle" onChange={this.handleInputChange}/><br/>
+                  Zaawansowany
+                <input type="radio" name="yourExperience" value="professional" onChange={this.handleInputChange}/>
+              </label>
+              <p style={{color:'red'}}>{this.state.emptyyourExperienceFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -289,21 +306,8 @@ render(){
                   title="Wpisz dystans od 200 do 10000"
                 />
             </label>
-              <p>{this.state.emptytrainingTypeFieldWarning}</p>
-            </div>
+            <HandleRenderingSuggestions yourExperience={this.state.yourExperience} placeOfRendering={this.state.trainingTypeSuggestion}></HandleRenderingSuggestions>
 
-
-            <div style={this.state.style2}>
-              Wybierz swój poziom zaawansowania:<br/>
-              <label>
-                  Podstawowy
-                <input type="radio" name="yourExperience" value="beginner" onChange={this.handleInputChange}/><br/>
-                  Średni
-                <input type="radio" name="yourExperience" value="middle" onChange={this.handleInputChange}/><br/>
-                  Zaawansowany
-                <input type="radio" name="yourExperience" value="professional" onChange={this.handleInputChange}/>
-              </label>
-              <p>{this.state.emptyyourExperienceFieldWarning}</p>
             </div>
 
             <div style={this.state.style2}>
@@ -319,7 +323,8 @@ render(){
                 min={currentDateMinusOne}
                 />
               </label>
-              <p>{this.state.emptydateStartFieldWarning}</p>
+            <HandleRenderingSuggestions yourExperience={this.state.yourExperience} placeOfRendering={this.state.dateSuggestion}></HandleRenderingSuggestions>
+
             </div>
 
             <div style={this.state.style2}>
@@ -335,7 +340,7 @@ render(){
                 min={currentDate}
                 />
               </label>
-              <p>{this.state.emptydateEndFieldWarning}</p>
+            <HandleRenderingSuggestions yourExperience={this.state.yourExperience} placeOfRendering={this.state.dateSuggestion}></HandleRenderingSuggestions>
             </div>
 
             <input type="submit" value={stringsFillInForm.inputSubmitValue} />
