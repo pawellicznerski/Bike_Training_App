@@ -87,12 +87,7 @@ handleDates=()=>{
   const secondDate = new Date(this.state.dateEnd);
 
     if(secondDate<=firstDate ) {
-      console.log("wrong - druga data jest wczesniejsza");
-      this.setState({
-        emptydateStartFieldWarning: "Data rozpoczęcia treningu nie może byc późniejsza od daty szczutu formy",
-        emptydateEndFieldWarning: "Data rozpoczęcia treningu nie może byc późniejsza od daty szczutu formy",
-        isBlocking: true,
-       });
+      this.handleIfWrongDate();
     } else if(secondDate>firstDate ) {
       const {suggestedValues} = stringsRenderingSuggestions;
       const numberOfTrainingDays = ((secondDate-firstDate)/86400000);
@@ -112,6 +107,15 @@ handleDates=()=>{
       }
     }
 }
+
+handleIfWrongDate=()=>{
+  console.log("wrong - druga data jest wczesniejsza");
+  this.setState({
+    emptydateStartFieldWarning: "Wpisz prawidłowe datę (druga data nie może być starsza od pierwszej)",
+    emptydateEndFieldWarning: "Wpisz prawidłowe datę (druga data nie może być starsza od pierwszej)",
+    isBlocking: true,
+   });
+}//end of handleIfWrongDate
 
 handleDateOnFocus =(e)=>{
   e.preventDefault();
@@ -173,7 +177,7 @@ handleValidation=(name,blurredFieldData,basicDataFormat,currentWarningBlurText)=
   //     [nameWarning]: "",
   //   })
   // }
-};
+}; //end of handleValidation
 
 handleInputChange =(event)=>{
   const target = event.target;
@@ -186,25 +190,25 @@ handleInputChange =(event)=>{
      [nameWarning]:'',
      isBlocking: event.target.value.length > 0,
    });
-}
+} //end of handleInputChange
 
 returnToMenu=(e)=>{
   e.preventDefault();
   this.props.history.push('/');
-}
+}//end of returnToMenu
 
 returnToFillInForm=()=>{
   this.setState({
     renderNotEnoughTimeToPrepare: false,
    });
-}
+} //end of returnToFillInForm
 
 loadTrainingPlanWithoutSuggestions=()=>{
   this.setState({
     renderNotEnoughTimeToPrepare: false,
     loading:true,
    });
-}
+} //end of loadTrainingPlanWithoutSuggestions
 
 showNumberOfWeeks=(e)=>{
   e.preventDefault();
@@ -213,11 +217,15 @@ showNumberOfWeeks=(e)=>{
   const numberOfTrainingDays = ((secondDate-firstDate)/86400000);
   const numberOfChosenTrainingWeeks = Math.floor(numberOfTrainingDays/7)
 
-  this.setState({
-    renderPromptNumberOfDays: true,
-    numberOfChosenTrainingWeeks: numberOfChosenTrainingWeeks,
-   });
-}
+  if(secondDate<=firstDate||isNaN(numberOfChosenTrainingWeeks)) {
+    this.handleIfWrongDate()
+  } else {
+    this.setState({
+      renderPromptNumberOfDays: true,
+      numberOfChosenTrainingWeeks: numberOfChosenTrainingWeeks,
+     });
+  }
+}// end of showNumberOfWeeks
 
 render(){
   const currentDateNumberMinusOneDay = Math.abs((new Date(new Date().toJSON().slice(0,10))) - 86400000);
