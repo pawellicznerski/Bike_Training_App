@@ -11,7 +11,7 @@ export class FillInForm extends Component {
   super(props);
   this.state = {
       isBlocking: false,
-      loading: true,
+      loading: false,
       describingTargetLoaded: false,
       login: 'Krzychu5',
       emptyFieldWarning:'',
@@ -29,7 +29,8 @@ export class FillInForm extends Component {
       emptydateEndFieldWarning:"",
       renderNotEnoughTimeToPrepare: false,
       numberOfTrainingDays:10,
-
+      renderPromptNumberOfDays: false,
+      numberOfChosenTrainingWeeks:'',
       style:{
         border: '4px solid black',
         minWidth:'100px',
@@ -82,13 +83,8 @@ handleYourExperience=()=>{
 }
 
 handleDates=()=>{
-  console.log("właśnie kliknąłes submit");
   const firstDate = new Date(this.state.dateStart);
   const secondDate = new Date(this.state.dateEnd);
-  console.log(firstDate);
-  console.log(secondDate);
-  const difference = Math.abs((new Date(this.state.dateStart)) - (new Date(this.state.dateEnd)));
-  console.log(difference);
 
     if(secondDate<=firstDate ) {
       console.log("wrong - druga data jest wczesniejsza");
@@ -96,14 +92,10 @@ handleDates=()=>{
         emptydateStartFieldWarning: "Data rozpoczęcia treningu nie może byc późniejsza od daty szczutu formy",
         emptydateEndFieldWarning: "Data rozpoczęcia treningu nie może byc późniejsza od daty szczutu formy",
         isBlocking: true,
-        loading:false,
        });
     } else if(secondDate>firstDate ) {
-      console.log("wszystko gra - daty są ok");
       const {suggestedValues} = stringsRenderingSuggestions;
       const numberOfTrainingDays = ((secondDate-firstDate)/86400000);
-      console.log(numberOfTrainingDays);
-      console.log(suggestedValues[this.state.yourExperience][this.state.dateSuggestion]);
       this.setState({
         emptydateStartFieldWarning: "",
         emptydateEndFieldWarning: "",
@@ -112,11 +104,9 @@ handleDates=()=>{
          this.setState({
            numberOfTrainingDays: numberOfTrainingDays,
            renderNotEnoughTimeToPrepare: true,
-           loading:false,
           });
       } else {
         this.setState({
-          renderNotEnoughTimeToPrepare: false,
           loading:true,
          });
       }
@@ -130,6 +120,7 @@ handleDateOnFocus =(e)=>{
     emptydateEndFieldWarning: "",
     isBlocking: false,
     loading:true,
+    numberOfChosenTrainingWeeks: "",
    });
 }//end of focus function
 
@@ -148,7 +139,7 @@ handleOnBlur =(e)=>{
     const currentWarningBlurText = stringsFillInForm.emailFormatWarning ;
     this.handleValidation(name,blurredFieldData,basicDataFormat,currentWarningBlurText);
   } else {
-    console.log("złasnie zblurowałeś datę");
+    console.log("złasnie zblurowałeś coś poza login i email");
     console.log(this.state.dateStart);
     console.log(this.state.dateEnd);
   }
@@ -202,20 +193,42 @@ returnToMenu=(e)=>{
   this.props.history.push('/');
 }
 
+returnToFillInForm=()=>{
+  this.setState({
+    renderNotEnoughTimeToPrepare: false,
+   });
+}
+
+loadTrainingPlanWithoutSuggestions=()=>{
+  this.setState({
+    renderNotEnoughTimeToPrepare: false,
+    loading:true,
+   });
+}
+
+showNumberOfWeeks=(e)=>{
+  e.preventDefault();
+  const firstDate = new Date(this.state.dateStart);
+  const secondDate = new Date(this.state.dateEnd);
+  const numberOfTrainingDays = ((secondDate-firstDate)/86400000);
+  const numberOfChosenTrainingWeeks = Math.floor(numberOfTrainingDays/7)
+
+  this.setState({
+    renderPromptNumberOfDays: true,
+    numberOfChosenTrainingWeeks: numberOfChosenTrainingWeeks,
+   });
+}
 
 render(){
   const currentDateNumberMinusOneDay = Math.abs((new Date(new Date().toJSON().slice(0,10))) - 86400000);
   const currentDate = new Date().toJSON().slice(0,10);
   const currentDateMinusOne = new Date(currentDateNumberMinusOneDay).toJSON().slice(0,10);
-  const { isBlocking } = this.state;
-  const currentSuggestedValue =(this.state.yourExperience===''||this.state.dateSuggestion==='')?"": (stringsRenderingSuggestions.suggestedValues[this.state.yourExperience][this.state.dateSuggestion]);
-
 
     return (
       <div>
-        <NotEnoughTimeToPrepareWarning renderNotEnoughTimeToPrepare={this.state.renderNotEnoughTimeToPrepare} numberOfTrainingDays={this.state.numberOfTrainingDays} suggestedValues={currentSuggestedValue}></NotEnoughTimeToPrepareWarning>
+        <NotEnoughTimeToPrepareWarning returnToFillInForm={this.returnToFillInForm} loadTrainingPlanWithoutSuggestions={this.loadTrainingPlanWithoutSuggestions} {...this.state}></NotEnoughTimeToPrepareWarning>
         <Prompt
-          when={isBlocking}
+          when={this.state.isBlocking}
           message={stringsFillInForm.leavingFillInSiteWarning}
         />
           <div style={this.state.style}>
@@ -316,7 +329,6 @@ render(){
                   placeholder="Wpisz dystans ultramaratonu:"
                   min="200"
                   max="10000"
-                  pattern="[3-9]/d$"
                   title="Wpisz dystans od 200 do 10000"
                 />
             </label>
@@ -357,6 +369,8 @@ render(){
             <HandleRenderingSuggestions yourExperience={this.state.yourExperience} placeOfRendering={this.state.dateSuggestion}></HandleRenderingSuggestions>
             <p style={{color:'red'}}>{this.state.emptydateEndFieldWarning}</p>
             </div>
+
+            <button onClick={this.showNumberOfWeeks}>Wyświetl liczbę tygodni:</button><div>{this.state.numberOfChosenTrainingWeeks}</div>
 
             <input type="submit" value={stringsFillInForm.inputSubmitValue} />
 
