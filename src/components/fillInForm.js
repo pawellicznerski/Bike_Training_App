@@ -5,6 +5,8 @@ import { HandleRenderingSuggestions } from './renderingSuggestions.js';
 import { Prompt } from 'react-router-dom';
 import { BrowserRouter as Router,Route,Link,NavLink, Switch } from 'react-router-dom';
 import { NotEnoughTimeToPrepareWarning }  from './notEnoughTimeToPrepareWarning.js';
+import { currentDateNumberMinusOneDay, currentDate, currentDateMinusOne }  from './handleMinDate.js';
+import { HelloWorld }  from './helloWorld.js';
 
 export class FillInForm extends Component {
   constructor(props) {
@@ -22,7 +24,7 @@ export class FillInForm extends Component {
       emptyyourExperienceFieldWarning:"",
       trainingType: '300',
       trainingTypeSuggestion: 0,
-      dateStart: '2017-06-09',
+      dateStart: '2017-06-13',
       emptydateStartFieldWarning:"",
       dateSuggestion:1,
       dateEnd: '2017-06-19',
@@ -31,6 +33,11 @@ export class FillInForm extends Component {
       numberOfTrainingDays:10,
       renderPromptNumberOfDays: false,
       numberOfChosenTrainingWeeks:'',
+
+
+      currentPath:'',
+      helloWorld:'dupafupadupa',
+
       style:{
         border: '4px solid black',
         minWidth:'100px',
@@ -50,6 +57,7 @@ export class FillInForm extends Component {
 handleRegistrationData =(event)=>{
   event.preventDefault();
   const target = event.target;
+  console.log("handleRegistrationData");
   for (var i = 0; i <= (target.length-1); i++) {
     if(target[i].value ===""){
       const name = target[i].name;
@@ -61,12 +69,9 @@ handleRegistrationData =(event)=>{
          isBlocking: false,
          loading:false,
        });
-       console.log(this.state.yourExperience);
     }
   }
-  if (this.state.loading===true){
     this.handleloadingTrainingPlan()
-  }
 }
 
 handleloadingTrainingPlan=()=>{
@@ -85,12 +90,15 @@ handleYourExperience=()=>{
 handleDates=()=>{
   const firstDate = new Date(this.state.dateStart);
   const secondDate = new Date(this.state.dateEnd);
-
+  console.log("dotarło do handle dates");
     if(secondDate<=firstDate ) {
       this.handleIfWrongDate();
     } else if(secondDate>firstDate ) {
       const {suggestedValues} = stringsRenderingSuggestions;
       const numberOfTrainingDays = ((secondDate-firstDate)/86400000);
+      console.log(numberOfTrainingDays);
+      console.log(suggestedValues[this.state.yourExperience][this.state.dateSuggestion]);
+
       this.setState({
         emptydateStartFieldWarning: "",
         emptydateEndFieldWarning: "",
@@ -104,6 +112,7 @@ handleDates=()=>{
         this.setState({
           loading:true,
          });
+         console.log(this.state.loading);
       }
     }
 }
@@ -226,12 +235,25 @@ showNumberOfWeeks=(e)=>{
      });
   }
 }// end of showNumberOfWeeks
+onFocusCurrentPathChange=(e)=>{
+  e.preventDefault();
+  console.log(this.state.helloWorld);
+
+  this.setState({
+    currentPath:"helloWorld"
+   });
+}
+changeCurrentPath=(e)=>{
+  e.preventDefault();
+  const {match,location,history} = this.props;
+  console.log(match);
+  console.log(location);
+  console.log(history);
+  console.log(`${match.path}/${this.state.currentPath}`);
+}
 
 render(){
-  const currentDateNumberMinusOneDay = Math.abs((new Date(new Date().toJSON().slice(0,10))) - 86400000);
-  const currentDate = new Date().toJSON().slice(0,10);
-  const currentDateMinusOne = new Date(currentDateNumberMinusOneDay).toJSON().slice(0,10);
-
+    const {match} = this.props;
     return (
       <div>
         <NotEnoughTimeToPrepareWarning returnToFillInForm={this.returnToFillInForm} loadTrainingPlanWithoutSuggestions={this.loadTrainingPlanWithoutSuggestions} {...this.state}></NotEnoughTimeToPrepareWarning>
@@ -378,13 +400,23 @@ render(){
             <p style={{color:'red'}}>{this.state.emptydateEndFieldWarning}</p>
             </div>
 
-            <button onClick={this.showNumberOfWeeks}>Wyświetl liczbę tygodni:</button><div>{this.state.numberOfChosenTrainingWeeks}</div>
+            <button className="weeks-no-propt-btn" onClick={this.showNumberOfWeeks}>Wyświetl liczbę tygodni:</button><div>{this.state.numberOfChosenTrainingWeeks}</div>
 
             <input type="submit" value={stringsFillInForm.inputSubmitValue} />
 
           </form>
           </div>
           <button onClick={this.returnToMenu}>{stringsFillInForm.backToMenuFillInForm}</button>
+          <Router>
+            <div>
+              <button onClick={this.changeCurrentPath} onFocus={this.onFocusCurrentPathChange}><Link   to={{
+                pathname: `${match.url}/${this.state.currentPath}`,
+                state: {helloWorld: this.state.helloWorld}
+              }} >wyświetl komponent z napisem</Link></button>
+              <Route exact path={`${match.url}/helloWorld`} component={HelloWorld}/>
+            </div>
+
+          </Router>
       </div>
     )
   }//end of render

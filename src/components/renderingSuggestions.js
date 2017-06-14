@@ -11,7 +11,7 @@ export class HandleRenderingSuggestions extends Component {
       } else if (placeOfRendering===1){
         return <p>minimalny czas na przygotowania {this.handleSubmitValue(yourExperience,placeOfRendering)} tygodni</p>
       } else {
-        alert("coś nie tak z warunkiem w render suggestion");
+        console.log("coś nie tak z warunkiem w render suggestion");
       }
     }
   handleSubmitValue(yourExperience,placeOfRendering) {
