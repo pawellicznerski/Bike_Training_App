@@ -2,11 +2,10 @@ import React, { Component }  from 'react';
 import { stringsFillInForm, stringsRenderingSuggestions } from './strings.js';
 import { TrainingPlan } from './trainingPlan.js';
 import { HandleRenderingSuggestions } from './renderingSuggestions.js';
-import { Prompt } from 'react-router-dom';
 import { BrowserRouter as Router,Route,Link,NavLink, Switch } from 'react-router-dom';
-import { NotEnoughTimeToPrepareWarning }  from './notEnoughTimeToPrepareWarning.js';
 import { currentDateNumberMinusOneDay, currentDate, currentDateMinusOne }  from './handleMinDate.js';
-import { HelloWorld }  from './helloWorld.js';
+import { AreYouSureToGoToTraining }  from './areYouSureToGoToTraining.js';
+import { Prompt } from 'react-router-dom';
 
 export class FillInForm extends Component {
   constructor(props) {
@@ -24,19 +23,16 @@ export class FillInForm extends Component {
       emptyyourExperienceFieldWarning:"",
       trainingType: '300',
       trainingTypeSuggestion: 0,
-      dateStart: '2017-06-13',
+      dateStart: '2017-06-15',
       emptydateStartFieldWarning:"",
       dateSuggestion:1,
-      dateEnd: '2017-06-19',
+      dateEnd: '2018-06-19',
       emptydateEndFieldWarning:"",
       renderNotEnoughTimeToPrepare: false,
       numberOfTrainingDays:10,
       renderPromptNumberOfDays: false,
       numberOfChosenTrainingWeeks:'',
-
-
-      currentPath:'',
-      helloWorld:'dupafupadupa',
+      renderAreYouSureToGoToTraining: false,
 
       style:{
         border: '4px solid black',
@@ -52,21 +48,22 @@ export class FillInForm extends Component {
     };
     this.returnToMenu = this.returnToMenu.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleRegistrationData = this.handleRegistrationData.bind(this);
+
+
 } //props end
 
-handleRegistrationData =(event)=>{
-  event.preventDefault();
-  const target = event.target;
+handleRegistrationData =(e)=>{
+  e.preventDefault();
+  const target = e.target;
   console.log("handleRegistrationData");
   for (var i = 0; i <= (target.length-1); i++) {
     if(target[i].value ===""){
       const name = target[i].name;
       const nameWarning = `empty${name}FieldWarning`;
       const warningString = stringsFillInForm.emptyFieldWarning;
-
       this.setState({
          [nameWarning]:[warningString],
-         isBlocking: false,
          loading:false,
        });
     }
@@ -91,14 +88,12 @@ handleDates=()=>{
   const firstDate = new Date(this.state.dateStart);
   const secondDate = new Date(this.state.dateEnd);
   console.log("dotarło do handle dates");
+
     if(secondDate<=firstDate ) {
       this.handleIfWrongDate();
     } else if(secondDate>firstDate ) {
       const {suggestedValues} = stringsRenderingSuggestions;
       const numberOfTrainingDays = ((secondDate-firstDate)/86400000);
-      console.log(numberOfTrainingDays);
-      console.log(suggestedValues[this.state.yourExperience][this.state.dateSuggestion]);
-
       this.setState({
         emptydateStartFieldWarning: "",
         emptydateEndFieldWarning: "",
@@ -107,12 +102,14 @@ handleDates=()=>{
          this.setState({
            numberOfTrainingDays: numberOfTrainingDays,
            renderNotEnoughTimeToPrepare: true,
+           isBlocking: false,
           });
       } else {
         this.setState({
           loading:true,
+          isBlocking: false,
+          renderAreYouSureToGoToTraining: true,
          });
-         console.log(this.state.loading);
       }
     }
 }
@@ -122,17 +119,15 @@ handleIfWrongDate=()=>{
   this.setState({
     emptydateStartFieldWarning: "Wpisz prawidłowe datę (druga data nie może być starsza od pierwszej)",
     emptydateEndFieldWarning: "Wpisz prawidłowe datę (druga data nie może być starsza od pierwszej)",
-    isBlocking: true,
    });
 }//end of handleIfWrongDate
+
 
 handleDateOnFocus =(e)=>{
   e.preventDefault();
   this.setState({
     emptydateStartFieldWarning: "",
     emptydateEndFieldWarning: "",
-    isBlocking: false,
-    loading:true,
     numberOfChosenTrainingWeeks: "",
    });
 }//end of focus function
@@ -168,7 +163,6 @@ handleValidation=(name,blurredFieldData,basicDataFormat,currentWarningBlurText)=
   } else if (!basicDataFormat.test(blurredFieldData)) {
     const nameWarning = `empty${name}FieldWarning`;
     this.setState({
-      isBlocking: true,
       [nameWarning]: currentWarningBlurText
     })
     return false;
@@ -188,8 +182,8 @@ handleValidation=(name,blurredFieldData,basicDataFormat,currentWarningBlurText)=
   // }
 }; //end of handleValidation
 
-handleInputChange =(event)=>{
-  const target = event.target;
+handleInputChange =(e)=>{
+  const target = e.target;
   const value = target.type === 'checkbox' ? target.checked : target.value;//potrzebne w razie dolączenia checkbox-a
   const name = target.name;
   const nameWarning = `empty${name}FieldWarning`;
@@ -197,7 +191,7 @@ handleInputChange =(event)=>{
   this.setState({
      [name]: value,
      [nameWarning]:'',
-     isBlocking: event.target.value.length > 0,
+     isBlocking: true,
    });
 } //end of handleInputChange
 
@@ -209,14 +203,16 @@ returnToMenu=(e)=>{
 returnToFillInForm=()=>{
   this.setState({
     renderNotEnoughTimeToPrepare: false,
+    renderAreYouSureToGoToTraining: false,
    });
 } //end of returnToFillInForm
 
-loadTrainingPlanWithoutSuggestions=()=>{
+loadingTrainingPlan=()=>{
   this.setState({
     renderNotEnoughTimeToPrepare: false,
-    loading:true,
+    renderAreYouSureToGoToTraining: false,
    });
+   this.props.history.push({pathname: '/nowekonto/helloWorld', state: {helloWorld: "hello, im a passed message!"}});
 } //end of loadTrainingPlanWithoutSuggestions
 
 showNumberOfWeeks=(e)=>{
@@ -235,35 +231,16 @@ showNumberOfWeeks=(e)=>{
      });
   }
 }// end of showNumberOfWeeks
-onFocusCurrentPathChange=(e)=>{
-  e.preventDefault();
-  console.log(this.state.helloWorld);
 
-  this.setState({
-    currentPath:"helloWorld"
-   });
-}
-changeCurrentPath=(e)=>{
-  e.preventDefault();
-  const {match,location,history} = this.props;
-  console.log(match);
-  console.log(location);
-  console.log(history);
-  console.log(`${match.path}/${this.state.currentPath}`);
-}
 
 render(){
-    const {match} = this.props;
+    const {isBlocking} = this.state;
     return (
       <div>
-        <NotEnoughTimeToPrepareWarning returnToFillInForm={this.returnToFillInForm} loadTrainingPlanWithoutSuggestions={this.loadTrainingPlanWithoutSuggestions} {...this.state}></NotEnoughTimeToPrepareWarning>
-        <Prompt
-          when={this.state.isBlocking}
-          message={stringsFillInForm.leavingFillInSiteWarning}
-        />
+        <AreYouSureToGoToTraining returnToFillInForm={this.returnToFillInForm} loadingTrainingPlan={this.loadingTrainingPlan} {...this.state}></AreYouSureToGoToTraining>
+        <Prompt when={isBlocking} message={"Niekóre pola sa wypełnione, czy na pewno chcesz wyjść?"}/>
           <div style={this.state.style}>
           <form onSubmit={this.handleRegistrationData}>
-
             <div style={this.state.style2}>
               <label>
                 {stringsFillInForm.loginFillInText}
@@ -402,21 +379,11 @@ render(){
 
             <button className="weeks-no-propt-btn" onClick={this.showNumberOfWeeks}>Wyświetl liczbę tygodni:</button><div>{this.state.numberOfChosenTrainingWeeks}</div>
 
-            <input type="submit" value={stringsFillInForm.inputSubmitValue} />
+            <button type="submit">{stringsFillInForm.inputSubmitValue}</button>
 
           </form>
           </div>
           <button onClick={this.returnToMenu}>{stringsFillInForm.backToMenuFillInForm}</button>
-          <Router>
-            <div>
-              <button onClick={this.changeCurrentPath} onFocus={this.onFocusCurrentPathChange}><Link   to={{
-                pathname: `${match.url}/${this.state.currentPath}`,
-                state: {helloWorld: this.state.helloWorld}
-              }} >wyświetl komponent z napisem</Link></button>
-              <Route exact path={`${match.url}/helloWorld`} component={HelloWorld}/>
-            </div>
-
-          </Router>
       </div>
     )
   }//end of render

@@ -5,6 +5,7 @@ import { EntryForm } from './components/entryForm.js';
 import { FillInForm } from './components/fillInForm.js';
 import { stringsApp } from './components/strings.js';
 import { NoMatch } from './components/noMatch.js';
+import { HelloWorld }  from './components/helloWorld.js';
 
 const sth = "something";
 
@@ -53,16 +54,16 @@ render() {
 
             <nav>
               <div>
-              <button><NavLink to="/">menu</NavLink></button>
+                <NavLink to="/"><button>menu</button></NavLink>
               </div>
-              <button><NavLink to={`/${this.state.currentLabel}`}>{this.state.currentLabel}</NavLink></button>
-              <button><NavLink to={`/${this.state.nextLabel}`}>{this.state.nextLabel}</NavLink></button>
+            <NavLink to={`/${this.state.currentLabel}`}><button>{this.state.currentLabel}</button></NavLink>
+            <NavLink to={`/${this.state.nextLabel}`}><button>{this.state.nextLabel}</button></NavLink>
             </nav>
-
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route exact path="/logowanie" component={EntryForm}/>
               <Route exact path="/nowekonto" component={FillInForm}/>
+              <Route exact path={`/nowekonto/helloWorld`} component={HelloWorld}/>
               <Route component={NoMatch}/>
             </Switch>
 

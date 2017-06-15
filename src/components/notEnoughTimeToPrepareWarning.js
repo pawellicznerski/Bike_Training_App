@@ -17,7 +17,7 @@ export class NotEnoughTimeToPrepareWarning extends Component {
   }
 
   render() {
-    const {renderNotEnoughTimeToPrepare,numberOfTrainingDays,suggestedValues,yourExperience,dateSuggestion} = this.props;
+    const {renderNotEnoughTimeToPrepare,numberOfTrainingDays,suggestedValues,yourExperience,dateSuggestion,} = this.props;
     const currentSuggestedValue =(yourExperience===''||dateSuggestion==='')?"": (stringsRenderingSuggestions.suggestedValues[yourExperience][dateSuggestion]);
 
         if(renderNotEnoughTimeToPrepare){
