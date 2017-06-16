@@ -6,6 +6,7 @@ import { FillInForm } from './components/fillInForm.js';
 import { stringsApp } from './components/strings.js';
 import { NoMatch } from './components/noMatch.js';
 import { HelloWorld }  from './components/helloWorld.js';
+import { TrainingPlan }  from './components/trainingPlan.js';
 
 const sth = "something";
 
@@ -63,7 +64,7 @@ render() {
               <Route exact path="/" component={Home}/>
               <Route exact path="/logowanie" component={EntryForm}/>
               <Route exact path="/nowekonto" component={FillInForm}/>
-              <Route exact path={`/nowekonto/helloWorld`} component={HelloWorld}/>
+              <Route exact path={`/nowekonto/trainingPlan/:login`} component={TrainingPlan} state/>
               <Route component={NoMatch}/>
             </Switch>
 

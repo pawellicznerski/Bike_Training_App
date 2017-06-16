@@ -212,7 +212,17 @@ loadingTrainingPlan=()=>{
     renderNotEnoughTimeToPrepare: false,
     renderAreYouSureToGoToTraining: false,
    });
-   this.props.history.push({pathname: '/nowekonto/helloWorld', state: {helloWorld: "hello, im a passed message!"}});
+   const loadingPlanLogin= this.state.login;
+   this.props.history.push({pathname: `/nowekonto/trainingPlan/${loadingPlanLogin}`,
+     state: {
+       login:this.state.login,
+       email:this.state.email,
+       weight:this.state.weight,
+       height:this.state.height,
+       trainingType:this.state.trainingType,
+       numberOfTrainingDays:this.state.numberOfTrainingDays,
+     },
+   });
 } //end of loadTrainingPlanWithoutSuggestions
 
 showNumberOfWeeks=(e)=>{

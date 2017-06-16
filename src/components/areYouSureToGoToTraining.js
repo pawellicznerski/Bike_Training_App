@@ -2,14 +2,7 @@ import React, { Component }  from 'react';
 import {stringsRenderingSuggestions } from './strings.js';
 
 export class AreYouSureToGoToTraining extends Component {
-  constructor(props) {
-  super(props);
-  this.state = {
-
-
-
-  }
-}//props end
+  
   returnToFillInForm=(e)=>{
     e.preventDefault();
     if ( typeof this.props.returnToFillInForm === 'function' ){
@@ -24,12 +17,11 @@ export class AreYouSureToGoToTraining extends Component {
     }
   }
 
-
   render() {
     const {renderNotEnoughTimeToPrepare,renderAreYouSureToGoToTraining,numberOfTrainingDays,suggestedValues,yourExperience,dateSuggestion,} = this.props;
     const currentSuggestedValue =(yourExperience===''||dateSuggestion==='')?"": (stringsRenderingSuggestions.suggestedValues[yourExperience][dateSuggestion]);
     const renderedText = (renderNotEnoughTimeToPrepare)?<strong>Liczba dni treningowych to {numberOfTrainingDays} a sugerowana to {currentSuggestedValue} Czy jesteś pewny, że chcesz taki trening?</strong>:<strong>Czy jesteś pewny że podjałeś dobrą decyzję?</strong>;
-    
+
         if(renderNotEnoughTimeToPrepare||renderAreYouSureToGoToTraining){
           return (
           <div className="notEnoughTimeToPrepareWarningDiv" style={{color:'brown'}}>
