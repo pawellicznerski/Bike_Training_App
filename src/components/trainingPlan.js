@@ -19,21 +19,27 @@ export class TrainingPlan extends Component {
   }
 
   makingTrainingPeriods=()=>{
-    console.log(this.props.login);
-    console.log(this.state.login);
-    console.log(this.props.location.state.login);
+    const {login,email,weight,height,trainingType,numberOfTrainingDays}=this.props.location.state;
+    console.log(this.props.location.state);
+    const trainingPlanArr=[];
+    trainingPlanArr.push([login],[email],[weight],[height],[]);
+    console.log(trainingPlanArr);
+    for (var i = 0; i < numberOfTrainingDays; i++) {
+        trainingPlanArr[4].push(i+1);
+        console.log(trainingPlanArr[4]);
+    }
   }
 
-  preparingTrainingPlan=()=>{
-    this.setState({loading: false});
-  }
-
-  preparingTrainingPlan=()=>{
-    this.setState({loading: false});
-  }
-
-  // let dateMs = new Date(this.state.date).getTime();
-  // console.log(dateMs);
+//   preparingTrainingPlan=()=>{
+//     this.setState({loading: false});
+//   }
+//
+//   preparingTrainingPlan=()=>{
+//     this.setState({loading: false});
+//   }
+//
+//   // let dateMs = new Date(this.state.date).getTime();
+//   // console.log(dateMs);
   render(){
     if(this.state.loading){
       return <div>Loading...</div>
@@ -42,49 +48,49 @@ export class TrainingPlan extends Component {
             </div>
     }
   }//render end
-}//registration form end
-
-const {login,email,weight,height,trainingType,numberOfTrainingDays}=this.props.location;
-
-const Comments = React.createClass({
-  renderComment(comment, i) {
-    return (
-      <div className="comment" key={i}>
-        <p>
-          <strong>{comment.user}</strong>
-          {comment.text}
-          <button className="remove-comment" onClick={this.props.removeComment.bind(null, this.props.params.postId, i)}>&times;</button>
-        </p>
-      </div>
-    )
-  },
-  handleSubmit(e) {
-    e.preventDefault();
-    const { postId } = this.props.params;
-    const author = this.refs.author.value;
-    const comment = this.refs.comment.value;
-    this.props.addComment(postId, author, comment);
-    this.refs.commentForm.reset();
-  },
-  render() {
-    return (
-      <div className="training-plan-chart">
-        <div className="stage-basic-early">
-          {this.props.postComments.map(this.renderComment)}
-        </div>
-        <div className="stage-basic-late">
-          {this.props.postComments.map(this.renderComment)}
-        </div>
-        <div className="stage-gain">
-          {this.props.postComments.map(this.renderComment)}
-        </div>
-        <div className="stage-before-start">
-          {this.props.postComments.map(this.renderComment)}
-        </div>
-        <div className="stage-startweek">
-          {this.props.postComments.map(this.renderComment)}
-        </div>
-      </div>
-    )
-  }
-});
+// }//registration form end
+//
+// const {login,email,weight,height,trainingType,numberOfTrainingDays}=this.props.location;
+//
+// const Comments = React.createClass({
+//   renderComment(comment, i) {
+//     return (
+//       <div className="comment" key={i}>
+//         <p>
+//           <strong>{comment.user}</strong>
+//           {comment.text}
+//           <button className="remove-comment" onClick={this.props.removeComment.bind(null, this.props.params.postId, i)}>&times;</button>
+//         </p>
+//       </div>
+//     )
+//   },
+//   handleSubmit(e) {
+//     e.preventDefault();
+//     const { postId } = this.props.params;
+//     const author = this.refs.author.value;
+//     const comment = this.refs.comment.value;
+//     this.props.addComment(postId, author, comment);
+//     this.refs.commentForm.reset();
+//   },
+//   render() {
+//     return (
+//       <div className="training-plan-chart">
+//         <div className="stage-basic-early">
+//           {this.props.postComments.map(this.renderComment)}
+//         </div>
+//         <div className="stage-basic-late">
+//           {this.props.postComments.map(this.renderComment)}
+//         </div>
+//         <div className="stage-gain">
+//           {this.props.postComments.map(this.renderComment)}
+//         </div>
+//         <div className="stage-before-start">
+//           {this.props.postComments.map(this.renderComment)}
+//         </div>
+//         <div className="stage-startweek">
+//           {this.props.postComments.map(this.renderComment)}
+//         </div>
+//       </div>
+//     )
+//   }
+};

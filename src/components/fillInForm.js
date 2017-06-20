@@ -23,10 +23,10 @@ export class FillInForm extends Component {
       emptyyourExperienceFieldWarning:"",
       trainingType: '300',
       trainingTypeSuggestion: 0,
-      dateStart: '2017-06-15',
+      dateStart: '2017-06-19',
       emptydateStartFieldWarning:"",
       dateSuggestion:1,
-      dateEnd: '2018-06-19',
+      dateEnd: '2018-06-23',
       emptydateEndFieldWarning:"",
       renderNotEnoughTimeToPrepare: false,
       numberOfTrainingDays:10,
@@ -130,6 +130,8 @@ handleDateOnFocus =(e)=>{
     emptydateEndFieldWarning: "",
     numberOfChosenTrainingWeeks: "",
    });
+   console.log(new Date().getDay());
+   console.log(this.state.dateEnd);
 }//end of focus function
 
 handleOnBlur =(e)=>{
@@ -148,7 +150,7 @@ handleOnBlur =(e)=>{
     this.handleValidation(name,blurredFieldData,basicDataFormat,currentWarningBlurText);
   } else {
     console.log("złasnie zblurowałeś coś poza login i email");
-    console.log(this.state.dateStart);
+    console.log(new Date().toJSON().slice(0,10));
     console.log(this.state.dateEnd);
   }
 }//end of blur function
