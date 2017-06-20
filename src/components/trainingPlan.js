@@ -13,21 +13,63 @@ export class TrainingPlan extends Component {
     //   };
   } //props end
 
-
   componentDidMount() {
       this.makingTrainingPeriods();
   }
 
   makingTrainingPeriods=()=>{
-    const {login,email,weight,height,trainingType,numberOfTrainingDays}=this.props.location.state;
-    console.log(this.props.location.state);
+    const {login,email,weight,height,trainingType,dateStart,numberOfTrainingDays}=this.props.location.state;
+    console.log(numberOfTrainingDays);
     const trainingPlanArr=[];
-    trainingPlanArr.push([login],[email],[weight],[height],[]);
-    console.log(trainingPlanArr);
-    for (var i = 0; i < numberOfTrainingDays; i++) {
-        trainingPlanArr[4].push(i+1);
-        console.log(trainingPlanArr[4]);
+    trainingPlanArr.push([login,email,weight,height],[],[],[],[],[],[]);
+
+    if(13<=numberOfTrainingDays<=48){
+      const numberOfTrainingDaysMinusRaceWeek=numberOfTrainingDays-1;
+      const baseStageEarly = Math.round(numberOfTrainingDaysMinusRaceWeek*0,295);
+      const baseStageLate = Math.round(numberOfTrainingDaysMinusRaceWeek*0,23);
+      const developmentStage = Math.round(numberOfTrainingDaysMinusRaceWeek*0,35);
+      const beforeRacePeriod = Math.round(numberOfTrainingDaysMinusRaceWeek*0,11);
+      const raceWeek = 1;
+      const sumOfStagesdays = (baseStageEarly+baseStageLate+developmentStage+beforeRacePeriod+raceWeek);
+
+      if( sumOfStagesdays < numberOfTrainingDays){
+        baseStageEarly=baseStageEarly+1;
+      } else if(sumOfStagesdays > numberOfTrainingDays){
+        baseStageEarly=baseStageEarly-1;
+      }
     }
+
+    for (var i = 0; i < numberOfTrainingDays; i++) {
+
+        const dateStartFull = new Date(dateStart);
+        const dateStartNo = Number(dateStartFull);
+        const dateCounterNumber = Math.abs(dateStartNo + (i*86400000));
+        const currentDateMinusOne = new Date(dateCounterNumber).toJSON().slice(0,10);
+        const currentDateDay = new Date(currentDateMinusOne).getDay();
+
+        console.log(dateStartFull);
+        console.log(dateStartNo);
+        console.log(dateCounterNumber);
+        console.log(currentDateMinusOne);
+        console.log(currentDateDay);
+
+
+        trainingPlanArr[1].push(i+1);
+        trainingPlanArr[2].push(currentDateMinusOne);
+
+        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        const n = weekday[currentDateDay];
+
+        const stages = ["Okres podstawowy - wczesny","Okres podstawowy - późny","Okres rozbudowy ","Okres przed startem","Tydzien startowy"];
+        const n2 = stages[currentDateDay];
+
+        trainingPlanArr[3].push(n);
+
+    }
+    console.log(trainingPlanArr[1]);
+    console.log(trainingPlanArr[2]);
+    console.log(trainingPlanArr[3]);
+
   }
 
 //   preparingTrainingPlan=()=>{

@@ -23,13 +23,13 @@ export class FillInForm extends Component {
       emptyyourExperienceFieldWarning:"",
       trainingType: '300',
       trainingTypeSuggestion: 0,
-      dateStart: '2017-06-19',
+      dateStart: '2017-07-01',
       emptydateStartFieldWarning:"",
       dateSuggestion:1,
-      dateEnd: '2018-06-23',
+      dateEnd: '2017-07-23',
       emptydateEndFieldWarning:"",
       renderNotEnoughTimeToPrepare: false,
-      numberOfTrainingDays:10,
+      numberOfTrainingDays:"22",
       renderPromptNumberOfDays: false,
       numberOfChosenTrainingWeeks:'',
       renderAreYouSureToGoToTraining: false,
@@ -88,19 +88,18 @@ handleDates=()=>{
   const firstDate = new Date(this.state.dateStart);
   const secondDate = new Date(this.state.dateEnd);
   console.log("dotarło do handle dates");
-
     if(secondDate<=firstDate ) {
       this.handleIfWrongDate();
     } else if(secondDate>firstDate ) {
       const {suggestedValues} = stringsRenderingSuggestions;
-      const numberOfTrainingDays = ((secondDate-firstDate)/86400000);
+      const numberOfTrainingDays2 = ((secondDate-firstDate)/86400000);
       this.setState({
+        numberOfTrainingDays: numberOfTrainingDays2,
         emptydateStartFieldWarning: "",
         emptydateEndFieldWarning: "",
        });
-      if(numberOfTrainingDays < suggestedValues[this.state.yourExperience][this.state.dateSuggestion]){
+      if(numberOfTrainingDays2 < suggestedValues[this.state.yourExperience][this.state.dateSuggestion]){
          this.setState({
-           numberOfTrainingDays: numberOfTrainingDays,
            renderNotEnoughTimeToPrepare: true,
            isBlocking: false,
           });
@@ -222,6 +221,7 @@ loadingTrainingPlan=()=>{
        weight:this.state.weight,
        height:this.state.height,
        trainingType:this.state.trainingType,
+       dateStart:this.state.dateStart,
        numberOfTrainingDays:this.state.numberOfTrainingDays,
      },
    });
