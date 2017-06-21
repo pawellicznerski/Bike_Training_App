@@ -19,25 +19,40 @@ export class TrainingPlan extends Component {
 
   makingTrainingPeriods=()=>{
     const {login,email,weight,height,trainingType,dateStart,numberOfTrainingDays}=this.props.location.state;
-    console.log(numberOfTrainingDays);
     const trainingPlanArr=[];
     trainingPlanArr.push([login,email,weight,height],[],[],[],[],[],[]);
 
-    if(13<=numberOfTrainingDays<=48){
-      const numberOfTrainingDaysMinusRaceWeek=numberOfTrainingDays-1;
-      const baseStageEarly = Math.round(numberOfTrainingDaysMinusRaceWeek*0,295);
-      const baseStageLate = Math.round(numberOfTrainingDaysMinusRaceWeek*0,23);
-      const developmentStage = Math.round(numberOfTrainingDaysMinusRaceWeek*0,35);
-      const beforeRacePeriod = Math.round(numberOfTrainingDaysMinusRaceWeek*0,11);
+      const numberOfTrainingWeeks = Math.floor(numberOfTrainingDays/7);
+      const numberOfTrainingWeeksRest = numberOfTrainingDays%7;
       const raceWeek = 1;
-      const sumOfStagesdays = (baseStageEarly+baseStageLate+developmentStage+beforeRacePeriod+raceWeek);
+      const raceDays = 7;
+      const numberOfTrainingWeeksMinusRaceWeek = numberOfTrainingWeeks-(raceWeek);
+      const baseStageEarlyWeeks = (Math.round(numberOfTrainingWeeksMinusRaceWeek*0.295))+(numberOfTrainingWeeksRest?1:0);
+      const baseStageEarlyDays = ((Math.round(numberOfTrainingWeeksMinusRaceWeek*0.295))*7)+numberOfTrainingWeeksRest;
+      const baseStageLateWeeks = Math.round(numberOfTrainingWeeksMinusRaceWeek*0.24);
+      const baseStageLateDays = (Math.round(numberOfTrainingWeeksMinusRaceWeek*0.24))*7;
+      const developmentStageWeeks = Math.round(numberOfTrainingWeeksMinusRaceWeek*0.35);
+      const developmentStageDays = (Math.round(numberOfTrainingWeeksMinusRaceWeek*0.35))*7;
+      const beforeRacePeriodWeeks = Math.round(numberOfTrainingWeeksMinusRaceWeek*0.11);
+      const beforeRacePeriodDays = (Math.round(numberOfTrainingWeeksMinusRaceWeek*0.11))*7;
+      const sumOfStagesdaweeks = (baseStageEarlyWeeks+baseStageLateWeeks+developmentStageWeeks+beforeRacePeriodWeeks+raceWeek);
+      const sumOfStagesdays = (baseStageEarlyDays+baseStageLateDays+developmentStageDays+beforeRacePeriodDays+raceDays);
 
       if( sumOfStagesdays < numberOfTrainingDays){
-        baseStageEarly=baseStageEarly+1;
+        const baseStageEarlyDaysPlusRest = baseStageEarlyDays + (numberOfTrainingDays - sumOfStagesdays);
       } else if(sumOfStagesdays > numberOfTrainingDays){
-        baseStageEarly=baseStageEarly-1;
+        const baseStageEarlyDaysPlusRest = baseStageEarlyDays - (sumOfStagesdays - numberOfTrainingDays);
+      }
+
+    const stages = ["Okres podstawowy - wczesny","Okres podstawowy - późny","Okres rozbudowy ","Okres przed startem","Tydzien startowy"];
+    // const n2 = stages[currentDateDay];
+
+    if(numberOfTrainingWeeksRest!==0){
+      for (var i = 0; i < numberOfTrainingWeeksRest; i++) {
+        trainingPlanArr[4].push()
       }
     }
+
 
     for (var i = 0; i < numberOfTrainingDays; i++) {
 
@@ -47,11 +62,11 @@ export class TrainingPlan extends Component {
         const currentDateMinusOne = new Date(dateCounterNumber).toJSON().slice(0,10);
         const currentDateDay = new Date(currentDateMinusOne).getDay();
 
-        console.log(dateStartFull);
-        console.log(dateStartNo);
-        console.log(dateCounterNumber);
-        console.log(currentDateMinusOne);
-        console.log(currentDateDay);
+        // console.log(dateStartFull);
+        // console.log(dateStartNo);
+        // console.log(dateCounterNumber);
+        // console.log(currentDateMinusOne);
+        // console.log(currentDateDay);
 
 
         trainingPlanArr[1].push(i+1);
@@ -60,15 +75,11 @@ export class TrainingPlan extends Component {
         const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         const n = weekday[currentDateDay];
 
-        const stages = ["Okres podstawowy - wczesny","Okres podstawowy - późny","Okres rozbudowy ","Okres przed startem","Tydzien startowy"];
-        const n2 = stages[currentDateDay];
-
         trainingPlanArr[3].push(n);
-
     }
-    console.log(trainingPlanArr[1]);
-    console.log(trainingPlanArr[2]);
-    console.log(trainingPlanArr[3]);
+    // console.log(trainingPlanArr[1]);
+    // console.log(trainingPlanArr[2]);
+    // console.log(trainingPlanArr[3]);
 
   }
 
