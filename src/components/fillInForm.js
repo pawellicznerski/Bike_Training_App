@@ -26,7 +26,7 @@ export class FillInForm extends Component {
       dateStart: '2017-07-01',
       emptydateStartFieldWarning:"",
       dateSuggestion:1,
-      dateEnd: '2017-07-23',
+      dateEnd: '2017-10-23',
       emptydateEndFieldWarning:"",
       renderNotEnoughTimeToPrepare: false,
       numberOfTrainingDays:"22",

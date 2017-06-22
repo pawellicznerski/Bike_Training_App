@@ -6,6 +6,12 @@ export class TrainingPlan extends Component {
     super(props);
     this.state={
       loading:true,
+      firstTrainingHalf:'',
+      secondTrainingHalf:'',
+      firstTrainingQuarter:'',
+      secondTrainingQuarter:'',
+      thirdTrainingQuarter:'',
+      fourthTrainingQuarter:'',
     }
     //Pierwsza wartość inputa ustawiona na '':
     // this.state = {
@@ -17,23 +23,11 @@ export class TrainingPlan extends Component {
       this.makingTrainingPeriods();
   }
 
-  floorToWeeks(alldays,firstPart,secondPart){
-    const result1 = Math.abs((firstPart+secondPart)-alldays);
-    const whichBigger = Math.max(firstPart,secondPart)
-    const result2 = Math.abs(firstPart+result1)
-  }
-
-  ceilToWeeks(firstPart,secondPart){
-
-  }
 
   makingTrainingPeriods=()=>{
     const {login,email,weight,height,trainingType,dateStart,numberOfTrainingDays,dateEnd}=this.props.location.state;
     const trainingPlanArr=[];
     trainingPlanArr.push([login,email,weight,height],[],[],[],[],[],[]);
-
-
-
 
     for (var i = 0; i < numberOfTrainingDays; i++) {
 
@@ -52,9 +46,7 @@ export class TrainingPlan extends Component {
       const dateEndOnlyLast = new Date(dateEnd).getDay();
       // console.log('dateEndOnlyLast:', dateEndOnlyLast);
 
-
       const howManyDaysAddToFirstWeekArr = [1,0,6,5,4,3,2];
-
 
       const numberOfTrainingWeeks = Math.floor(numberOfTrainingDays/7);
       const numberOfTrainingWeeksRest = numberOfTrainingDays%7;
@@ -68,46 +60,73 @@ export class TrainingPlan extends Component {
       const raceWeek = Math.ceil(raceWeekDays/7);
       // console.log('raceWeek:' , raceWeek);
 
-      const noOfDaysToSubsFromMainTr = firstWeekDays+raceWeekDays;
-      // console.log('noOfDaysToSubsFromMainTr:', noOfDaysToSubsFromMainTr);
-      // console.log('numberOfTrainingDays:', numberOfTrainingDays);
-      const noOfWeeksToSubsFromMainTr = Math.ceil(noOfDaysToSubsFromMainTr/7);
-      // console.log('noOfWeeksToSubsFromMainTr:' , noOfWeeksToSubsFromMainTr);
-      const noOfTrainDaysForMain = numberOfTrainingDays-noOfDaysToSubsFromMainTr;
+      const noOfTrainWeeksForMain = (numberOfTrainingDays-(firstWeekDays+raceWeekDays))/7;
+      console.log(noOfTrainWeeksForMain);
 
-      const firstDivision = Math.round(noOfTrainDaysForMain*0.55);
-      const secondDivision = Math.round(noOfTrainDaysForMain-firstDivision);
-
-
-      if( noOfTrainDaysForMain < (firstDivision+secondDivision)){
-        this.floorToWeeks(noOfTrainDaysForMain,firstDivision,secondDivision)
-      } else if(sumOfStagesdays > (firstDivision+secondDivision)){
-        this.ceilToWeeks(firstDivision,secondDivision)
+      const firstDivision = (Math.round(noOfTrainWeeksForMain*0.5441));
+      console.log(firstDivision);
+      const secondDivision = (Math.round(noOfTrainWeeksForMain-firstDivision));
+      console.log(secondDivision);
+      if(noOfTrainWeeksForMain < (firstDivision+secondDivision)){
+        var firstTrainingHalf=firstDivision-1;
+        var secondTrainingHalf=secondDivision;
+        // this.setState({
+        //   firstTrainingHalf:firstDivision-1,
+        //   secondTrainingHalf:secondDivision,
+        // })
+      } else {
+        var firstTrainingHalf=firstDivision;
+        var secondTrainingHalf=secondDivision;
+        // this.setState({
+        //   firstTrainingHalf:firstDivision,
+        //   secondTrainingHalf:secondDivision,
+        // })
       }
 
+        const firstQuarter = Math.round(firstTrainingHalf*0.4559);
+        const secondQuarter = Math.round(firstTrainingHalf-firstQuarter);
+        const thirdQuarter = Math.round(secondTrainingHalf*0.7551);
+        const fourthQuarter = Math.round(secondTrainingHalf-thirdQuarter);
 
-      const numberOfTrainingWeeksMinusRaceWeek = numberOfTrainingWeeks-('raceWeek');
-      // const baseStageEarlyWeeks = (Math.round(numberOfTrainingWeeksMinusRaceWeek*0.295))+(numberOfTrainingWeeksRest?1:0);
-      const baseStageEarlyDays = (Math.round(noOfTrainDaysForMain*0.3));
-      // const baseStageLateWeeks = Math.round(numberOfTrainingWeeksMinusRaceWeek*0.24);
-      const baseStageLateDays = (Math.round(noOfTrainDaysForMain*0.25));
-      // const developmentStageWeeks = Math.round(numberOfTrainingWeeksMinusRaceWeek*0.35);
-      const developmentStageDays = (Math.round(noOfTrainDaysForMain*0.35));
-      // const beforeRacePeriodWeeks = Math.round(numberOfTrainingWeeksMinusRaceWeek*0.11);
-      const beforeRacePeriodDays = (Math.round(noOfTrainDaysForMain*0.10));
-      // const sumOfStagesdaweeks = (baseStageEarlyWeeks+baseStageLateWeeks+developmentStageWeeks+beforeRacePeriodWeeks+'raceWeek');
-      // const sumOfStagesdays = (baseStageEarlyDays+baseStageLateDays+developmentStageDays+beforeRacePeriodDays+'raceDays');
+        if(firstTrainingHalf < (firstQuarter+secondQuarter)){
+          var firstTrainingQuarter=firstQuarter;
+          var secondTrainingQuarter=secondQuarter-1;
+          // this.setState({
+          //   firstTrainingQuarter:firstQuarter,
+          //   secondTrainingQuarter:secondQuarter-1,
+          // })
+        }
+
+        if(secondTrainingHalf < (thirdQuarter+fourthQuarter)){
+          var thirdTrainingQuarter=thirdQuarter-1;
+          var fourthTrainingQuarter=fourthQuarter;
+          //
+          // this.setState({
+          //   thirdTrainingQuarter:thirdQuarter-1,
+          //   fourthTrainingQuarter:fourthQuarter,
+          // })
+        }
+
+
+      console.log(firstTrainingHalf);
+      console.log(secondTrainingHalf);
+      console.log(firstTrainingQuarter);
+      console.log(secondTrainingQuarter);
+      console.log(thirdTrainingQuarter);
+      console.log(fourthTrainingQuarter);
+
+
 
 
       const stages = ["Okres podstawowy - wczesny","Okres podstawowy - późny","Okres rozbudowy ","Okres przed startem","Tydzien startowy"];
       const typeOfExercise = ["Wolne","Test - max tempo przez 30min","Regeneracyjny:","Wytrzymałość tlenowa:","Siła mieśniowa i szybkość(młynek):"];
       // const n2 = stages[currentDateDay];
       if(numberOfTrainingWeeksRest > i){
-          if(currentDateDay%2!==0){
-            trainingPlanArr[4].push(typeOfExercise[0]);
-          } else if(currentDateDay%2===0){
-            trainingPlanArr[4].push(typeOfExercise[2]+`${trainingType}`);
-          }
+        if(currentDateDay%2!==0){
+          trainingPlanArr[4].push(typeOfExercise[0]);
+        } else if(currentDateDay%2===0){
+          trainingPlanArr[4].push(typeOfExercise[2]+`${trainingType}`);
+        }
       }
         trainingPlanArr[1].push(i+1);
         trainingPlanArr[2].push(currentDate);
