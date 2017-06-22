@@ -92,7 +92,7 @@ handleDates=()=>{
       this.handleIfWrongDate();
     } else if(secondDate>firstDate ) {
       const {suggestedValues} = stringsRenderingSuggestions;
-      const numberOfTrainingDays2 = ((secondDate-firstDate)/86400000);
+      const numberOfTrainingDays2 = (((secondDate-firstDate)+86400000)/86400000);
       this.setState({
         numberOfTrainingDays: numberOfTrainingDays2,
         emptydateStartFieldWarning: "",
@@ -222,6 +222,7 @@ loadingTrainingPlan=()=>{
        height:this.state.height,
        trainingType:this.state.trainingType,
        dateStart:this.state.dateStart,
+       dateEnd:this.state.dateEnd,
        numberOfTrainingDays:this.state.numberOfTrainingDays,
      },
    });
