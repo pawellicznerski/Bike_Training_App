@@ -87,13 +87,13 @@ export class TrainingPlan extends Component {
       // console.log(raceWeek);
 
       const stages = ["Okres podstawowy - wczesny","Okres podstawowy - późny","Okres rozbudowy ","Okres przed startem","Tydzien startowy"];
-      const typeOfExercise = ["Wolne","Test","Regeneracyjny:","Wytrzymałość tlenowa:","Siła mieśniowa i szybkość(młynek):","Wytrzymałość siłowa"];
+      const typeOfExercise = ["Test","Regeneracyjny:","Wytrzymałość tlenowa:","Siła mieśniowa i szybkość(młynek):","Wytrzymałość siłowa","Wolne"];
       const aerobicEnduraceExerc = ["Długa jazda:","Symulacja ultramaratonu"];
       const testExerc = ["Max tempo przez 30 min."];
       const stregthEnduranceExerc = ["Interwał:"];
       const muscleStrengthExerc = ["Interwał:"];
       const speedExerc = ["Młynek:"];
-      const regenerationExerc = ["Wolna jazda przez:"];
+      const regenerationExerc = ['',"Wolna jazda przez:"];
       // const n2 = stages[currentDateDay];
       const stage1 = firstWeekDays;
       const stage2 = firstWeekDays+(firstTrainingQuarter*7);
@@ -105,58 +105,61 @@ export class TrainingPlan extends Component {
       const stage6 = firstWeekDays+((firstTrainingQuarter+secondTrainingQuarter+thirdTrainingQuarter+fourthTrainingQuarter)*7)+raceWeekDays;
 
       if(i < stage1){
+        trainingPlanArr[7].push(stages[0]);
         if(i===(firstWeekDays-1)){
-          trainingPlanArr[4].push(typeOfExercise[1]);
+          trainingPlanArr[4].push(typeOfExercise[0]);
           trainingPlanArr[5].push(testExerc[0]);
           trainingPlanArr[6].push(``);
-          trainingPlanArr[7].push(stages[0]);
-        } else if(currentDateDay===0){
-          trainingPlanArr[4].push(typeOfExercise[2]);
-          trainingPlanArr[5].push(regenerationExerc[0]);
+        } else if(currentDateDay===0||currentDateDay%2===0){
+          trainingPlanArr[4].push(typeOfExercise[1]);
+          trainingPlanArr[5].push(regenerationExerc[1]);
           trainingPlanArr[6].push(`${Math.round(trainingType*(0.05+(0.005*i)))}`);
-          trainingPlanArr[7].push(stages[0]);
         } else if(currentDateDay%2!==0){
-          trainingPlanArr[4].push(typeOfExercise[0]);
+          trainingPlanArr[4].push(typeOfExercise[5]);
           trainingPlanArr[5].push('');
           trainingPlanArr[6].push('');
-          trainingPlanArr[7].push(stages[0]);
-        } else if(currentDateDay%2===0){
-          trainingPlanArr[4].push(typeOfExercise[2]);
-          trainingPlanArr[5].push(regenerationExerc[0]);
-          trainingPlanArr[6].push(`${Math.round(trainingType*(0.05+(0.005*i)))}`);
-          trainingPlanArr[7].push(stages[0]);
         }
-      } else  if(i < stage2){
-        if(i===(firstWeekDays-1)){
-          trainingPlanArr[4].push(typeOfExercise[1]);
+      } else if(i < stage2){
+        trainingPlanArr[7].push(stages[0]);
+        if(i===(stage1+13)){
+          trainingPlanArr[4].push(typeOfExercise[0]);
           trainingPlanArr[5].push(testExerc[0]);
           trainingPlanArr[6].push(``);
-          trainingPlanArr[7].push(stages[0]);
-        } else if(currentDateDay===0){
-          trainingPlanArr[4].push(typeOfExercise[2]);
+        } else if(currentDateDay===0||currentDateDay===4){
+          trainingPlanArr[4].push(typeOfExercise[3]);
           trainingPlanArr[5].push(regenerationExerc[0]);
-          trainingPlanArr[6].push(`${Math.round(trainingType*(0.05+(0.005*i)))}`);
-          trainingPlanArr[7].push(stages[0]);
+          trainingPlanArr[6].push(`Siłowy:${Math.round(0.15*(0.5*i))}(${Math.round(0.17*(0.5*i))}x(8-14)cad.), Szybkościowy:${Math.round(0.15*(0.5*i))}x(${Math.round(0.17*(0.5*i))}x${1+((Math.round(0.17*(0.4*i)))/10)})`);
         } else if(currentDateDay%2!==0){
-          trainingPlanArr[4].push(typeOfExercise[0]);
+          trainingPlanArr[4].push(typeOfExercise[5]);
           trainingPlanArr[5].push('');
           trainingPlanArr[6].push('');
-          trainingPlanArr[7].push(stages[0]);
         } else if(currentDateDay%2===0){
           trainingPlanArr[4].push(typeOfExercise[2]);
-          trainingPlanArr[5].push(regenerationExerc[0]);
-          trainingPlanArr[6].push(`${Math.round(trainingType*(0.05+(0.005*i)))}`);
-          trainingPlanArr[7].push(stages[0]);
+          trainingPlanArr[5].push(aerobicEnduraceExerc[0]);
+          console.log(i);
+          trainingPlanArr[6].push(`Czas:${Math.floor((80+(Math.round(1.428571429*i)))/60)}g${(80+(Math.round(1.428571429*i)))%60}min`);
         }
       } else  if(i < stage3){
-        if(currentDateDay===0){
-          trainingPlanArr[4].push(typeOfExercise[0]+`stage3`);
+        trainingPlanArr[7].push(stages[1]);
+        if(i===(stage2+14)){
+          trainingPlanArr[4].push(typeOfExercise[0]);
+          trainingPlanArr[5].push(testExerc[0]);
+          trainingPlanArr[6].push(``);
+        } else if(currentDateDay===0||currentDateDay===4){
+          trainingPlanArr[4].push(typeOfExercise[3]);
+          trainingPlanArr[5].push(regenerationExerc[0]);
+          trainingPlanArr[6].push(`Siłowy:${Math.round(0.15*(0.5*i))}(${Math.round(0.17*(0.5*i))}x(8-14)cad.), Szybkościowy:${Math.round(0.15*(0.5*i))}x(${Math.round(0.17*(0.5*i))}x${1+((Math.round(0.17*(0.4*i)))/10)})`);
         } else if(currentDateDay%2!==0){
-          trainingPlanArr[4].push(typeOfExercise[0]+`stage3`);
+          trainingPlanArr[4].push(typeOfExercise[5]);
+          trainingPlanArr[5].push('');
+          trainingPlanArr[6].push('');
         } else if(currentDateDay%2===0){
-          trainingPlanArr[4].push(typeOfExercise[2]+`stage3`);
+          trainingPlanArr[4].push(typeOfExercise[2]);
+          trainingPlanArr[5].push(aerobicEnduraceExerc[0]);
+          console.log(i);
+          trainingPlanArr[6].push(`Czas:${Math.floor((80+(Math.round(1.428571429*i)))/60)}g${(80+(Math.round(1.428571429*i)))%60}min`);
         }
-      } else  if(i < stage4){
+      }else  if(i < stage4){
         if(currentDateDay===0){
           trainingPlanArr[4].push(typeOfExercise[0]+`stage4`);
         } else if(currentDateDay%2!==0){
@@ -185,9 +188,6 @@ export class TrainingPlan extends Component {
         trainingPlanArr[1].push(i+1);
         trainingPlanArr[2].push(currentDate);
         // console.log(numberOfTrainingWeeksRest);
-        console.log(trainingPlanArr[4]);
-        console.log(trainingPlanArr[5]);
-        console.log(trainingPlanArr[6]);
 
         const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         const n = weekday[currentDateDay];
@@ -198,6 +198,8 @@ export class TrainingPlan extends Component {
     // console.log(trainingPlanArr[2]);
     // console.log(trainingPlanArr[3]);
     console.log(trainingPlanArr[4]);
+    console.log(trainingPlanArr[5]);
+    console.log(trainingPlanArr[6]);
 
 
   } //and of making training periods
