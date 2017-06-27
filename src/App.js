@@ -5,7 +5,6 @@ import { EntryForm } from './components/entryForm.js';
 import { FillInForm } from './components/fillInForm.js';
 import { stringsApp } from './components/strings.js';
 import { NoMatch } from './components/noMatch.js';
-import { HelloWorld }  from './components/helloWorld.js';
 import { TrainingPlan }  from './components/trainingPlan.js';
 
 const sth = "something";
