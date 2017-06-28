@@ -141,12 +141,14 @@ handleOnBlur =(e)=>{
     const blurredFieldData = this.state.login;
     const basicDataFormat = /(?=.*\d)(?=.*[A-Za-z]).{4,15}/;
     const currentWarningBlurText = stringsFillInForm.loginFormatWarning ;
-    this.handleValidation(name,blurredFieldData,basicDataFormat,currentWarningBlurText);
+    const currentFetchWarningBlurText = "Taki login już istnieje. Podaj inny." ;
+    this.handleValidation(name,blurredFieldData,basicDataFormat,currentWarningBlurText,currentFetchWarningBlurText);
   } else if(name==="email"){
     const blurredFieldData = this.state.email;
     const basicDataFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const currentWarningBlurText = stringsFillInForm.emailFormatWarning ;
-    this.handleValidation(name,blurredFieldData,basicDataFormat,currentWarningBlurText);
+    const currentFetchWarningBlurText = "Taki email już istnieje. Podaj inny." ;
+    this.handleValidation(name,blurredFieldData,basicDataFormat,currentWarningBlurText,currentFetchWarningBlurText);
   } else {
     console.log("złasnie zblurowałeś coś poza login i email");
     console.log(new Date().toJSON().slice(0,10));
@@ -154,7 +156,7 @@ handleOnBlur =(e)=>{
   }
 }//end of blur function
 
-handleValidation=(name,blurredFieldData,basicDataFormat,currentWarningBlurText)=>{
+handleValidation=(name,blurredFieldData,basicDataFormat,currentWarningBlurText,currentFetchWarningBlurText)=>{
   if(blurredFieldData===""){
     const nameWarning = `empty${name}FieldWarning`;
     this.setState({
@@ -167,21 +169,31 @@ handleValidation=(name,blurredFieldData,basicDataFormat,currentWarningBlurText)=
       [nameWarning]: currentWarningBlurText
     })
     return false;
+  } else {
+    fetch(`http://localhost:3000/people?${name}=${blurredFieldData}`).then(resp => resp.json())
+      .then(data => {
+        if(data.length!==0){
+          console.log(data);
+          console.log(data.length);
+          console.log("jest w bazie");
+          const nameWarning = `empty${name}FieldWarning`;
+          this.setState({
+            [nameWarning]: currentFetchWarningBlurText
+          })
+        } else if (data.length===0){
+          console.log("nie ma w bazie");
+        }
+      });
   }
-  //   else {
-  //   fetch(`http://localhost:3000/people?name=${this.state.login}`).then(resp => resp.json())
-  //     .then(data => {
-  //       if(data.length===0){
-  //         console.log("nie ma w bazie");
-  //       } else if (data.length!==0){
-  //         console.log("jest w bazie");
-  //       }
-  //     });
-  //   this.setState({
-  //     [nameWarning]: "",
-  //   })
-  // }
 }; //end of handleValidation
+
+handleOnFocusLoginEmail=(e)=>{
+  e.preventDefault();
+  this.setState({
+    emptyloginFieldWarning: "",
+    emptyemailFieldWarning: "",
+   });
+}
 
 handleInputChange =(e)=>{
   const target = e.target;
@@ -224,9 +236,10 @@ loadingTrainingPlan=()=>{
        dateStart:this.state.dateStart,
        dateEnd:this.state.dateEnd,
        numberOfTrainingDays:this.state.numberOfTrainingDays,
+       newData:true,
      },
    });
-} //end of loadTrainingPlanWithoutSuggestions
+} //end of loadingTrainingPlan
 
 showNumberOfWeeks=(e)=>{
   e.preventDefault();
@@ -263,7 +276,7 @@ render(){
                   placeholder="Wpisz imie"
                   onChange={this.handleInputChange}
                   onBlur={this.handleOnBlur}
-                  onFocus={this.handleOnFocusLogin}
+                  onFocus={this.handleOnFocusLoginEmail}
                   title="Login musi zawierać między 4 a 15 znaków, chociaż jedną literę i liczbę"
                   name="login"
                 />
@@ -280,7 +293,7 @@ render(){
                   placeholder="Wpisz swój e-mail"
                   onChange={this.handleInputChange}
                   onBlur={this.handleOnBlur}
-                  onFocus={this.handleOnFocusEmail}
+                  onFocus={this.handleOnFocusLoginEmail}
                   title="Wpisz prawidłowy adres e-mail"
                   name="email"
                 />

@@ -1,4 +1,40 @@
 {
   "people": [
+    {
+      "login": "Krzychu5",
+      "email": "pawellicznerski@poczta.fm",
+      "weight": "87",
+      "height": "189",
+      "trainingType": "300",
+      "dateStart": "2017-07-01",
+      "dateEnd": "2017-10-23",
+      "numberOfTrainingDays": 115,
+      "newData": true,
+      "id": 1
+    },
+    {
+      "login": "Krzychu3",
+      "email": "pawellicznerski3@poczta.fm",
+      "weight": "87",
+      "height": "189",
+      "trainingType": "300",
+      "dateStart": "2017-07-01",
+      "dateEnd": "2017-10-23",
+      "numberOfTrainingDays": 115,
+      "newData": true,
+      "id": 2
+    },
+    {
+      "login": "Krzychu1",
+      "email": "pawellicznerski@poczta.fm",
+      "weight": "87",
+      "height": "189",
+      "trainingType": "200",
+      "dateStart": "2017-07-01",
+      "dateEnd": "2017-10-23",
+      "numberOfTrainingDays": 115,
+      "newData": true,
+      "id": 3
+    }
   ]
 }

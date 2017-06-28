@@ -1,11 +1,19 @@
 import React, { Component }  from 'react';
 import {stringsTrainingPlan} from './strings.js';
 import {TrainingDay} from './trainingDay.js';
+import { Prompt } from 'react-router-dom';
+
 
 export class TrainingPlan extends Component {
-
+  constructor(props) {
+  super(props);
+  this.state = {
+      isBlocking: true,
+    };
+  } //props end
   makingTrainingPeriods=()=>{
     const {login,email,weight,height,trainingType,dateStart,numberOfTrainingDays,dateEnd}=this.props.location.state;
+    
     const trainingPlanArr=[];
     const dateStartNo = Number(new Date(dateStart));
     const dateStartOnlyFirst = new Date(dateStart).getDay();
@@ -109,7 +117,8 @@ export class TrainingPlan extends Component {
 
   render(){
       return <div className="training-grid">
-              <TrainingDay trainingPlanArr={this.makingTrainingPeriods()}></TrainingDay>
+              <Prompt when={this.state.isBlocking} message={"Jeżeli wyjdziesz wszystkie pola zostana utracone?"}/>
+              <TrainingDay trainingPlanArr={this.makingTrainingPeriods()} state={this.props.location.state} history={this.props.history}></TrainingDay>
             </div>
   }//render end
 // }//registration form end

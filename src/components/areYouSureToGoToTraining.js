@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import {stringsRenderingSuggestions } from './strings.js';
 
 export class AreYouSureToGoToTraining extends Component {
-  
+
   returnToFillInForm=(e)=>{
     e.preventDefault();
     if ( typeof this.props.returnToFillInForm === 'function' ){

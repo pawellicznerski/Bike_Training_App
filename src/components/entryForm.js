@@ -8,10 +8,8 @@ export class EntryForm extends Component {
   constructor(props) {
   super(props);
   this.state = {
-      isBlocking: false,
-      loading: false,
-      login: '',
-      email: '',
+      login: 'Krzychu5',
+      email: 'pawellicznerski@poczta.fm',
       style:{
         border: '4px solid black',
         width:'300px',
@@ -43,7 +41,7 @@ handleRegistrationData = (e) => {
   if(this.state.login===""||this.state.email===""){
     alert("Żeby się zajerestrować musisz wpisać imię/login i email")
   } else {
-      fetch(`http://localhost:3000/people?name=${this.state.login}&email=${this.state.email}`)
+      fetch(`http://localhost:3000/people?login=${this.state.login}&email=${this.state.email}`)
         .then(resp => {
           if (resp.ok) {
             return resp.json()
@@ -52,27 +50,44 @@ handleRegistrationData = (e) => {
           }})
         .then(data => {
           if(data.length===0){
-            console.log(data);
-           console.log("ni ma takygo kunta, sprobuj jyszczy raz");
+           alert("ni ma takygo kunta, sprobuj jyszczy raz");
           } else {
-            console.log('idziesz do training plan');
-            this.setState({loadedFileNo: 3})
+            const dataFromServer = data[0];
+            dataFromServer.newData =false;
+            this.loadingTrainingPlanEntry(dataFromServer);
           }
         }); //end of fetch
   };//end of the condition
 }//end of handleRegistrationData
 
+
+loadingTrainingPlanEntry=(dataFromServer)=>{
+  this.setState({
+   });
+   this.props.history.push({pathname: `/nowekonto/trainingPlan/${dataFromServer.login}`,
+     state: {
+       login:dataFromServer.login,
+       email:dataFromServer.email,
+       weight:dataFromServer.weight,
+       height:dataFromServer.height,
+       trainingType:dataFromServer.trainingType,
+       dateStart:dataFromServer.dateStart,
+       dateEnd:dataFromServer.dateEnd,
+       numberOfTrainingDays:dataFromServer.numberOfTrainingDays,
+       newData:dataFromServer.newData,
+     },
+   });
+} //end of loadingTrainingPlan
+
 handleNameChange=(e)=>{
   this.setState({
     login: e.target.value,
-    isBlocking: e.target.value.length > 0
   });
 }
 
 handleEmailChange=(e)=>{
   this.setState({
     email: e.target.value,
-    isBlocking: e.target.value.length > 0
   });
 
 }
