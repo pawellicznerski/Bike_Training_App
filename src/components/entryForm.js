@@ -98,13 +98,8 @@ returnToMenu=(e)=>{
 }
 
 render(){
-  const { isBlocking } = this.state;
   return (
       <div>
-        <Prompt
-          when={isBlocking}
-          message={stringsLoginForm.leavingLoginFormWarning}
-        />
           <div style={this.state.style}>
             <form onSubmit={this.handleRegistrationData}>
 

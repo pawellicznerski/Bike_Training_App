@@ -13,7 +13,7 @@ export class TrainingPlan extends Component {
   } //props end
   makingTrainingPeriods=()=>{
     const {login,email,weight,height,trainingType,dateStart,numberOfTrainingDays,dateEnd}=this.props.location.state;
-    
+
     const trainingPlanArr=[];
     const dateStartNo = Number(new Date(dateStart));
     const dateStartOnlyFirst = new Date(dateStart).getDay();

@@ -23,10 +23,16 @@ class App extends Component {
   constructor(props) {
   super(props);
   this.state = {
-    currentLabel: stringsApp.appLoginButton,
-    nextLabel: stringsApp.appNewAccountButton,
+    logbtn: true,
+    theUser:'',
     }
 }
+
+logBtnReplace=()=>{
+  this.state = {
+    logbtn: true,
+    theUser:'',
+  }}
 
 render() {
   return (
@@ -38,14 +44,14 @@ render() {
               <div>
                 <NavLink to="/"><button>menu</button></NavLink>
               </div>
-            <NavLink to={`/${this.state.currentLabel}`}><button>{this.state.currentLabel}</button></NavLink>
-            <NavLink to={`/${this.state.nextLabel}`}><button>{this.state.nextLabel}</button></NavLink>
+              {this.state.logbtn?<NavLink to={`/logowanie`}><button>logowanie</button></NavLink>:<p>{this.state.theUser}</p>}
+              <NavLink to={`/nowekonto`}><button>nowekonto</button></NavLink>
             </nav>
             <Switch>
               <Route exact path="/" component={Home}/>
-              <Route exact path="/logowanie" component={EntryForm}/>
-              <Route exact path="/nowekonto" component={FillInForm}/>
-              <Route exact path={`/nowekonto/trainingPlan/:login`} component={TrainingPlan} state/>
+              <Route exact path="/logowanie" component={EntryForm} logBtnReplace={this.logBtnReplace}/>
+              <Route exact path="/nowekonto" component={FillInForm}  logBtnReplace={this.logBtnReplace}/>
+              <Route exact path={`/nowekonto/trainingPlan/:login`} component={TrainingPlan} state  logBtnReplace={this.logBtnReplace}/>
               <Route exact path={`/nowekonto/trainingPlan/:login/PDF`} component={TrainingPlanPDF}/>
               <Route component={NoMatch}/>
             </Switch>
