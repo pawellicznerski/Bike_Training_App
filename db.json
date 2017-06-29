@@ -1,18 +1,6 @@
 {
   "people": [
     {
-      "login": "Krzychu5",
-      "email": "pawellicznerski@poczta.fm",
-      "weight": "87",
-      "height": "189",
-      "trainingType": "300",
-      "dateStart": "2017-07-01",
-      "dateEnd": "2017-10-23",
-      "numberOfTrainingDays": 115,
-      "newData": true,
-      "id": 1
-    },
-    {
       "login": "Krzychu3",
       "email": "pawellicznerski3@poczta.fm",
       "weight": "87",
@@ -37,18 +25,6 @@
       "id": 3
     },
     {
-      "login": "Krzychu7",
-      "email": "pawellicznerski@poczta.fm",
-      "weight": "87",
-      "height": "189",
-      "trainingType": "300",
-      "dateStart": "2017-07-01",
-      "dateEnd": "2017-10-23",
-      "numberOfTrainingDays": 115,
-      "newData": true,
-      "id": 4
-    },
-    {
       "login": "Krzychu8",
       "email": "pawellicznerski@poczta.fm",
       "weight": "87",
@@ -59,6 +35,18 @@
       "numberOfTrainingDays": 115,
       "newData": true,
       "id": 5
+    },
+    {
+      "login": "Krzychu5",
+      "email": "pawellicznerski@poczta.fm",
+      "weight": "87",
+      "height": "189",
+      "trainingType": "300",
+      "dateStart": "2017-07-01",
+      "dateEnd": "2017-10-23",
+      "numberOfTrainingDays": 115,
+      "newData": true,
+      "id": 6
     }
   ]
 }

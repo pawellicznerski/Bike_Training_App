@@ -173,6 +173,7 @@ handleValidation=(name,blurredFieldData,basicDataFormat,currentWarningBlurText,c
     fetch(`http://localhost:3000/people?${name}=${blurredFieldData}`).then(resp => resp.json())
       .then(data => {
         if(data.length!==0){
+          console.log(name);
           console.log(data);
           console.log(data.length);
           console.log("jest w bazie");

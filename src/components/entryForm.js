@@ -3,7 +3,6 @@ import {stringsLoginForm} from './strings.js';
 import {TrainingPlan} from './trainingPlan.js';
 import {Prompt} from 'react-router-dom';
 
-
 export class EntryForm extends Component {
   constructor(props) {
   super(props);
@@ -60,10 +59,7 @@ handleRegistrationData = (e) => {
   };//end of the condition
 }//end of handleRegistrationData
 
-
 loadingTrainingPlanEntry=(dataFromServer)=>{
-  this.setState({
-   });
    this.props.history.push({pathname: `/nowekonto/trainingPlan/${dataFromServer.login}`,
      state: {
        login:dataFromServer.login,
@@ -89,7 +85,6 @@ handleEmailChange=(e)=>{
   this.setState({
     email: e.target.value,
   });
-
 }
 
 returnToMenu=(e)=>{
@@ -124,7 +119,7 @@ render(){
               </div>
 
               <div style={this.state.style2}>
-                <input type="submit" value={stringsLoginForm.inputSubmitValue} />
+                <input type="submit" value="Wyświetl trening" />
               </div>
             </form>
           </div>

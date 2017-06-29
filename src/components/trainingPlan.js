@@ -11,9 +11,24 @@ export class TrainingPlan extends Component {
       isBlocking: true,
     };
   } //props end
+
+  roundBmi (n, k){
+    const factor = Math.pow(10, k);
+    return Math.round(n*factor)/factor;
+  }
+
+  bmiTip=()=>{
+    const {weight,height} = this.props.location.state;
+    // const bmiArr=[[16.99,"Jesteś wygłodzony - skonsultuj się z lekarzem"],[18.49,"Masz niedowagę - musisz przytyć"],[19.5,"Wartość prawidłowa (dolna granica) - musisz pilnować, żeby twoja waga nie spadła. Możesz również lekko przytyć."],[21.5,"Wartość prawidłowa - bardzo dobra dla ultramaratonów"],[23.5,"Wartość prawidłowa (górna granica) - do ultramaratonów może być trochę niższa"],[24.99, "Wartość nieprawidłowa - należy"],[16],[16]];
+    const bmi = this.roundBmi((weight/(Math.pow((height/100),2))),2);
+    const suggestedlowWeight = this.roundBmi(21*(Math.pow((height/100),2)),1);
+    const suggestedhighWeight = this.roundBmi(23*(Math.pow((height/100),2)),1);
+    const bmiInfo = `Optymalny BMI dla ultramaratonistów jest pomiedzy 21 a 23. Twoj BMI to ${bmi}. Przy wzroscie użytkownika sugerowana waga jest pomiędzy: ${suggestedlowWeight}kg a ${suggestedhighWeight}kg`
+  return bmiInfo;
+  }
+
   makingTrainingPeriods=()=>{
     const {login,email,weight,height,trainingType,dateStart,numberOfTrainingDays,dateEnd}=this.props.location.state;
-
     const trainingPlanArr=[];
     const dateStartNo = Number(new Date(dateStart));
     const dateStartOnlyFirst = new Date(dateStart).getDay();
@@ -118,7 +133,7 @@ export class TrainingPlan extends Component {
   render(){
       return <div className="training-grid">
               <Prompt when={this.state.isBlocking} message={"Jeżeli wyjdziesz wszystkie pola zostana utracone?"}/>
-              <TrainingDay trainingPlanArr={this.makingTrainingPeriods()} state={this.props.location.state} history={this.props.history}></TrainingDay>
+              <TrainingDay trainingPlanArr={this.makingTrainingPeriods()} bmiTip={this.bmiTip()} state={this.props.location.state} history={this.props.history}></TrainingDay>
             </div>
   }//render end
 // }//registration form end

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router,Route,Link,NavLink, Switch } from 'react-router-dom';
 import { Prompt } from 'react-router-dom';
 import { SaveInfo } from './saveInfo';
 
@@ -8,10 +7,12 @@ export class TrainingDay extends Component {
   super(props);
   this.state = {
       isBlocking: false,
+      isBlockingRemove: false,
       saveInfo: false,
+      removeInfo: false,
+      dataId: '',
     };
   } //props end
-
 
 renderTrDay=(arr)=> {
   return (
@@ -24,14 +25,14 @@ renderTrDay=(arr)=> {
 loadPDF=()=>{
    this.props.history.push({pathname: `/nowekonto/trainingPlan/${this.props.state.login}/PDF`,
      state: {
-       login:this.state.login,
-       email:this.state.email,
-       weight:this.state.weight,
-       height:this.state.height,
-       trainingType:this.state.trainingType,
-       dateStart:this.state.dateStart,
-       dateEnd:this.state.dateEnd,
-       numberOfTrainingDays:this.state.numberOfTrainingDays,
+       login:this.props.state.login,
+       email:this.props.state.email,
+       weight:this.props.state.weight,
+       height:this.props.state.height,
+       trainingType:this.props.state.trainingType,
+       dateStart:this.props.state.dateStart,
+       dateEnd:this.props.state.dateEnd,
+       numberOfTrainingDays:this.props.state.numberOfTrainingDays,
      },
    });
 } //end of loadingTrainingPlan
@@ -53,33 +54,66 @@ saveAccount=()=>{
         fetch(`http://localhost:3000/people`, {
                 method : 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-My-Header' : 'test'
                   },
                 body: JSON.stringify(newMember)
             });
       }
     });
+} //end of saveAccount
 
-} //end of loadingTrainingPlan
+removeAccount=()=>{
+  const newMember = this.props.state;
+  const nameOfnewMember = this.props.state.login;
+  fetch(`http://localhost:3000/people?login=${nameOfnewMember}`).then(resp => resp.json())
+    .then(data => {
+      if(data.length!==0){
+        const dataId=data[0].id;
+        console.log(dataId);
+        this.setState({
+          removeInfo:true,
+          isBlockingRemove:true,
+          dataId:dataId,
+        })
+      } else if(data.length===0){
+        alert("dane nie są zapisane")
+        this.setState({
+          removeDeniedInfo:true,
+        })
+      }
+    });
+} //end of removeAccount
+
+removeAccountCondition=()=>{
+  fetch(`http://localhost:3000/people/${this.state.dataId}`, {
+          method : 'DELETE',
+      });
+    this.setState({
+      isBlockingRemove:false,
+    })
+}
 
 closeSaveInfoAndIsblock=()=>{
   this.setState({
     saveInfo:false,
     isBlocking:false,
+    removeInfo:false,
+    isBlockingRemove:false,
   })
 }
 
 render() {
   return (
-    <Router>
       <div className="App">
-        <Prompt when={this.state.isBlocking} message={"Jeżeli wyjdziesz wszystkie pola zostana utracone?"}/>
-        <SaveInfo saveInfo={this.state.saveInfo} isBlocking={this.state.isBlocking} closeSaveInfoAndIsblock={this.closeSaveInfoAndIsblock}></SaveInfo>
+        <SaveInfo {...this.state} closeSaveInfoAndIsblock={this.closeSaveInfoAndIsblock} removeAccountCondition={this.removeAccountCondition}></SaveInfo>
         <button onClick={this.saveAccount}>Zapisz</button>
+        <button onClick={this.removeAccount}>Usuń konto</button>
         <button onClick={this.loadPDF}>PDF</button>
+        <p>Plan treningowy użytkownika: {this.props.state.login}</p>
+        {this.props.bmiTip}
         {this.props.trainingPlanArr.map(arr=>this.renderTrDay(arr))}
       </div>
-    </Router>
   );
 }
 
