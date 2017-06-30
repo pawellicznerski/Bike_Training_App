@@ -6,14 +6,14 @@ export class AreYouSureToGoToTraining extends Component {
   returnToFillInForm=(e)=>{
     e.preventDefault();
     if ( typeof this.props.returnToFillInForm === 'function' ){
-        this.props.returnToFillInForm()
+        this.props.returnToFillInForm();
     }
   }
 
   loadingTrainingPlan=(e)=>{
     e.preventDefault();
     if ( typeof this.props.loadingTrainingPlan === 'function' ){
-        this.props.loadingTrainingPlan()
+        this.props.loadingTrainingPlan();
     }
   }
 
