@@ -1,3 +1,41 @@
-.newFile{
-  color:blue;
+@import './style/variables';
+
+#row-1{
+  display:flex;
+  justify-content: space-between;
+  height: $nav-mobile-height+16px;
+  .menu-btn{
+    line-height: 1px;
+    height: $nav-mobile-height;
+    width:$nav-mobile-height;
+    margin: 9px auto 5px 24px;
+    background-image: $logo-SVG2;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .menu-btn2{
+    height:100%;
+    width:100px;
+    line-height: 1px;
+    background-color: blue;
+  }
+  .nav-btns-cont{
+    height:100%;
+    width:100px;
+    background-color: yellow;
+    .nav-btns{
+      border:none;
+      .nav-btn1-colr{
+        color: red;
+        text-decoration: none;
+      }
+      .nav-btn2-colr{
+        color: purple;
+        text-decoration: none;
+      }
+    }
+  }
+}
+#row-2{
+
 }

@@ -97,7 +97,6 @@ render(){
       <div>
           <div style={this.state.style}>
             <form onSubmit={this.handleRegistrationData}>
-
               <div style={this.state.style2}>
                 <label>
                   {stringsLoginForm.nameLoginText}

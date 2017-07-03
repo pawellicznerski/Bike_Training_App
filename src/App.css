@@ -1,2 +1,29 @@
-.newFile {
-  color: blue; }
+#row-1 {
+  display: flex;
+  justify-content: space-between;
+  height: 86px; }
+  #row-1 .menu-btn {
+    line-height: 1px;
+    height: 70px;
+    width: 70px;
+    margin: 9px auto 5px 24px;
+    background-image: url("components/images/ultraTreningLogo2.svg");
+    background-size: contain;
+    background-repeat: no-repeat; }
+  #row-1 .menu-btn2 {
+    height: 100%;
+    width: 100px;
+    line-height: 1px;
+    background-color: blue; }
+  #row-1 .nav-btns-cont {
+    height: 100%;
+    width: 100px;
+    background-color: yellow; }
+    #row-1 .nav-btns-cont .nav-btns {
+      border: none; }
+      #row-1 .nav-btns-cont .nav-btns .nav-btn1-colr {
+        color: red;
+        text-decoration: none; }
+      #row-1 .nav-btns-cont .nav-btns .nav-btn2-colr {
+        color: purple;
+        text-decoration: none; }

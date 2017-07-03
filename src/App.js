@@ -18,20 +18,23 @@ const Home =()=> (
     </div>
   </Router>
 )
-
+// <NavLink to="/"><img className="menu-btn2" src="components/images/ultraTreningLogo1.svg"/></NavLink>
 class App extends Component {
 
 render() {
   return (
     <Router history={history}>
       <div className="App">
-        <div>
-            <nav>
-              <div>
-                <NavLink to="/"><button>menu</button></NavLink>
+        <div className="container">
+            <nav id="row-1">
+              <NavLink to="/"><div className="menu-btn"> </div></NavLink>
+              <div className="nav-btns-cont">
+              <svg className="nav-btns nav-btn1-colr">
+  <circle className="nav-btn1-colr"/>
+</svg>
+                <NavLink to={`/wyswietltrening`}><div className="nav-btns nav-btn1-colr">Twój trening</div></NavLink>
+                <NavLink to={`/nowekonto`}><div className="nav-btns nav-btn2-colr">Nowy użytkownik</div></NavLink>
               </div>
-              <NavLink to={`/wyswietltrening`}><button>Twój trening</button></NavLink>
-              <NavLink to={`/nowekonto`}><button>Nowy użytkownik</button></NavLink>
             </nav>
             <Switch>
               <Route exact path="/" component={Home}/>
