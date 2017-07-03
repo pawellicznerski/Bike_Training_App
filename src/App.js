@@ -30,7 +30,7 @@ render() {
               <NavLink to="/"><div className="menu-btn"> </div></NavLink>
               <div className="nav-btns-cont">
               <svg className="nav-btns nav-btn1-colr">
-  <circle className="nav-btn1-colr"/>
+  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4"/>
 </svg>
                 <NavLink to={`/wyswietltrening`}><div className="nav-btns nav-btn1-colr">Twój trening</div></NavLink>
                 <NavLink to={`/nowekonto`}><div className="nav-btns nav-btn2-colr">Nowy użytkownik</div></NavLink>
