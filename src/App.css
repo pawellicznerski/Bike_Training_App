@@ -11,6 +11,8 @@
     background-size: contain;
     background-repeat: no-repeat; }
   #row-1 .nav-btns-cont0 {
+    background-color: blue;
+    height: 86px;
     display: flex;
     align-items: center;
     position: absolute;
@@ -60,6 +62,8 @@
         border: 3px solid #00ed00;
         color: white; }
   #row-1 .nav-btns-cont1 {
+    background-color: blue;
+    height: 86px;
     display: flex;
     align-items: center;
     position: absolute;

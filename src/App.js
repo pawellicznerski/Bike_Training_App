@@ -19,25 +19,6 @@ const Home =()=> (
   </Router>
 )
 
-
-
- //
- //
- //   render() {
- //       return (
- //           <div
- //               className={this.state.active ? 'your_className': null}
- //               onclick={this.toggleClass}
- //           >
- //               <p>{this.props.text}</p>
- //           </div>
- //       )
- // }
-
-
-
-
-// <NavLink to="/"><img className="menu-btn2" src="components/images/ultraTreningLogo1.svg"/></NavLink>
 class App extends Component {
   constructor(props) {
   super(props);
@@ -55,11 +36,13 @@ class App extends Component {
      console.log( this.state.active);
    };
 
+
 render() {
   return (
     <Router history={history}>
       <div className="App">
         <div className="container">
+            <Sticky>
             <nav id="row-1">
               <NavLink to="/"><div className="menu-logo"> </div></NavLink>
               <div className={this.state.active ? "nav-btns-cont0": "nav-btns-cont1"}>
@@ -68,6 +51,7 @@ render() {
                 <NavLink to={`/nowekonto`} style={{ textDecoration: 'none' }}><div className="nav-btns nav-btn2-colr"><p>nowy plan</p></div></NavLink>
               </div>
             </nav>
+          </Sticky>
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route exact path="/wyswietltrening" component={EntryForm}/>
@@ -85,3 +69,47 @@ render() {
 }//end of App
 
 export default App;
+
+class Sticky extends React.Component {
+constructor(props) {
+    super(props);
+    this.state = {
+      scrollingLock: false
+    };
+    // example how to bind object in React ES6
+    this.handleScroll = this.handleScroll.bind(this)
+}
+
+componentDidMount(){
+    window.addEventListener('scroll', this.handleScroll);
+}
+
+componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+}
+
+handleScroll() {
+
+  if (window.scrollY > 100) {
+    console.log("should lock");
+    this.setState({
+      scrollingLock: true
+    });
+  } else if (window.scrollY < 100) {
+    console.log("not locked" );
+    this.setState({
+      scrollingLock: false
+    });
+  }
+
+}
+
+render() {
+
+    return (
+            <div style={{ width: "100%", position: this.state.scrollingLock ? "fixed" : "relative"}}>
+                    {this.props.children}
+            </div>
+          )
+            }
+   }

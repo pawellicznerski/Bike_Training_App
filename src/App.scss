@@ -14,8 +14,6 @@ transition: $value;
   transform: rotate($value);
 }
 
-
-
 #row-1{
   display:flex;
   align-items: center;
@@ -31,6 +29,8 @@ transition: $value;
   }
   @for $i from 0 through 1 {
     .nav-btns-cont#{$i}{
+      background-color: blue;
+      height: $nav-mobile-height+16px;
       display:flex;
       align-items: center;
       position: absolute;
@@ -41,6 +41,15 @@ transition: $value;
         height:55px;
         width:55px;
         margin-left: 10px;
+  //       -webkit-animation: rotation 2s infinite linear;
+  //       @-webkit-keyframes rotation {
+  //     from {
+  //         -webkit-transform: rotate(0deg);
+  //     }
+  //     to {
+  //         -webkit-transform: rotate(359deg);
+  //     }
+  // }
         @include animationMenuBtn(90deg*((-1)*$i))
         background-image: $menu-SVG;
         background-size: contain;
