@@ -18,8 +18,42 @@ const Home =()=> (
     </div>
   </Router>
 )
+
+
+
+ //
+ //
+ //   render() {
+ //       return (
+ //           <div
+ //               className={this.state.active ? 'your_className': null}
+ //               onclick={this.toggleClass}
+ //           >
+ //               <p>{this.props.text}</p>
+ //           </div>
+ //       )
+ // }
+
+
+
+
 // <NavLink to="/"><img className="menu-btn2" src="components/images/ultraTreningLogo1.svg"/></NavLink>
 class App extends Component {
+  constructor(props) {
+  super(props);
+  this.state = {
+    active: true,
+    };
+    this.toggleClass = this.toggleClass.bind(this);
+
+} //props end
+   toggleClass(e) {
+     e.preventDefault();
+     const currentState = this.state.active;
+     console.log( this.state.active);
+     this.setState({ active: !currentState });
+     console.log( this.state.active);
+   };
 
 render() {
   return (
@@ -27,13 +61,11 @@ render() {
       <div className="App">
         <div className="container">
             <nav id="row-1">
-              <NavLink to="/"><div className="menu-btn"> </div></NavLink>
-              <div className="nav-btns-cont">
-              <svg className="nav-btns nav-btn1-colr">
-  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4"/>
-</svg>
-                <NavLink to={`/wyswietltrening`}><div className="nav-btns nav-btn1-colr">Twój trening</div></NavLink>
-                <NavLink to={`/nowekonto`}><div className="nav-btns nav-btn2-colr">Nowy użytkownik</div></NavLink>
+              <NavLink to="/"><div className="menu-logo"> </div></NavLink>
+              <div className={this.state.active ? "nav-btns-cont0": "nav-btns-cont1"}>
+                <div className={this.state.active ? "menu-btn0": "menu-btn1"} onClick={this.toggleClass}></div>
+                <NavLink to={`/wyswietltrening`}  style={{ textDecoration: 'none'}} ><div className="nav-btns nav-btn1-colr"><p>stary plan</p></div></NavLink>
+                <NavLink to={`/nowekonto`} style={{ textDecoration: 'none' }}><div className="nav-btns nav-btn2-colr"><p>nowy plan</p></div></NavLink>
               </div>
             </nav>
             <Switch>

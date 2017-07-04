@@ -93,30 +93,30 @@
        x="150.28333"
        y="244.6125" />
     <g
-       id="g4608"
-       transform="translate(-0.52916666,1.5875)">
+       id="g6654"
+       transform="matrix(0.99289342,0,0,1.005609,0.61543418,-2.1827327)">
       <path
          inkscape:connector-curvature="0"
          id="path6906"
-         d="m 17.353463,241.96643 c -2.13098,4.58258 -3.322278,9.68613 -3.322278,15.06213 0,17.6854 12.880633,32.429 29.749088,35.34306 h 12.236979 c 16.868457,-2.91406 29.749604,-17.65766 29.749604,-35.34306 0,-5.376 -1.191297,-10.47955 -3.322278,-15.06213 h -7.28741 c 2.624563,4.40118 4.133082,9.54995 4.133082,15.06213 0,16.27031 -13.121184,29.38942 -29.391488,29.38942 -16.2703,0 -29.38942,-13.11911 -29.38942,-29.38942 0,-5.51216 1.508312,-10.66094 4.132565,-15.06213 z"
+         d="m 16.824296,243.55393 c -2.13098,4.58258 -3.322278,9.68613 -3.322278,15.06213 0,17.6854 12.880633,32.429 29.749088,35.34306 h 12.236979 c 16.868457,-2.91406 29.749604,-17.65766 29.749604,-35.34306 0,-5.376 -1.191297,-10.47955 -3.322278,-15.06213 h -7.28741 c 2.624563,4.40118 4.133082,9.54995 4.133082,15.06213 0,16.27031 -13.121184,29.38942 -29.391488,29.38942 -16.2703,0 -29.38942,-13.11911 -29.38942,-29.38942 0,-5.51216 1.508312,-10.66094 4.132565,-15.06213 z"
          style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#00ed00;fill-opacity:1;fill-rule:nonzero;stroke:#00ed00;stroke-width:6.47726202;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:9.99999905;stroke-opacity:1;paint-order:markers stroke fill;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
       <path
          id="circle6929"
-         d="M 64.520122,257.02811 A 14.621083,14.621083 0 0 1 49.899037,271.6492 14.621083,14.621083 0 0 1 35.277952,257.02811 14.621083,14.621083 0 0 1 49.899037,242.40703 14.621083,14.621083 0 0 1 64.520122,257.02811 Z"
+         d="M 63.990955,258.61561 A 14.621083,14.621083 0 0 1 49.36987,273.2367 14.621083,14.621083 0 0 1 34.748785,258.61561 14.621083,14.621083 0 0 1 49.36987,243.99453 14.621083,14.621083 0 0 1 63.990955,258.61561 Z"
          style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.90245223;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:9.99999905;stroke-opacity:1;paint-order:markers stroke fill"
          inkscape:connector-curvature="0" />
       <path
          sodipodi:nodetypes="cccccccc"
          inkscape:connector-curvature="0"
          id="rect7053"
-         d="m 18.613259,209.20209 -0.31045,-12.71772 54.08019,0.64642 14.39713,14.74508 -11.80425,9.56303 -18.70928,11.64343 11.32441,-23.34214 z"
+         d="m 18.084092,210.78959 -0.31045,-12.71772 54.08019,0.64642 14.39713,14.74508 -11.80425,9.56303 -18.70928,11.64343 11.32441,-23.34214 z"
          style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:7.01573658;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:9.99999905;stroke-opacity:1;paint-order:markers stroke fill" />
       <rect
          inkscape:transform-center-y="107.42083"
          inkscape:transform-center-x="-40.745833"
          transform="rotate(-30)"
-         y="190.48096"
-         x="-88.481491"
+         y="191.59119"
+         x="-89.733513"
          height="53.974998"
          width="13.229166"
          id="rect4584"

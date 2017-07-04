@@ -1,29 +1,110 @@
 #row-1 {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   height: 86px; }
-  #row-1 .menu-btn {
-    line-height: 1px;
+  #row-1 .menu-logo {
     height: 70px;
     width: 70px;
-    margin: 9px auto 5px 24px;
+    margin-left: 20px;
+    justify-content: flex-start;
     background-image: url("components/images/ultraTreningLogo2.svg");
     background-size: contain;
     background-repeat: no-repeat; }
-  #row-1 .menu-btn2 {
-    height: 100%;
-    width: 100px;
-    line-height: 1px;
-    background-color: blue; }
-  #row-1 .nav-btns-cont {
-    height: 100%;
-    width: 100px;
-    background-color: yellow; }
-    #row-1 .nav-btns-cont .nav-btns {
-      border: none; }
-      #row-1 .nav-btns-cont .nav-btns .nav-btn1-colr {
-        color: red;
-        text-decoration: none; }
-      #row-1 .nav-btns-cont .nav-btns .nav-btn2-colr {
-        color: purple;
-        text-decoration: none; }
+  #row-1 .nav-btns-cont0 {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: flex-end;
+    right: -150px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
+    #row-1 .nav-btns-cont0 .menu-btn0 {
+      height: 55px;
+      width: 55px;
+      margin-left: 10px;
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      background-image: url("components/images/menuBtn.svg");
+      background-size: contain;
+      background-repeat: no-repeat; }
+    #row-1 .nav-btns-cont0 .nav-btns {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      margin-left: 20px; }
+      #row-1 .nav-btns-cont0 .nav-btns p {
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        vertical-align: middle; }
+    #row-1 .nav-btns-cont0 .nav-btn1-colr {
+      background-color: #00ed00;
+      border: 1px solid white;
+      color: white; }
+      #row-1 .nav-btns-cont0 .nav-btn1-colr:hover {
+        background-color: black;
+        border: 3px solid #00ed00;
+        color: #00ed00;
+        font-family: Georgia, "Times New Roman", Times, serif; }
+    #row-1 .nav-btns-cont0 .nav-btn2-colr {
+      background-color: white;
+      border: 2px solid #00ed00;
+      color: #00ed00; }
+      #row-1 .nav-btns-cont0 .nav-btn2-colr:hover {
+        background-color: black;
+        border: 3px solid #00ed00;
+        color: white; }
+  #row-1 .nav-btns-cont1 {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: flex-end;
+    right: 0px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
+    #row-1 .nav-btns-cont1 .menu-btn1 {
+      height: 55px;
+      width: 55px;
+      margin-left: 10px;
+      -ms-transform: rotate(-90deg);
+      -webkit-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+      background-image: url("components/images/menuBtn.svg");
+      background-size: contain;
+      background-repeat: no-repeat; }
+    #row-1 .nav-btns-cont1 .nav-btns {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      margin-left: 20px; }
+      #row-1 .nav-btns-cont1 .nav-btns p {
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        vertical-align: middle; }
+    #row-1 .nav-btns-cont1 .nav-btn1-colr {
+      background-color: #00ed00;
+      border: 1px solid white;
+      color: white; }
+      #row-1 .nav-btns-cont1 .nav-btn1-colr:hover {
+        background-color: black;
+        border: 3px solid #00ed00;
+        color: #00ed00;
+        font-family: Georgia, "Times New Roman", Times, serif; }
+    #row-1 .nav-btns-cont1 .nav-btn2-colr {
+      background-color: white;
+      border: 2px solid #00ed00;
+      color: #00ed00; }
+      #row-1 .nav-btns-cont1 .nav-btn2-colr:hover {
+        background-color: black;
+        border: 3px solid #00ed00;
+        color: white; }
