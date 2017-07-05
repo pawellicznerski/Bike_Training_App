@@ -7,29 +7,28 @@ export class Home extends Component {
   this.state = {
     active: true,
     };
-    this.toggleClass = this.toggleClass.bind(this);
 
 } //props end
 
 componentDidMount(){
-  
+
 }
-   toggleClass(e) {
-     e.preventDefault();
-     const currentState = this.state.active;
-     console.log( window.scrollX);
-     this.setState({ active: !currentState });
-     console.log(window.scrollY);
-   };
 
   render(){
     return(
-        <div className="home-class">
-          <p>Witamy w naszej apce</p>
-          <button ><NavLink to={`/wyswietltrening`}>cos tu sie wpisze</NavLink></button>
-          <Route exact path={`/wyswietltrening`}/>
+      <section id="home-entry">
+        <div className="row home-class">
+          <div className="col-2">
+          </div>
+          <div className="welcome-text col-8">
+            <p>Witamy w naszej apce</p>
+            <button ><NavLink to={`/wyswietltrening`}>cos tu sie wpisze</NavLink></button>
+            <Route exact path={`/wyswietltrening`}/>
+          </div>
+          <div className="col-2">
+          </div>
         </div>
+      </section>
     )
   }
-
 }

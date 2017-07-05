@@ -1,5 +1,8 @@
-@import '../modules/variables';
+@import "../modules/variables";
 
+.welcome-text{
+  background-color: yellow;
+}
 .home-class{
   height: 1200px;
   background-image: $backgroundMain1-SVG;

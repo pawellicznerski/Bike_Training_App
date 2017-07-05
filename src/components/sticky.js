@@ -37,7 +37,7 @@ handleScroll() {
 render() {
 
     return (
-            <div style={{height:"70px",width: "100%", position: this.state.scrollingLock ? "fixed" : "relative"}}>
+            <div style={{width: "100%", position: this.state.scrollingLock ? "fixed" : "relative"}}>
                     {this.props.children}
             </div>
           )
