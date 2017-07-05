@@ -1,4 +1,10 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box; }
+
 #row-1 {
+  background-color: white;
   display: flex;
   align-items: center;
   height: 86px; }
@@ -11,12 +17,10 @@
     background-size: contain;
     background-repeat: no-repeat; }
   #row-1 .nav-btns-cont0 {
-    background-color: blue;
     height: 86px;
     display: flex;
     align-items: center;
     position: absolute;
-    justify-content: flex-end;
     right: -150px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -62,12 +66,10 @@
         border: 3px solid #00ed00;
         color: white; }
   #row-1 .nav-btns-cont1 {
-    background-color: blue;
     height: 86px;
     display: flex;
     align-items: center;
     position: absolute;
-    justify-content: flex-end;
     right: 0px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -112,3 +114,8 @@
         background-color: black;
         border: 3px solid #00ed00;
         color: white; }
+
+.home-class {
+  height: 1200px;
+  background-image: url("components/images/backgroundMain1.svg");
+  background-size: contain; }

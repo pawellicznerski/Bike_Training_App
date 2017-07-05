@@ -1,20 +1,13 @@
 @import './style/variables';
+@import './style/mixins';
 
-@mixin animationSideBar($value...) {
--webkit-transition: $value;
--moz-transition: $value;
--o-transition: $value;
-transition: $value;
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
 }
-
-@mixin animationMenuBtn($value) {
-  -ms-transform: rotate($value);
-  -webkit-transform: rotate($value);
-  -o-transform: rotate($value);
-  transform: rotate($value);
-}
-
 #row-1{
+  background-color: white;
   display:flex;
   align-items: center;
   height: $nav-mobile-height+16px;
@@ -29,12 +22,11 @@ transition: $value;
   }
   @for $i from 0 through 1 {
     .nav-btns-cont#{$i}{
-      background-color: blue;
+      // background-color: blue;
       height: $nav-mobile-height+16px;
       display:flex;
       align-items: center;
       position: absolute;
-      justify-content: flex-end;
       right: ($side-nav-right)+(($side-nav-right*(-1))*$i);
       @include animationSideBar(all 0.5s ease);
       .menu-btn#{$i}{
@@ -93,6 +85,8 @@ transition: $value;
   }//end of for
 }
 
-#row-2{
-
+.home-class{
+  height: 1200px;
+  background-image: $backgroundMain1-SVG;
+  background-size: contain;
 }

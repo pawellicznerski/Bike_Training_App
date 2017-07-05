@@ -8,16 +8,9 @@ import { NoMatch } from './components/noMatch.js';
 import { TrainingPlan }  from './components/trainingPlan.js';
 import { TrainingPlanPDF }  from './components/trainingPlanPDF.js';
 import { TrainingDay }  from './components/trainingDay.js';
+import { Sticky }  from './components/sticky.js';
+import { Home }  from './components/home.js';
 
-const Home =()=> (
-  <Router>
-    <div>
-      {stringsApp.appWelcomeText}
-      <button ><NavLink to={`/`}>cos tu sie wpisze</NavLink></button>
-      <Route exact path={`/`}/>
-    </div>
-  </Router>
-)
 
 class App extends Component {
   constructor(props) {
@@ -31,9 +24,7 @@ class App extends Component {
    toggleClass(e) {
      e.preventDefault();
      const currentState = this.state.active;
-     console.log( this.state.active);
      this.setState({ active: !currentState });
-     console.log( this.state.active);
    };
 
 
@@ -43,15 +34,15 @@ render() {
       <div className="App">
         <div className="container">
             <Sticky>
-            <nav id="row-1">
-              <NavLink to="/"><div className="menu-logo"> </div></NavLink>
-              <div className={this.state.active ? "nav-btns-cont0": "nav-btns-cont1"}>
-                <div className={this.state.active ? "menu-btn0": "menu-btn1"} onClick={this.toggleClass}></div>
-                <NavLink to={`/wyswietltrening`}  style={{ textDecoration: 'none'}} ><div className="nav-btns nav-btn1-colr"><p>stary plan</p></div></NavLink>
-                <NavLink to={`/nowekonto`} style={{ textDecoration: 'none' }}><div className="nav-btns nav-btn2-colr"><p>nowy plan</p></div></NavLink>
-              </div>
-            </nav>
-          </Sticky>
+              <nav id="row-1">
+                <NavLink to="/"><div className="menu-logo"> </div></NavLink>
+                <div className={this.state.active ? "nav-btns-cont0": "nav-btns-cont1"}>
+                  <div className={this.state.active ? "menu-btn0": "menu-btn1"} onClick={this.toggleClass}></div>
+                  <NavLink to={`/wyswietltrening`}  style={{ textDecoration: 'none'}} ><div className="nav-btns nav-btn1-colr"><p>stary plan</p></div></NavLink>
+                  <NavLink to={`/nowekonto`} style={{ textDecoration: 'none' }}><div className="nav-btns nav-btn2-colr"><p>nowy plan</p></div></NavLink>
+                </div>
+              </nav>
+            </Sticky>
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route exact path="/wyswietltrening" component={EntryForm}/>
@@ -69,47 +60,3 @@ render() {
 }//end of App
 
 export default App;
-
-class Sticky extends React.Component {
-constructor(props) {
-    super(props);
-    this.state = {
-      scrollingLock: false
-    };
-    // example how to bind object in React ES6
-    this.handleScroll = this.handleScroll.bind(this)
-}
-
-componentDidMount(){
-    window.addEventListener('scroll', this.handleScroll);
-}
-
-componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-}
-
-handleScroll() {
-
-  if (window.scrollY > 100) {
-    console.log("should lock");
-    this.setState({
-      scrollingLock: true
-    });
-  } else if (window.scrollY < 100) {
-    console.log("not locked" );
-    this.setState({
-      scrollingLock: false
-    });
-  }
-
-}
-
-render() {
-
-    return (
-            <div style={{ width: "100%", position: this.state.scrollingLock ? "fixed" : "relative"}}>
-                    {this.props.children}
-            </div>
-          )
-            }
-   }
