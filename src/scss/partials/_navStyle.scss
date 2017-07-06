@@ -5,7 +5,7 @@
   background-color: white;
   display:flex;
   align-items: center;
-  height: $nav-mobile-height+16px;
+  height: ($nav-mobile-height)+($nav-mobile-heightmargin);
   @include boxShadow(#888888);
   .menu-logo{
     height: $nav-mobile-height;

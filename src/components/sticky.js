@@ -19,19 +19,17 @@ componentWillUnmount() {
 }
 
 handleScroll() {
-
   if (window.scrollY > 60) {
-    console.log("should lock");
+    // console.log("should lock");
     this.setState({
       scrollingLock: true
     });
   } else if (window.scrollY < 65) {
-    console.log("not locked" );
+    // console.log("not locked" );
     this.setState({
       scrollingLock: false
     });
   }
-
 }
 
 render() {

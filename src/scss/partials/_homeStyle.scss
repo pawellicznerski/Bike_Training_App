@@ -1,10 +1,63 @@
 @import "../modules/variables";
 
-.welcome-text{
-  background-color: yellow;
+.welcome-text-container{
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  .welcome-text{
+    align-items: center;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+  }
+  p{
+    margin: auto auto auto 20px;
+    font-size: 35px;
+    font-weight: bold;
+    font: $main-font;
+  }
+  .welcome-btn{
+    margin: 30px auto auto auto;
+    background-color: $main-color;
+    width:200px;
+    height:60px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+    &:hover{
+      background-color: $main-color-hover
+    }
+  }
+  .move-down-btn{
+    margin: 90px auto auto auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    background-color: rgba(0,20,0,100);
+    width:50px;
+    height:50px;
+    border-radius: 30px;
+    font-size: 30px;
+    font: $main-font;
+  }
 }
+
 .home-class{
-  height: 1200px;
+  height: 100vh;
   background-image: $backgroundMain1-SVG;
   background-size: contain;
+}
+
+.welcome-text2{
+  background-color: green;
+}
+.home-class2{
+  height: 100vh;
 }
