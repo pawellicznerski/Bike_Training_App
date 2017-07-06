@@ -19,12 +19,12 @@ componentWillUnmount() {
 }
 
 handleScroll() {
-  if (window.scrollY > 60) {
+  if (window.scrollY > 1) {
     // console.log("should lock");
     this.setState({
       scrollingLock: true
     });
-  } else if (window.scrollY < 65) {
+  } else if (window.scrollY < 1) {
     // console.log("not locked" );
     this.setState({
       scrollingLock: false
@@ -35,7 +35,7 @@ handleScroll() {
 render() {
 
     return (
-            <div style={{width: "100%", position: this.state.scrollingLock ? "fixed" : "relative"}}>
+            <div style={{width: "100%", position:"fixed"}}>
                     {this.props.children}
             </div>
           )

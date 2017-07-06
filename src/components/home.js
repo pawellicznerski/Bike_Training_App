@@ -7,8 +7,10 @@ export class Home extends Component {
   this.state = {
     active: true,
     position: 0,
-    currentplace:"",
+    topScrollBtn:false,
     };
+    this.handleScroll = this.handleScroll.bind(this)
+
   } //props end
 
   componentDidMount(){
@@ -17,9 +19,11 @@ export class Home extends Component {
         position: (this.state.position + 1),
         });
     }, 30);
+    window.addEventListener('scroll', this.handleScroll);
   }
   componentWillUnmount(){
     clearInterval(this.intervalId);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   // window.onscroll = function() {scrollFunction()};
@@ -40,39 +44,37 @@ export class Home extends Component {
 
   moveDown(e){
     e.preventDefault();
-    console.log("moveDown");
-
-    if (window.scrollY > 380) {
-      console.log("should lock");
-
-      // this.setState({
-      //   scrollingLock: true
-      // });
-    } else if (window.scrollY < 380) {
-      // console.log("not locked" );
-      // this.setState({
-      //   scrollingLock: false
-      // });
-      const currentplace = (380-window.scrollY);
-      console.log(  window.scrollY);
-      console.log(currentplace);
-      window.scrollTo(0,currentplace);
-      // document.documentElement.scrollTop = 0;
-
-    }
+    console.log(window.scrollY);
+    const curentmove= window.innerHeight-86;
+    console.log(curentmove);
+    window.scrollTo(0,curentmove);
   }
-    currentplacefn(e){
-      e.preventDefault();
-      this.setState({
-        currentplace: window.scrollY,
-      });
-    }
+
+  handleScroll(e){
+    e.preventDefault();
+        if (window.scrollY > window.innerHeight-86) {
+          this.setState({
+            topScrollBtn:true,
+            });
+        } else if(window.scrollY < window.innerHeight-86){
+          this.setState({
+            topScrollBtn:false,
+            });
+        }
+  }
+
+  returnToTop(e){
+    e.preventDefault();
+    console.log(window.scrollY);
+    window.scrollTo(0,0);
+  }
+
 
   render(){
     return(
       <div>
-        <div onScroll={this.currentplacefn} style={{position:"absolute",width:"100px",height:"100px"}}>ssss{this.state.currentplace}</div>
       <section id="home-entry">
+        <div onClick={this.returnToTop} className="show-return-btn" style={{display:this.state.topScrollBtn ? "block":"none"}}></div>
         <div className="row home-class" style={{backgroundPosition:this.state.position}}>
           <div className="col-1">
           </div>
@@ -81,10 +83,25 @@ export class Home extends Component {
               <p>Profesionalny ultramaratonowy trening rowerowy w kilka chwil.</p>
               <NavLink to={`/wyswietltrening`} style={{textDecoration:"none",color:"white"}}><div className="welcome-btn" >nowy trening</div></NavLink>
               <Route exact path={`/wyswietltrening`}/>
-              <div onClick={this.moveDown}className="move-down-btn">&nabla;</div>
+              <div className="more"></div>
             </div>
+            <div className="move-down-container"><div onClick={this.moveDown} className="move-down-btn">&nabla;</div></div>
           </div>
           <div className="col-1">
+          </div>
+        </div>
+      </section>
+
+      <section id="home-entry">
+        <div className="row home-class" style={{backgroundPosition:this.state.position}}>
+          <div className="col-2">
+          </div>
+          <div className="welcome-text2 col-8">
+              <p>Profesionalny ultramaratonowy trening rowerowy w kilka chwil.</p>
+              <button className="welcome-btn" ><NavLink to={`/wyswietltrening`}>nowy trening</NavLink></button>
+              <Route exact path={`/wyswietltrening`}/>
+          </div>
+          <div className="col-2">
           </div>
         </div>
       </section>
