@@ -5,6 +5,13 @@
 transition: $value;
 }
 
+@mixin animationText($value...) {
+-webkit-transition: $value;
+-moz-transition: $value;
+-o-transition: $value;
+transition: $value;
+}
+
 @mixin animationMenuBtn($value) {
   -ms-transform: rotate($value);
   -webkit-transform: rotate($value);

@@ -37,12 +37,12 @@
         background-repeat: no-repeat;
       }
       .nav-btns{
-        height:60px;
-        width:60px;
+        height:$nav-mobile-height - 10px;
+        width:$nav-mobile-height - 10px;
         border-radius: 50%;
         p{
-          margin-top: 13px;
-          font-size: 14px;
+          margin-top: $nav-mobile-height - 57px;
+          font-size: $nav-mobile-height - 56px;
           font-weight: bold;
           text-transform: uppercase;
           text-align: center;

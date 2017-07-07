@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router,Route,Link,NavLink, Switch } from 'react-router-dom';
+import { MovingNumbers } from './movingNumbers.js';
+
 
 export class Home extends Component {
   constructor(props) {
@@ -7,22 +9,84 @@ export class Home extends Component {
   this.state = {
     active: true,
     position: 0,
+    position2: 0,
     topScrollBtn:false,
+    noOfkm:1,
+    noOfkmAction:false,
+    changeofstate:false,
+    interval:1,
     };
     this.handleScroll = this.handleScroll.bind(this)
 
   } //props end
 
   componentDidMount(){
+
     this.intervalId = setInterval(() => {
       this.setState({
         position: (this.state.position + 1),
         });
     }, 30);
+
     window.addEventListener('scroll', this.handleScroll);
+
+  //   this.intervalId2 = setInterval(() => {
+  //
+  //     if(!this.state.changeofstate){
+  //         if(this.state.noOfkm>=9){
+  //           this.setState({
+  //             noOfkm: 3,
+  //             noOfkmAction:true,
+  //             changeofstate:true,
+  //           });
+  //         } else{
+  //           this.setState({
+  //             noOfkm: (this.state.noOfkm + 2),
+  //             noOfkmAction:true,
+  //             changeofstate:true,
+  //           });
+  //         }
+  //       } else {
+  //         this.setState({
+  //           noOfkmAction:false,
+  //           changeofstate:false,
+  //         });
+  //       }
+  //     },1500 ,
+  //   );
+  //
+  //
+  // this.intervalId3 = setInterval(() => {
+  //       if(this.state.noOfclass===4){
+  //         this.setState({
+  //           noOfclass:1;
+  //         });
+  //       } else {
+  //         this.setState({
+  //           noOfclass:this.state.noOfclass+1;
+  //         });
+  //       }
+  //     },1500 ,
+  //   );
   }
+  //
+  //
+  //
+
+
+
+
+
+  toggleClass(e) {
+    e.preventDefault();
+    const currentState = this.state.active;
+    this.setState({ active: !currentState });
+  };
+
   componentWillUnmount(){
     clearInterval(this.intervalId);
+    // clearInterval(this.intervalId2);
+    // clearInterval(this.intervalId3);
     window.removeEventListener('scroll', this.handleScroll);
   }
 
@@ -45,18 +109,18 @@ export class Home extends Component {
   moveDown(e){
     e.preventDefault();
     console.log(window.scrollY);
-    const curentmove= window.innerHeight-86;
+    const curentmove= window.innerHeight-66;
     console.log(curentmove);
     window.scrollTo(0,curentmove);
   }
 
   handleScroll(e){
     e.preventDefault();
-        if (window.scrollY > window.innerHeight-86) {
+        if (window.scrollY > window.innerHeight-67) {
           this.setState({
             topScrollBtn:true,
             });
-        } else if(window.scrollY < window.innerHeight-86){
+        } else if(window.scrollY < window.innerHeight-67){
           this.setState({
             topScrollBtn:false,
             });
@@ -78,36 +142,37 @@ export class Home extends Component {
         <div className="row home-class" style={{backgroundPosition:this.state.position}}>
           <div className="col-1">
           </div>
-          <div className="welcome-text-container col-10">
+          <div className="welcome-text-cnt col-10">
             <div className="welcome-text">
               <p>Profesionalny ultramaratonowy trening rowerowy w kilka chwil.</p>
               <NavLink to={`/wyswietltrening`} style={{textDecoration:"none",color:"white"}}><div className="welcome-btn" >nowy trening</div></NavLink>
               <Route exact path={`/wyswietltrening`}/>
-              <div className="more"></div>
             </div>
-            <div className="move-down-container"><div onClick={this.moveDown} className="move-down-btn">&nabla;</div></div>
+            <div className="move-down-cnt"><div onClick={this.moveDown} className="move-down-btn">&nabla;</div></div>
           </div>
           <div className="col-1">
           </div>
         </div>
       </section>
 
-      <section id="home-entry">
-        <div className="row home-class" style={{backgroundPosition:this.state.position}}>
-          <div className="col-2">
-          </div>
-          <div className="welcome-text2 col-8">
-              <p>Profesionalny ultramaratonowy trening rowerowy w kilka chwil.</p>
-              <button className="welcome-btn" ><NavLink to={`/wyswietltrening`}>nowy trening</NavLink></button>
-              <Route exact path={`/wyswietltrening`}/>
-          </div>
-          <div className="col-2">
-          </div>
+      <section id="encourage-entry">
+        <div id="welcome-encourage-break"></div>
+        <div className="row encourage-class">
+          <div className="col-2"></div>
+            <div className="encourage-text-cnt col-8">
+              <div className="encourage-text">
+                  <p>chcesz przejechać  i nie masz planu terningowego?</p>
+                  <MovingNumbers></MovingNumbers>
+                  <strong>Wiemy jak Ci pomóc!</strong>
+              </div>
+            </div>
+          <div className="col-2"></div>
         </div>
+        <div id="encourage-advantage-break"></div>
       </section>
 
       <section id="home-entry">
-        <div className="row home-class" style={{backgroundPosition:this.state.position}}>
+        <div className="row advantage-class">
           <div className="col-2">
           </div>
           <div className="welcome-text2 col-8">
