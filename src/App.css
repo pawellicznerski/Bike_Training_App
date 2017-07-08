@@ -127,7 +127,7 @@
   flex-direction: column; }
   .welcome-text-cnt .welcome-text {
     width: 100%;
-    margin: 180px auto auto auto; }
+    margin: 140px auto auto auto; }
     .welcome-text-cnt .welcome-text p {
       margin: auto auto auto 20px;
       font-size: 38px;
@@ -135,7 +135,7 @@
       font: Georgia, "Times New Roman", Times, serif;
       color: white; }
     .welcome-text-cnt .welcome-text .welcome-btn {
-      margin: 80px auto auto auto;
+      margin: 60px auto auto auto;
       background-color: #00ed00;
       width: 200px;
       height: 60px;
@@ -156,7 +156,7 @@
       justify-content: center;
       align-items: center;
       color: black;
-      background-color: white;
+      background-color: yellow;
       width: 50px;
       height: 50px;
       border-radius: 30px;
@@ -275,29 +275,33 @@
       font-size: 24px; }
 
 .advantage-class {
-  height: 100vh;
+  height: 120vh;
   background-image: url("./components/images/backgroundMain1.svg");
   background-color: #00ed00;
   background-size: contain; }
 
 .advantage-cnt {
-  border: 1px solid blue; }
+  border: 1px solid blue;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
   .advantage-cnt .advantage-title {
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     margin-top: 15px;
-    margin-left: 4px;
-    border: 3px solid black;
+    border: 4px solid white;
     height: 40px;
-    width: 200px;
-    font-size: 20px;
+    width: 96%;
+    font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
-    font-style: Georgia, "Times New Roman", Times, serif; }
+    font-style: Georgia, "Times New Roman", Times, serif;
+    background-color: black; }
   .advantage-cnt .advantage-text {
-    border: 1px solid red; }
+    border: 1px solid red;
+    margin-bottom: 25px; }
     .advantage-cnt .advantage-text .advantage-point {
       border: 1px solid orange;
       height: 66px;
@@ -337,8 +341,115 @@
         font-weight: bold;
         text-transform: uppercase; }
 
-.show-return-btn {
+#advantage-chain-break {
+  height: 6vh;
+  background: repeating-linear-gradient(-45deg, #00ed00, #00ed00 10px, #000 10px, #000 20px);
+  background: -webkit-linear-gradient(-45deg, #00ed00, #00ed00 10px, #000 10px, #000 20px);
+  background: -o-linear-gradient(-45deg, #00ed00, #00ed00 10px, #000 10px, #000 20px);
+  background: -moz-linear-gradient(-45deg, #00ed00, #00ed00 10px, #000 10px, #000 20px); }
+
+#safety-footer-break {
+  height: 6vh;
+  background: repeating-linear-gradient(45deg, #00ed00, #00ed00 10px, #ffffff 10px, #ffffff 20px);
+  background: -webkit-linear-gradient(45deg, #00ed00, #00ed00 10px, #ffffff 10px, #ffffff 20px);
+  background: -o-linear-gradient(45deg, #00ed00, #00ed00 10px, #ffffff 10px, #ffffff 20px);
+  background: -moz-linear-gradient(45deg, #00ed00, #00ed00 10px, #ffffff 10px, #ffffff 20px); }
+
+.chain-class {
+  background-color: white; }
+
+#chain-title {
+  background-color: black;
   color: white;
+  height: 15vw;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase; }
+
+.chain-cnt {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  border: 1px solid green; }
+  .chain-cnt .chain-all-links {
+    font-weight: 600;
+    color: black;
+    width: 50vh;
+    height: 50vh;
+    font-size: 16px;
+    background-color: black;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 175px; }
+    .chain-cnt .chain-all-links .chain-link-titles {
+      margin-top: 75px;
+      margin-bottom: 0px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      background-color: #00ed00;
+      font-weight: 600;
+      color: white;
+      border-radius: 40px;
+      height: 9vh;
+      width: 42vh;
+      font-size: 24px; }
+    .chain-cnt .chain-all-links .chain-link-texts {
+      margin-bottom: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      color: black;
+      font-size: 2.2vh;
+      text-align: center;
+      width: 42vh;
+      border-radius: 40px;
+      background-color: white; }
+  .chain-cnt .link {
+    height: 12vh;
+    width: 100%;
+    background-image: url("./components/images/roadBelt.svg");
+    border: 1px solid red;
+    background-position: center; }
+
+.safety-class {
+  height: 70vh;
+  background-color: white; }
+
+.safety-cnt {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  border: 1px solid green; }
+  .safety-cnt .safety-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    font-size: 23px;
+    font-weight: 600;
+    color: black;
+    border: 1px solid red; }
+  .safety-cnt .safety-text {
+    font-weight: 600;
+    color: black;
+    height: 50vh;
+    height: 50vh;
+    font-size: 16px;
+    border: 1px solid red;
+    text-align: justify; }
+
+.show-return-btn {
   background-color: #00ed00;
   background-image: url("./components/images/arrowTop.svg");
   background-size: contain;

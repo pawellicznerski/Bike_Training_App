@@ -14,7 +14,7 @@
   flex-direction: column;
   .welcome-text{
     width:100%;
-    margin: 180px auto auto auto;
+    margin: 140px auto auto auto;
     // border:1px solid blue;
     p{
       margin: auto auto auto 20px;
@@ -24,7 +24,7 @@
       color:white;
     }
     .welcome-btn{
-      margin: 80px auto auto auto;
+      margin: 60px auto auto auto;
       background-color: $main-color;
       width:200px;
       height:60px;
@@ -49,7 +49,7 @@
       justify-content: center;
       align-items: center;
       color:black;
-      background-color: white;
+      background-color: yellow;
       width:50px;
       height:50px;
       border-radius: 30px;
@@ -144,7 +144,7 @@
 //SECTION 3 STYLING
 
 .advantage-class{
-  height: 100vh;
+  height: 120vh;
   background-image: $backgroundMain1-SVG;
   background-color: $main-color;
   background-size: contain;
@@ -152,23 +152,27 @@
 
 .advantage-cnt{
   border:1px solid blue;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   .advantage-title{
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     margin-top: 15px;
-    margin-left: 4px;
-    border:3px solid black;
+    border:4px solid white;
     height:40px;
-    width:200px;
-    font-size: 20px;
+    width:96%;
+    font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
     font-style: $main-font;
+    background-color: black;
   }
   .advantage-text{
     border:1px solid red;
+    margin-bottom: 25px;
     .advantage-point{
       border:1px solid orange;
       height:66px;
@@ -213,10 +217,150 @@
 
   }
 }
+
+// // SECTION 3 BREAKING DIVS
+// #advantage-safety-break{
+//   background-image: $backgroundMain1-SVG;
+//   background-color: $main-color;
+//   background-size: cover;
+//   background-color: yellow;
+//   height: 6vh;
+//   @include linearGradientEf(45deg,rgba(0,0,0,0),rgba(0,0,0,0) 10px,#000000 10px,#000000 20px);
+// }
+
+// SECTION 4 BREAKING DIVS
+#advantage-chain-break{
+  // margin-bottom: -3px;
+  height: 6vh;
+  @include linearGradientEf(-45deg,$main-color,$main-color 10px,#000 10px,#000 20px);
+}
+
+#safety-footer-break{
+  // margin-bottom: -3px;
+  height: 6vh;
+  @include linearGradientEf(45deg,$main-color,$main-color 10px,#ffffff 10px,#ffffff 20px);
+}
+
+// SECTION 4 STYLING
+
+.chain-class{
+  // height: 200vh;
+  background-color: white;
+
+}
+#chain-title{
+  background-color: black;
+  color:white;
+  height:15vw;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+
+}
+.chain-cnt{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  border: 1px solid green;
+  .chain-all-links{
+    font-weight: 600;
+    color: black;
+    width:50vh;
+    height: 50vh;
+    font-size: 16px;
+    background-color: black;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 175px;
+
+    .chain-link-titles{
+      margin-top: 75px;
+      margin-bottom: 0px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      background-color: $main-color;
+      font-weight: 600;
+      color: white;
+      border-radius: 40px;
+      height: 9vh;
+      width:42vh;
+      font-size: 24px;
+    }
+    .chain-link-texts{
+      margin-bottom: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      color: black;
+      font-size: 2.2vh;
+      text-align: center;
+      width:42vh;
+      border-radius: 40px;
+      background-color: white;
+      // padding: 0.7vh;
+    }
+  }
+
+  .link{
+    height: 12vh;
+    width: 100%;
+    background-image: $broadBelt-SVG;
+    border: 1px solid red;
+    // background-color: $main-color;
+    // background-size: contain;
+    background-position: center;
+  }
+}
+
+
+// SECTION 5 STYLING
+
+.safety-class{
+  height: 70vh;
+  background-color: white;
+}
+.safety-cnt{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  border: 1px solid green;
+  .safety-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    font-size: 23px;
+    font-weight: 600;
+    color: black;
+    border: 1px solid red;
+  }
+  .safety-text{
+    font-weight: 600;
+    color: black;
+    height: 50vh;
+    height: 50vh;
+    font-size: 16px;
+    border: 1px solid red;
+    text-align:justify;
+  }
+}
+
+
+
 // FIXED BTN TO RETURN TO THE INITIAL POSITION
 
 .show-return-btn{
-  color: white;
   background-color: $main-color;
   background-image: $arrowTop-SVG;
   background-size: contain;

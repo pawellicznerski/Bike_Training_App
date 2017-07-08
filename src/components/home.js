@@ -175,17 +175,86 @@ export class Home extends Component {
           <div className="col-1">
           </div>
           <div className="advantage-cnt col-10">
-            <div className="advantage-title">W ultratreningu będzie:</div>
+            <div className="advantage-title">W ultratreningu znajdziesz:</div>
             <div className="advantage-text">
-                <div className="advantage-point"><div className="advantage-text-no">1</div><div className="advantage-text">dzień rozpoczęcia</div></div>
+                <div className="advantage-point"><div className="advantage-text-no">1</div><div className="advantage-text">datę rozpoczęcia</div></div>
                 <div className="advantage-point"><div className="advantage-text-no">2</div><div className="advantage-text">szczyt formy</div></div>
-                <div className="advantage-point"><div className="advantage-text-no">3</div><div className="advantage-text">zestaw treningów</div></div>
-                <div className="advantage-point"><div className="advantage-text-no">4</div><div className="advantage-text">odpowiednia waga</div></div>
-                <div className="advantage-point"><div className="advantage-text-no">5</div><div className="advantage-text">szybko stworzysz ultratrening</div></div>
+                <div className="advantage-point"><div className="advantage-text-no">3</div><div className="advantage-text">rodzaje ćwiczeń</div></div>
+                <div className="advantage-point"><div className="advantage-text-no">4</div><div className="advantage-text">opisy</div></div>
+                <div className="advantage-point"><div className="advantage-text-no">5</div><div className="advantage-text">ociążenia</div></div>
+                <div className="advantage-point"><div className="advantage-text-no">6</div><div className="advantage-text">progresje</div></div>
+                <div className="advantage-point"><div className="advantage-text-no">7</div><div className="advantage-text">czas wolny</div></div>
+                <div className="advantage-point"><div className="advantage-text-no">8</div><div className="advantage-text">okresy</div></div>
             </div>
           </div>
           <div className="col-1">
           </div>
+        </div>
+      </section>
+
+      <section id="safety-entry">
+        <div id="advantage-chain-break"></div>
+        <div id="chain-title">jak zacząć?</div>
+        <div className="row chain-class">
+          <div className="col-1">
+          </div>
+          <div className="chain-cnt col-10">
+
+            <div className="link"></div>
+            <div className="first-link chain-all-links">
+              <div className="first-link-title chain-link-titles">nowy trening</div>
+              <div className="first-link-text chain-link-texts">kliknij na stronie "nowy trening". Jeżeli masz trening to kliknij "stary trening"</div>
+            </div>
+            <div className="link"></div>
+
+            <div className="second-link chain-all-links">
+              <div className="second-link-title chain-link-titles">formularz</div>
+              <div className="second-link-text chain-link-texts">Wypełnij poprawnie formularz.</div>
+            </div>
+            <div className="link"></div>
+
+
+            <div className="third-link chain-all-links">
+              <div className="third-link-title chain-link-titles">akceptacja</div>
+              <div className="third-link-text chain-link-texts">jeżeli wypełniłeś poprawnie formularz - zaakceptuj go</div>
+            </div>
+            <div className="link"></div>
+
+            <div className="fourth-link chain-all-links">
+              <div className="fourth-link-title chain-link-titles">wyświetl</div>
+              <div className="fourth-link-text chain-link-texts">teraz powinien wyświetlić ci się plan treningowy</div>
+            </div>
+            <div className="link"></div>
+
+            <div className="fifth-link chain-all-links">
+              <div className="fifth-link-title chain-link-titles">zapisz</div>
+              <div className="fifth-link-text chain-link-texts">możesz zapisac ten plan lub wrócić do formularza</div>
+            </div>
+
+          </div>
+          <div className="col-1">
+          </div>
+        </div>
+        <div id="chain-footer-break">
+        </div>
+      </section>
+
+      <section id="safety-entry">
+        <div id="advantage-safety-break">
+        </div>
+        <div className="row safety-class">
+          <div className="col-1">
+          </div>
+          <div className="safety-cnt col-10">
+            <div className="safety-title">bezpieczeństwo!</div>
+            <div className="safety-text">
+              Ultramaratony mają dobry wpływ na zdrowie i samopoczucie rowerzysty. Niestety, extremalne uprawianie tej dyscypliny niesie za sobą sporo ryzyko kontuzji i przetrenowania. Dlatego pamiętaj, że to jest tylko sugestia planu i sam musisz go na bieżąco modyfikować do swoich potrzeb ponieważ każdy jest inny i wymaga innych bodźcców do rozwoju. Zapraszamy do treningu i Życzymy samych dobrych wyników!
+            </div>
+          </div>
+          <div className="col-1">
+          </div>
+        </div>
+        <div id="safety-footer-break">
         </div>
       </section>
 

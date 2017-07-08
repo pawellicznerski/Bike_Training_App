@@ -25,3 +25,10 @@ transition: $value;
 -o-transform: 0px 3px 4px 0 $color;
 box-shadow: 0px 3px 4px 0 $color;
 }
+
+@mixin linearGradientEf($colors...){
+background: repeating-linear-gradient($colors);
+background: -webkit-linear-gradient($colors);
+background: -o-linear-gradient($colors);
+background: -moz-linear-gradient($colors);
+}
