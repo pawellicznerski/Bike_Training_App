@@ -9,22 +9,22 @@
   background-size: contain;
 }
 .welcome-text-cnt{
-  border:1px solid brown;
+  // border:1px solid brown;
   display: flex;
   flex-direction: column;
   .welcome-text{
     width:100%;
     margin: 180px auto auto auto;
-    border:1px solid blue;
+    // border:1px solid blue;
     p{
       margin: auto auto auto 20px;
-      font-size: 35px;
+      font-size: 38px;
       font-weight: bold;
       font: $main-font;
       color:white;
     }
     .welcome-btn{
-      margin: 30px auto auto auto;
+      margin: 80px auto auto auto;
       background-color: $main-color;
       width:200px;
       height:60px;
@@ -42,9 +42,9 @@
   }
   .move-down-cnt{
     width:100%;
-    border:1px solid red;
+    // border:1px solid red;
     .move-down-btn{
-      margin: 0px auto auto auto;
+      margin: 0px auto 8px auto;
       display:flex;
       justify-content: center;
       align-items: center;
@@ -62,12 +62,14 @@
 //SECTION 2 BREAKING DIV WITH CURVED LINE
 
 #welcome-encourage-break{
+  margin-top: -3px;
   height: 10vh;
   background-image: $break-to-encoMobile-SVG;
   background-size: cover;
 }
 
 #encourage-advantage-break{
+  margin-bottom: -3px;
   height: 10vh;
   background-position: center;
   background-image: $break-to-advMobile-SVG;
@@ -77,45 +79,34 @@
 //SECTION 2 STYLING
 
 .encourage-class{
-  height: 40vh;
+  height: 60vh;
 
 }
 #encourage-entry{
-  background-image: $backgroundMain1-SVG;
+  background-image: $backgroundsection2-SVG;
   background-color: white;
   background-size: contain;
   background-attachment: fixed;
 }
 
 .encourage-text-cnt{
-  border:1px solid brown;
+  // border:1px solid brown;
+  width:100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   .encourage-text{
-    width:100%;
-    border:1px solid blue;
     display: flex;
-    flex-direction: column;
-    p{
-      margin: auto auto auto 20px;
-      font-size: 30px;
-      font-weight: bold;
-      text-transform: uppercase;
-      font: $main-font;
-      color:black;    }
-    // .staying-numbers{
-    //   display: flex;
-    //   justify-content: center;
-    //   align-items: center;
-    //   font-weight: bold;
-    //   text-transform: lowercase;
-    //   color:$main-color;
-    //   font-size: 20px;
-    //   border:1px solid brown;
-    // }
-
-    @for $i from 0 through 3 {
+    flex-wrap: wrap;
+    // align-items: center;
+    // justify-content: center;
+    margin: auto auto auto 20px;
+    font-size: 30px;
+    font-weight: bold;
+    font: $main-font;
+      @for $i from 0 through 3 {
       .moving-numbers#{$i}{
         display: flex;
         justify-content: center;
@@ -123,19 +114,36 @@
         font-weight: bold;
         text-transform: lowercase;
         color:$main-color;
-        font-size: 20px+(8px*$i);
-        border:1px solid brown;
-
-        p{
-          font-size: 20px;
-          text-transform: lowercase;
-        }
+        font-size: 25px+(10px*$i);
+        width:90px;
+        height:50px;
+        @include animationText(all,0.2s,linear);
+      }//moving-numbers
+    }//loop for
+    .encourage-text-psc{
+      margin: auto auto auto 1px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // border:1px solid red;
+      height:50px;
     }
-    strong{
-      font-size: 20px;    }
-  }
-}
-}
+    .encourage-text-final{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      background-color: $main-color;
+      border-radius: 10px;
+      margin-top: 30px;
+      // border:3px solid black;
+      padding: 5px;
+      height:50px;
+      text-transform: uppercase;
+      font-size: 24px;
+    }
+}//encourage-text
+}//encourage-text-cnt
 
 //SECTION 3 STYLING
 

@@ -67,7 +67,7 @@ export class MovingNumbers extends Component {
 
         }
         this.setClassName(this.state.noOfclass);
-      },1500 ,
+      },1000 ,
     );
   }
 
@@ -81,10 +81,7 @@ export class MovingNumbers extends Component {
   }
 
   render(){
-    return(
-      <div>
-        <div className={this.state.active?this.state.currentClassName:'moving-numbers0'}>{300+(200*this.state.noOfclass)}<p>km</p></div>
-      </div>
+    return(<p className={this.state.active?this.state.currentClassName:'moving-numbers0'}>{300+(200*this.state.noOfclass)}</p>
     )
   }//end of render
 }

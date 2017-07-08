@@ -158,27 +158,27 @@ export class Home extends Component {
       <section id="encourage-entry">
         <div id="welcome-encourage-break"></div>
         <div className="row encourage-class">
-          <div className="col-2"></div>
-            <div className="encourage-text-cnt col-8">
+          <div className="col-1"></div>
+
+            <div className="encourage-text-cnt col-10">
               <div className="encourage-text">
-                  <p>chcesz przejechać  i nie masz planu terningowego?</p>
-                  <MovingNumbers></MovingNumbers>
-                  <strong>Wiemy jak Ci pomóc!</strong>
+                  <div className="encourage-text-psc">Chcesz</div><div className="encourage-text-psc">przejechać</div> <MovingNumbers></MovingNumbers><div className="encourage-text-psc">km</div><div className="encourage-text-psc">i nie masz</div><div className="encourage-text-psc">planu</div><div className="encourage-text-psc">treningowego?</div>
+                  <div className="encourage-text-final">Wiemy jak Ci pomóc!</div>
               </div>
             </div>
-          <div className="col-2"></div>
+
+          <div className="col-1"></div>
         </div>
         <div id="encourage-advantage-break"></div>
       </section>
 
-      <section id="home-entry">
+      <section id="advantage-entry">
         <div className="row advantage-class">
           <div className="col-2">
           </div>
-          <div className="welcome-text2 col-8">
-              <p>Profesionalny ultramaratonowy trening rowerowy w kilka chwil.</p>
-              <button className="welcome-btn" ><NavLink to={`/wyswietltrening`}>nowy trening</NavLink></button>
-              <Route exact path={`/wyswietltrening`}/>
+          <div className="advantage-text col-8">
+              <div className="advantage-title"></div>
+              <div className="advantage-point"></div>
           </div>
           <div className="col-2">
           </div>
