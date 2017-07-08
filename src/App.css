@@ -275,10 +275,67 @@
       font-size: 24px; }
 
 .advantage-class {
-  height: 50vh;
+  height: 100vh;
   background-image: url("./components/images/backgroundMain1.svg");
   background-color: #00ed00;
   background-size: contain; }
+
+.advantage-cnt {
+  border: 1px solid blue; }
+  .advantage-cnt .advantage-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 15px;
+    margin-left: 4px;
+    border: 3px solid black;
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-style: Georgia, "Times New Roman", Times, serif; }
+  .advantage-cnt .advantage-text {
+    border: 1px solid red; }
+    .advantage-cnt .advantage-text .advantage-point {
+      border: 1px solid orange;
+      height: 66px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; }
+      .advantage-cnt .advantage-text .advantage-point .advantage-text-no {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        background-color: white;
+        border-radius: 20px;
+        margin-top: 15px;
+        border: 3px solid black;
+        padding: 5px;
+        height: 40px;
+        width: 40px;
+        font-size: 30px;
+        font-style: Georgia, "Times New Roman", Times, serif; }
+      .advantage-cnt .advantage-text .advantage-point .advantage-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-left: 4px;
+        border: 3px solid black;
+        padding: 5px;
+        height: 40px;
+        width: 200px;
+        font-size: 16px;
+        font-style: Georgia, "Times New Roman", Times, serif;
+        font-weight: bold;
+        text-transform: uppercase; }
 
 .show-return-btn {
   color: white;

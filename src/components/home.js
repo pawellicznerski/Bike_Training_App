@@ -159,14 +159,12 @@ export class Home extends Component {
         <div id="welcome-encourage-break"></div>
         <div className="row encourage-class">
           <div className="col-1"></div>
-
             <div className="encourage-text-cnt col-10">
               <div className="encourage-text">
                   <div className="encourage-text-psc">Chcesz</div><div className="encourage-text-psc">przejechać</div> <MovingNumbers></MovingNumbers><div className="encourage-text-psc">km</div><div className="encourage-text-psc">i nie masz</div><div className="encourage-text-psc">planu</div><div className="encourage-text-psc">treningowego?</div>
                   <div className="encourage-text-final">Wiemy jak Ci pomóc!</div>
               </div>
             </div>
-
           <div className="col-1"></div>
         </div>
         <div id="encourage-advantage-break"></div>
@@ -174,13 +172,19 @@ export class Home extends Component {
 
       <section id="advantage-entry">
         <div className="row advantage-class">
-          <div className="col-2">
+          <div className="col-1">
           </div>
-          <div className="advantage-text col-8">
-              <div className="advantage-title"></div>
-              <div className="advantage-point"></div>
+          <div className="advantage-cnt col-10">
+            <div className="advantage-title">W ultratreningu będzie:</div>
+            <div className="advantage-text">
+                <div className="advantage-point"><div className="advantage-text-no">1</div><div className="advantage-text">dzień rozpoczęcia</div></div>
+                <div className="advantage-point"><div className="advantage-text-no">2</div><div className="advantage-text">szczyt formy</div></div>
+                <div className="advantage-point"><div className="advantage-text-no">3</div><div className="advantage-text">zestaw treningów</div></div>
+                <div className="advantage-point"><div className="advantage-text-no">4</div><div className="advantage-text">odpowiednia waga</div></div>
+                <div className="advantage-point"><div className="advantage-text-no">5</div><div className="advantage-text">szybko stworzysz ultratrening</div></div>
+            </div>
           </div>
-          <div className="col-2">
+          <div className="col-1">
           </div>
         </div>
       </section>
