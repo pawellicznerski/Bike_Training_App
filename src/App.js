@@ -51,6 +51,11 @@ render() {
               <Route exact path={`/nowekonto/trainingPlan/:login/PDF`} component={TrainingPlanPDF}/>
               <Route component={NoMatch}/>
             </Switch>
+            <footer>
+              <div id="footer-container">
+
+              </div>
+            </footer>
         </div>
       </div>
     </Router>

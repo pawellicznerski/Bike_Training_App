@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="906.71593"
+     inkscape:cx="955.482"
      inkscape:cy="302.13533"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,12 +55,28 @@
      id="layer1"
      transform="translate(0,-270.54167)">
     <rect
-       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.18686575;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:9.99999905;stroke-opacity:1;paint-order:markers stroke fill"
+       style="opacity:1;fill:#dddcdd;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.18686575;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:9.99999905;stroke-opacity:1;paint-order:markers stroke fill"
        id="rect9068-8"
        width="537.47473"
        height="34.112057"
        x="85.497383"
        y="-285.29797"
+       transform="matrix(0.99942463,0.03391758,0.31101896,-0.95040371,0,0)" />
+    <rect
+       transform="matrix(0.99942463,0.03391758,0.31101896,-0.95040371,0,0)"
+       y="-285.29797"
+       x="85.497383"
+       height="34.112057"
+       width="537.47473"
+       id="rect14248"
+       style="opacity:1;fill:#dddcdd;fill-opacity:0.5;fill-rule:evenodd;stroke:#000000;stroke-width:0.18682766;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:9.99999905;stroke-opacity:1;paint-order:markers stroke fill" />
+    <rect
+       style="opacity:1;fill:#00e900;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.18682766;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:9.99999905;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect15440"
+       width="537.47473"
+       height="34.112057"
+       x="85.497383"
+       y="-319.41003"
        transform="matrix(0.99942463,0.03391758,0.31101896,-0.95040371,0,0)" />
   </g>
 </svg>

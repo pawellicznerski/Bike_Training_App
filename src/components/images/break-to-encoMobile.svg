@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.24748737"
-     inkscape:cx="-58.130942"
+     inkscape:cx="-149.65568"
      inkscape:cy="320.78335"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,12 +55,20 @@
      id="layer1"
      transform="translate(0,-270.54167)">
     <rect
-       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.16577137;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:9.99999905;stroke-opacity:1;paint-order:markers stroke fill"
+       style="opacity:1;fill:#dddcdd;fill-opacity:0.5;fill-rule:evenodd;stroke:none;stroke-width:0.16577137;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:9.99999905;stroke-opacity:1;paint-order:markers stroke fill"
        id="rect9068-0"
        width="431.84811"
        height="33.411388"
        x="-482.24194"
        y="247.60033"
        transform="matrix(-0.99875432,-0.04989789,-0.24996983,0.96825363,0,0)" />
+    <rect
+       transform="matrix(-0.99875432,-0.04989789,-0.24996983,0.96825363,0,0)"
+       y="281.01172"
+       x="-482.24194"
+       height="33.411388"
+       width="431.84811"
+       id="rect14250"
+       style="opacity:1;fill:#00e900;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.16577137;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:9.99999905;stroke-opacity:1;paint-order:markers stroke fill" />
   </g>
 </svg>

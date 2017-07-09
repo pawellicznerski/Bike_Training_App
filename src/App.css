@@ -118,8 +118,8 @@
 
 .home-class {
   height: 100vh;
-  background-image: url("./components/images/backgroundMain2.svg");
-  background-color: black;
+  background-image: url("./components/images/backgroundMain1.svg");
+  background-color: rgba(221, 220, 221, 0.5);
   background-size: contain; }
 
 .welcome-text-cnt {
@@ -127,16 +127,19 @@
   flex-direction: column; }
   .welcome-text-cnt .welcome-text {
     width: 100%;
-    margin: 26vh auto auto auto; }
-    .welcome-text-cnt .welcome-text p {
+    margin: 26vh auto auto auto;
+    font-weight: bold; }
+    .welcome-text-cnt .welcome-text .welcome-text-top {
       margin: auto auto auto 20px;
       font-size: 6vh;
       font-weight: bold;
-      font: Georgia, "Times New Roman", Times, serif;
-      color: white; }
+      color: white;
+      background-color: rgba(0, 237, 0, 0.75);
+      border-radius: 10px;
+      padding: 15px; }
     .welcome-text-cnt .welcome-text .welcome-btn {
-      margin: 18vh auto auto auto;
-      background-color: #00ed00;
+      margin: 8vh auto auto auto;
+      background-color: rgba(70, 70, 70, 0.8);
       width: 50vw;
       height: 10vh;
       display: flex;
@@ -145,9 +148,10 @@
       border-radius: 10px;
       text-transform: uppercase;
       font-size: 3vh;
-      font-weight: bold; }
+      font-weight: bold;
+      font-family: "Lato", Georgia, "Times New Roman", Times, serif; }
       .welcome-text-cnt .welcome-text .welcome-btn:hover {
-        background-color: #00d700; }
+        background-color: rgba(100, 100, 100, 0.8); }
   .welcome-text-cnt .move-down-cnt {
     width: 100%; }
     .welcome-text-cnt .move-down-cnt .move-down-btn {
@@ -161,27 +165,26 @@
       height: 50px;
       border-radius: 30px;
       font-size: 30px;
-      font: Georgia, "Times New Roman", Times, serif; }
+      font: "Lato", Georgia, "Times New Roman", Times, serif; }
 
 #welcome-encourage-break {
   margin-top: -3px;
+  margin-bottom: -3px;
   height: 10vh;
-  background-image: url("./components/images/break-to-enco.svg");
+  background-image: url("./components/images/break-to-encoMobile.svg");
   background-size: cover; }
 
 #encourage-advantage-break {
-  margin-bottom: -3px;
   height: 10vh;
   background-position: center;
-  background-image: url("./components/images/break-to-adv.svg");
+  background-image: url("./components/images/break-to-advMobile.svg");
   background-size: cover; }
 
 .encourage-class {
   height: 60vh; }
 
 #encourage-entry {
-  background-image: url("./components/images/backgroundsection2.svg");
-  background-color: white;
+  background-color: #00ed00;
   background-size: contain;
   background-attachment: fixed; }
 
@@ -197,15 +200,15 @@
     flex-wrap: wrap;
     margin: auto auto auto 20px;
     font-size: 40px;
-    font-weight: bold;
-    font: Georgia, "Times New Roman", Times, serif; }
+    font-weight: bold; }
     .encourage-text-cnt .encourage-text .moving-numbers0 {
+      background-color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       font-weight: bold;
       text-transform: lowercase;
-      color: #00ed00;
+      color: black;
       font-size: 25px;
       width: 120px;
       height: 50px;
@@ -214,12 +217,13 @@
       -o-transition: all, 0.2s, linear;
       transition: all, 0.2s, linear; }
     .encourage-text-cnt .encourage-text .moving-numbers1 {
+      background-color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       font-weight: bold;
       text-transform: lowercase;
-      color: #00ed00;
+      color: black;
       font-size: 40px;
       width: 120px;
       height: 50px;
@@ -228,12 +232,13 @@
       -o-transition: all, 0.2s, linear;
       transition: all, 0.2s, linear; }
     .encourage-text-cnt .encourage-text .moving-numbers2 {
+      background-color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       font-weight: bold;
       text-transform: lowercase;
-      color: #00ed00;
+      color: black;
       font-size: 55px;
       width: 120px;
       height: 50px;
@@ -242,12 +247,13 @@
       -o-transition: all, 0.2s, linear;
       transition: all, 0.2s, linear; }
     .encourage-text-cnt .encourage-text .moving-numbers3 {
+      background-color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       font-weight: bold;
       text-transform: lowercase;
-      color: #00ed00;
+      color: black;
       font-size: 70px;
       width: 120px;
       height: 50px;
@@ -266,7 +272,7 @@
       justify-content: center;
       align-items: center;
       color: white;
-      background-color: #00ed00;
+      background-color: black;
       border-radius: 10px;
       margin-top: 30px;
       padding: 5px;
@@ -275,70 +281,112 @@
       font-size: 24px; }
 
 .advantage-class {
-  height: 120vh;
-  background-image: url("./components/images/backgroundMain1.svg");
-  background-color: #00ed00;
-  background-size: contain; }
+  height: 150vh; }
 
-.advantage-cnt {
-  border: 1px solid blue;
+.advantage-main-title {
+  height: 10vh;
+  width: 82vw;
+  font-size: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.advantage-point {
+  margin-top: 10px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
-  .advantage-cnt .advantage-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    margin-top: 15px;
-    height: 10vh;
-    width: 96%;
-    font-size: 3vh;
-    text-transform: uppercase;
+  .advantage-point .advantage-pic-no1 {
+    background-color: #00ed00;
+    border-radius: 50%;
+    margin-top: 2px;
+    height: 70px;
+    width: 70px;
+    background-position: center;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-image: url("./components/images/advantageCalendar.svg"); }
+  .advantage-point .advantage-pic-no2 {
+    background-color: #00ed00;
+    border-radius: 50%;
+    margin-top: 2px;
+    height: 70px;
+    width: 70px;
+    background-position: center;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-image: url("./components/images/topShape.svg"); }
+  .advantage-point .advantage-pic-no3 {
+    background-color: #00ed00;
+    border-radius: 50%;
+    margin-top: 2px;
+    height: 70px;
+    width: 70px;
+    background-position: center;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-image: url("./components/images/diagram.svg"); }
+  .advantage-point .advantage-pic-no4 {
+    background-color: #00ed00;
+    border-radius: 50%;
+    margin-top: 2px;
+    height: 70px;
+    width: 70px;
+    background-position: center;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-image: url("./components/images/page.svg"); }
+  .advantage-point .advantage-pic-no5 {
+    background-color: #00ed00;
+    border-radius: 50%;
+    margin-top: 2px;
+    height: 70px;
+    width: 70px;
+    background-position: center;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-image: url("./components/images/weight.svg"); }
+  .advantage-point .advantage-pic-no6 {
+    background-color: #00ed00;
+    border-radius: 50%;
+    margin-top: 2px;
+    height: 70px;
+    width: 70px;
+    background-position: center;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-image: url("./components/images/exerciseType.svg"); }
+  .advantage-point .advantage-pic-no7 {
+    background-color: #00ed00;
+    border-radius: 50%;
+    margin-top: 2px;
+    height: 70px;
+    width: 70px;
+    background-position: center;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-image: url("./components/images/leisureTime.svg"); }
+  .advantage-point .advantage-pic-no8 {
+    background-color: #00ed00;
+    border-radius: 50%;
+    margin-top: 2px;
+    height: 70px;
+    width: 70px;
+    background-position: center;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-image: url("./components/images/periods.svg"); }
+  .advantage-point .advantage-title {
+    margin-left: 7px;
+    width: 63vw;
+    font-size: 5vh;
     font-weight: bold;
-    font-style: Georgia, "Times New Roman", Times, serif;
-    background-color: black; }
-  .advantage-cnt .advantage-text {
-    border: 1px solid red;
-    margin-bottom: 14px; }
-    .advantage-cnt .advantage-text .advantage-point {
-      border: 1px solid orange;
-      height: 13vh;
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center; }
-      .advantage-cnt .advantage-text .advantage-point .advantage-text-no {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: black;
-        background-color: white;
-        border-radius: 50%;
-        margin-top: 2px;
-        border: 3px solid black;
-        padding: 5px;
-        height: 12vh;
-        width: 12vh;
-        font-size: 40px;
-        font-style: Georgia, "Times New Roman", Times, serif; }
-      .advantage-cnt .advantage-text .advantage-point .advantage-text {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: black;
-        background-color: white;
-        border-radius: 10px;
-        margin-top: 2px;
-        margin-left: 4px;
-        border: 3px solid black;
-        padding: 5px;
-        height: 12vh;
-        width: 60vw;
-        font-size: 22px;
-        font-style: Georgia, "Times New Roman", Times, serif;
-        font-weight: bold;
-        text-transform: uppercase; }
+    font-style: "Lato", Georgia, "Times New Roman", Times, serif; }
+    .advantage-point .advantage-title .advantage-text {
+      font-size: 12px;
+      font-style: "Lato", Georgia, "Times New Roman", Times, serif;
+      font-weight: bold; }
 
 #advantage-chain-break {
   height: 6vh;
@@ -354,10 +402,15 @@
   background: -o-linear-gradient(45deg, #00ed00, #00ed00 10px, #ffffff 10px, #ffffff 20px);
   background: -moz-linear-gradient(45deg, #00ed00, #00ed00 10px, #ffffff 10px, #ffffff 20px); }
 
+.chain-class {
+  background-attachment: fixed;
+  background-color: rgba(230, 230, 230, 0.8);
+  background-image: url("./components/images/backgroundMain1.svg"); }
+
 #chain-title {
   background-color: black;
   color: white;
-  height: 15vw;
+  height: 35vw;
   font-size: 50px;
   display: flex;
   justify-content: center;
@@ -365,80 +418,52 @@
   text-transform: uppercase; }
 
 .chain-cnt {
-  background-attachment: fixed;
-  background: repeating-linear-gradient(90deg, #00ed00, #00ed00 1px, #ffffff 1px, #ffffff 10px);
-  background: -webkit-linear-gradient(90deg, #00ed00, #00ed00 1px, #ffffff 1px, #ffffff 10px);
-  background: -o-linear-gradient(90deg, #00ed00, #00ed00 1px, #ffffff 1px, #ffffff 10px);
-  background: -moz-linear-gradient(90deg, #00ed00, #00ed00 1px, #ffffff 1px, #ffffff 10px);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
-  border: 1px solid green; }
+  align-items: center; }
   .chain-cnt .chain-all-links {
-    font-weight: 600;
-    color: black;
-    width: 50vh;
-    height: 50vh;
-    font-size: 16px;
-    background-color: black;
-    border: 1px solid red;
+    width: 160px;
+    height: 160px;
+    background-color: rgba(0, 237, 0, 0.8);
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    flex-wrap: wrap;
-    border-radius: 175px; }
-    .chain-cnt .chain-all-links .chain-link-titles {
-      margin-top: 75px;
-      margin-bottom: 0px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      background-color: #00ed00;
-      font-weight: 600;
+    align-items: center;
+    border-radius: 50%; }
+    .chain-cnt .chain-all-links .chain-link-no {
+      font-weight: bold;
       color: white;
-      border-radius: 40px;
-      height: 9vh;
-      width: 42vh;
-      font-size: 24px; }
+      font-size: 70px; }
+    .chain-cnt .chain-all-links .chain-link-texts1 {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center; }
     .chain-cnt .chain-all-links .chain-link-texts {
-      margin-bottom: 75px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: 600;
-      color: black;
-      font-size: 2.2vh;
+      margin-bottom: 20px;
       text-align: center;
-      width: 42vh;
-      border-radius: 40px;
-      background-color: white; }
+      font-weight: bold;
+      font-size: 22px; }
   .chain-cnt .link {
-    height: 12vh;
-    width: 100%;
-    background-image: url("./components/images/roadBelt.svg");
-    background-position: center; }
+    height: 4vh;
+    width: 100%; }
 
 .safety-class {
-  height: 40vh;
-  background-color: black; }
+  height: 40vh; }
 
 .safety-cnt {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  text-transform: uppercase;
-  border: 1px solid green; }
+  text-transform: uppercase; }
   .safety-cnt .safety-title {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10vh;
     font-size: 23px;
-    font-weight: 600;
-    color: white; }
+    font-weight: 600; }
   .safety-cnt .safety-text {
     margin-top: 0.5vh;
     font-weight: 600;
@@ -455,7 +480,7 @@
   height: 40px;
   font-size: 30px;
   font-weight: 600;
-  font: Georgia, "Times New Roman", Times, serif;
+  font: "Lato", Georgia, "Times New Roman", Times, serif;
   position: fixed;
   left: 0;
   top: 30vh;
@@ -516,4 +541,5 @@
 * {
   padding: 0px;
   margin: 0px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: "Lato", Georgia, "Times New Roman", Times, serif; }
