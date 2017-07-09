@@ -14,26 +14,26 @@
   flex-direction: column;
   .welcome-text{
     width:100%;
-    margin: 140px auto auto auto;
+    margin: 26vh auto auto auto;
     // border:1px solid blue;
     p{
       margin: auto auto auto 20px;
-      font-size: 38px;
+      font-size: 6vh;
       font-weight: bold;
       font: $main-font;
       color:white;
     }
     .welcome-btn{
-      margin: 60px auto auto auto;
+      margin: 18vh auto auto auto;
       background-color: $main-color;
-      width:200px;
-      height:60px;
+      width:50vw;
+      height:10vh;
       display:flex;
       align-items: center;
       justify-content: center;
       border-radius: 10px;
       text-transform: uppercase;
-      font-size: 18px;
+      font-size: 3vh;
       font-weight: bold;
       &:hover{
         background-color: $main-color-hover
@@ -49,7 +49,7 @@
       justify-content: center;
       align-items: center;
       color:black;
-      background-color: yellow;
+      background-color: white;
       width:50px;
       height:50px;
       border-radius: 30px;
@@ -64,7 +64,7 @@
 #welcome-encourage-break{
   margin-top: -3px;
   height: 10vh;
-  background-image: $break-to-encoMobile-SVG;
+  background-image: $break-to-enco-SVG;
   background-size: cover;
 }
 
@@ -72,7 +72,7 @@
   margin-bottom: -3px;
   height: 10vh;
   background-position: center;
-  background-image: $break-to-advMobile-SVG;
+  background-image: $break-to-adv-SVG;
   background-size: cover;
 }
 
@@ -87,7 +87,6 @@
   background-size: contain;
   background-attachment: fixed;
 }
-
 .encourage-text-cnt{
   width:100%;
   height: 100%;
@@ -99,7 +98,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: auto auto auto 20px;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
     font: $main-font;
       @for $i from 0 through 3 {
@@ -110,8 +109,8 @@
         font-weight: bold;
         text-transform: lowercase;
         color:$main-color;
-        font-size: 25px+(10px*$i);
-        width:90px;
+        font-size: 25px+(15px*$i);
+        width:120px;
         height:50px;
         @include animationText(all,0.2s,linear);
       }//moving-numbers
@@ -122,7 +121,7 @@
       justify-content: center;
       align-items: center;
       // border:1px solid red;
-      height:50px;
+      height:60px;
     }
     .encourage-text-final{
       display: flex;
@@ -161,10 +160,9 @@
     align-items: center;
     color: white;
     margin-top: 15px;
-    border:4px solid white;
-    height:40px;
+    height:10vh;
     width:96%;
-    font-size: 18px;
+    font-size: 3vh;
     text-transform: uppercase;
     font-weight: bold;
     font-style: $main-font;
@@ -172,10 +170,10 @@
   }
   .advantage-text{
     border:1px solid red;
-    margin-bottom: 25px;
+    margin-bottom: 14px;
     .advantage-point{
       border:1px solid orange;
-      height:66px;
+      height:13vh;
       width:100%;
       display: flex;
       flex-wrap: wrap;
@@ -186,13 +184,13 @@
         align-items: center;
         color: black;
         background-color: white;
-        border-radius:20px;
-        margin-top: 15px;
+        border-radius:50%;
+        margin-top: 2px;
         border:3px solid black;
         padding: 5px;
-        height:40px;
-        width:40px;
-        font-size: 30px;
+        height:12vh;
+        width:12vh;
+        font-size: 40px;
         font-style: $main-font;
       }
       .advantage-text{
@@ -202,13 +200,13 @@
         color: black;
         background-color: white;
         border-radius: 10px;
-        margin-top: 15px;
+        margin-top: 2px;
         margin-left: 4px;
         border:3px solid black;
         padding: 5px;
-        height:40px;
-        width:200px;
-        font-size: 16px;
+        height:12vh;
+        width:60vw;
+        font-size: 22px;
         font-style: $main-font;
         font-weight: bold;
         text-transform: uppercase;
@@ -218,24 +216,14 @@
   }
 }
 
-// // SECTION 3 BREAKING DIVS
-// #advantage-safety-break{
-//   background-image: $backgroundMain1-SVG;
-//   background-color: $main-color;
-//   background-size: cover;
-//   background-color: yellow;
-//   height: 6vh;
-//   @include linearGradientEf(45deg,rgba(0,0,0,0),rgba(0,0,0,0) 10px,#000000 10px,#000000 20px);
-// }
-
 // SECTION 4 BREAKING DIVS
 #advantage-chain-break{
   // margin-bottom: -3px;
   height: 6vh;
-  @include linearGradientEf(-45deg,$main-color,$main-color 10px,#000 10px,#000 20px);
+  @include linearGradientEf(90deg,$main-color,$main-color 30px,#000 30px,#000 90px);
 }
 
-#safety-footer-break{
+.safety-footer-break{
   // margin-bottom: -3px;
   height: 6vh;
   @include linearGradientEf(45deg,$main-color,$main-color 10px,#ffffff 10px,#ffffff 20px);
@@ -245,8 +233,8 @@
 
 .chain-class{
   // height: 200vh;
-  background-color: white;
-
+  // background-image: $backgroundsection4-SVG;
+  // background-size: contain;
 }
 #chain-title{
   background-color: black;
@@ -260,6 +248,9 @@
 
 }
 .chain-cnt{
+  background-attachment: fixed;
+  @include linearGradientEf(90deg,$main-color,$main-color 1px,#ffffff 1px,#ffffff 10px);
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -314,7 +305,6 @@
     height: 12vh;
     width: 100%;
     background-image: $broadBelt-SVG;
-    border: 1px solid red;
     // background-color: $main-color;
     // background-size: contain;
     background-position: center;
@@ -325,8 +315,8 @@
 // SECTION 5 STYLING
 
 .safety-class{
-  height: 70vh;
-  background-color: white;
+  height: 40vh;
+  background-color: black;
 }
 .safety-cnt{
   display: flex;
@@ -342,17 +332,15 @@
     height: 10vh;
     font-size: 23px;
     font-weight: 600;
-    color: black;
-    border: 1px solid red;
+    color: white;
   }
   .safety-text{
+    margin-top: 0.5vh;
     font-weight: 600;
-    color: black;
+    color: $main-color;
     height: 50vh;
-    height: 50vh;
-    font-size: 16px;
-    border: 1px solid red;
-    text-align:justify;
+    font-size: 13px;
+    text-align:center;
   }
 }
 

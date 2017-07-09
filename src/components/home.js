@@ -29,53 +29,7 @@ export class Home extends Component {
     }, 30);
 
     window.addEventListener('scroll', this.handleScroll);
-
-  //   this.intervalId2 = setInterval(() => {
-  //
-  //     if(!this.state.changeofstate){
-  //         if(this.state.noOfkm>=9){
-  //           this.setState({
-  //             noOfkm: 3,
-  //             noOfkmAction:true,
-  //             changeofstate:true,
-  //           });
-  //         } else{
-  //           this.setState({
-  //             noOfkm: (this.state.noOfkm + 2),
-  //             noOfkmAction:true,
-  //             changeofstate:true,
-  //           });
-  //         }
-  //       } else {
-  //         this.setState({
-  //           noOfkmAction:false,
-  //           changeofstate:false,
-  //         });
-  //       }
-  //     },1500 ,
-  //   );
-  //
-  //
-  // this.intervalId3 = setInterval(() => {
-  //       if(this.state.noOfclass===4){
-  //         this.setState({
-  //           noOfclass:1;
-  //         });
-  //       } else {
-  //         this.setState({
-  //           noOfclass:this.state.noOfclass+1;
-  //         });
-  //       }
-  //     },1500 ,
-  //   );
   }
-  //
-  //
-  //
-
-
-
-
 
   toggleClass(e) {
     e.preventDefault();
@@ -108,9 +62,7 @@ export class Home extends Component {
 
   moveDown(e){
     e.preventDefault();
-    console.log(window.scrollY);
     const curentmove= window.innerHeight-66;
-    console.log(curentmove);
     window.scrollTo(0,curentmove);
   }
 
@@ -129,7 +81,6 @@ export class Home extends Component {
 
   returnToTop(e){
     e.preventDefault();
-    console.log(window.scrollY);
     window.scrollTo(0,0);
   }
 
@@ -201,34 +152,34 @@ export class Home extends Component {
           <div className="chain-cnt col-10">
 
             <div className="link"></div>
-            <div className="first-link chain-all-links">
-              <div className="first-link-title chain-link-titles">nowy trening</div>
-              <div className="first-link-text chain-link-texts">kliknij na stronie "nowy trening". Jeżeli masz trening to kliknij "stary trening"</div>
+            <div className="chain-all-links">
+              <div className="chain-link-titles">nowy trening</div>
+              <div className="chain-link-texts">kliknij na stronie "nowy trening". Jeżeli masz trening to kliknij "stary trening"</div>
             </div>
             <div className="link"></div>
 
-            <div className="second-link chain-all-links">
-              <div className="second-link-title chain-link-titles">formularz</div>
-              <div className="second-link-text chain-link-texts">Wypełnij poprawnie formularz.</div>
+            <div className="chain-all-links">
+              <div className="chain-link-titles">formularz</div>
+              <div className="chain-link-texts">Wypełnij poprawnie formularz.</div>
             </div>
             <div className="link"></div>
 
 
-            <div className="third-link chain-all-links">
-              <div className="third-link-title chain-link-titles">akceptacja</div>
-              <div className="third-link-text chain-link-texts">jeżeli wypełniłeś poprawnie formularz - zaakceptuj go</div>
+            <div className="chain-all-links">
+              <div className="chain-link-titles">akceptacja</div>
+              <div className="chain-link-texts">jeżeli wypełniłeś poprawnie formularz - zaakceptuj go</div>
             </div>
             <div className="link"></div>
 
-            <div className="fourth-link chain-all-links">
-              <div className="fourth-link-title chain-link-titles">wyświetl</div>
-              <div className="fourth-link-text chain-link-texts">teraz powinien wyświetlić ci się plan treningowy</div>
+            <div className="chain-all-links">
+              <div className="chain-link-titles">wyświetl</div>
+              <div className="chain-link-texts">teraz powinien wyświetlić ci się plan treningowy</div>
             </div>
             <div className="link"></div>
 
-            <div className="fifth-link chain-all-links">
-              <div className="fifth-link-title chain-link-titles">zapisz</div>
-              <div className="fifth-link-text chain-link-texts">możesz zapisac ten plan lub wrócić do formularza</div>
+            <div className="chain-all-links">
+              <div className="chain-link-titles">zapisz</div>
+              <div className="chain-link-texts">możesz zapisac ten plan lub wrócić do formularza</div>
             </div>
 
           </div>
@@ -240,7 +191,7 @@ export class Home extends Component {
       </section>
 
       <section id="safety-entry">
-        <div id="advantage-safety-break">
+        <div className="safety-footer-break">
         </div>
         <div className="row safety-class">
           <div className="col-1">
@@ -254,7 +205,7 @@ export class Home extends Component {
           <div className="col-1">
           </div>
         </div>
-        <div id="safety-footer-break">
+        <div className="safety-footer-break">
         </div>
       </section>
 
