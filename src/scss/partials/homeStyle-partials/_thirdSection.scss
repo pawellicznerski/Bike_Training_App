@@ -7,28 +7,39 @@
 //SECTION 3 STYLING
 
 .advantage-class{
-  height: 150vh;
+  // height: 1300px;
 }
 
 .advantage-main-title{
-  height:10vh;
+  height:80px;
   width: 82vw;
-  font-size: 6vh;
+  font-size: 42px;
   // border:1px solid black;
-
+  font-size: bold;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: rgba(40,40,40,1);
   // text-transform: uppercase;
+  @include desktop{
+    font-size: 55px;
+  };
 }
 .advantage-point{
   // border:1px solid orange;
   // height:13vh;
-  margin-top: 10px;
-  width:100%;
+  color: rgba(40,40,40,1);
+  margin-top: 25px;
+  width:88vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  @include desktop{
+    margin-top: 35px;
+  };
+  &:last-child{
+    margin-bottom: 35px;
+  }
 
   @for $i from 1 through 8 {
     .advantage-pic-no#{$i}{
@@ -73,37 +84,37 @@
     // margin-left: 6px;
     // border:1px solid black;
     // height:12vh
+    color: rgba(40,40,40,1);
     margin-left: 7px;
     width:63vw;
     font-size:5vh;
     font-weight: bold;
     font-style: $main-font;
+    @include desktop{
+      font-size: 6vh;
+    };
     .advantage-text{
       font-size: 12px;
       font-style: $main-font;
       font-weight: bold;
+      @include mobile{
+        font-size: 15px;
+      };
+      @include mobile2{
+        font-size: 17px;
+      };
+      @include desktop{
+        font-size: 19px;
+      };
     }//adv text
   }
 }//adv point
 
 // SECTION 4 BREAKING DIVS
-#welcome-encourage-break{
-  margin-top: -3px;
-  margin-bottom: -3px;
-  height: 8vh;
-  background-image: $break-to-encoMobile-SVG;
-  background-size: cover;
-  background-size: cover;
-}
 
-#advantage-chain-break{
-  // margin-bottom: -3px;
-  height: 2vh;
-  @include linearGradientEf(90deg,$main-color,$main-color 30px,#000 30px,#000 90px);
-}
 
-.safety-footer-break{
-  // margin-bottom: -3px;
-  height: 6vh;
-  @include linearGradientEf(45deg,$main-color,$main-color 10px,#ffffff 10px,#ffffff 20px);
-}
+// #advantage-chain-break{
+//   // margin-bottom: -3px;
+//   height: 2vh;
+//   @include linearGradientEf(90deg,$main-color,$main-color 30px,#000 30px,#000 90px);
+// }

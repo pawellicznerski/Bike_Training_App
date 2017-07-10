@@ -9,28 +9,6 @@ export class EntryForm extends Component {
   this.state = {
       login: 'Krzychu5',
       email: 'pawellicznerski@poczta.fm',
-      style:{
-        border: '4px solid black',
-        width:'300px',
-        height:'200px',
-        display:'flex',
-        justifyContent:'middle',
-        flexDirection:'column'
-      },
-      style2:{
-        display:'flex',
-        justifyContent:'middle',
-        flexDirection:'column'
-      },
-      style3:{
-        border: '2px solid red',
-        minWidth:'100px',
-        minHeight:'400px',
-        display:'flex',
-        justifyContent:'middle',
-        flexDirection:'row',
-        backgroundColor:'yellow'
-      },
     };
 } //props end
 
@@ -94,36 +72,44 @@ returnToMenu=(e)=>{
 
 render(){
   return (
-      <div>
-          <div style={this.state.style}>
-            <form onSubmit={this.handleRegistrationData}>
-              <div style={this.state.style2}>
-                <label>
-                  {stringsLoginForm.nameLoginText}
-                  <input type="text"
-                  value={this.state.login}
-                  onChange={this.handleNameChange}
-                  />
-                </label>
-              </div>
+    <section id="for-entry-bg">
+      <div className="col-1"></div>
+      <div className="col-10">
 
-              <div style={this.state.style2}>
-                <label>
-                {stringsLoginForm.emailText}
-                  <input type="text"
-                  value={this.state.email}
-                  onChange={this.handleEmailChange}
-                  />
-                </label>
-              </div>
+        <div className="form-cnt">
+            <div>
+              <form onSubmit={this.handleRegistrationData}>
+                <div style={this.state.style2}>
+                  <label>
+                    {stringsLoginForm.nameLoginText}
+                    <input type="text"
+                    value={this.state.login}
+                    onChange={this.handleNameChange}
+                    />
+                  </label>
+                </div>
 
-              <div style={this.state.style2}>
-                <input type="submit" value="Wyświetl trening" />
-              </div>
-            </form>
-          </div>
-          <button onClick={this.returnToMenu}>{stringsLoginForm.backToMenuLoginForm}</button>
+                <div>
+                  <label>
+                  {stringsLoginForm.emailText}
+                    <input type="text"
+                    value={this.state.email}
+                    onChange={this.handleEmailChange}
+                    />
+                  </label>
+                </div>
+
+                <div>
+                  <input type="submit" value="Wyświetl trening" />
+                </div>
+              </form>
+            </div>
+            <button onClick={this.returnToMenu}>{stringsLoginForm.backToMenuLoginForm}</button>
+        </div>
+
       </div>
+      <div className="col-1"></div>
+    </section>
     )
   }
 }//registration form end

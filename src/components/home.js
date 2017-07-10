@@ -111,10 +111,8 @@ export class Home extends Component {
         <div className="row encourage-class">
           <div className="col-1"></div>
             <div className="encourage-text-cnt col-10">
-              <div className="encourage-text">
-                  <p className="encourage-text-psc">Chcesz przejechać</p><p>&nbsp;</p><MovingNumbers></MovingNumbers><p>&nbsp;</p><p className="encourage-text-psc"> km i nie masz planu treningowego?</p>
-                  <div className="encourage-text-final">Wiemy jak Ci pomóc!</div>
-              </div>
+                <div className="encourage-text-psc-cnt"><p className="encourage-text-psc">Chcesz przejechać</p><p>&nbsp;</p><MovingNumbers></MovingNumbers><p>&nbsp;</p><p className="encourage-text-psc">i nie masz planu treningowego?</p></div>
+                <div className="encourage-text-final">Wiemy jak Ci pomóc!</div>
             </div>
           <div className="col-1"></div>
         </div>
@@ -126,20 +124,68 @@ export class Home extends Component {
           <div className="col-1">
           </div>
           <div className="advantage-cnt col-10">
-            <div className="advantage-main-title">W ultratreningu jest:</div>
-            <div className="advantage-point"><div className="advantage-pic-no1"></div><div className="advantage-title">Data rozpoczęcia:<div className="advantage-text">trening możesz zacząć od dowolnej daty wpisując go do odpowiedzniego miejsca w formularzu</div></div></div>
-            <div className="advantage-point"><div className="advantage-pic-no2"></div><div className="advantage-title">Szczyt formy:<div className="advantage-text">Oprócz daty rozpoczęcia cyklu treningowego trzeba określić jego koniec. Ostatni dzień treningu to dzień startu</div></div></div>
-            <div className="advantage-point"><div className="advantage-pic-no3"></div><div className="advantage-title">Progresja:<div className="advantage-text">Trening jest dobrany tak, aby rowerzysta stopniowo rozwijał swoje umiejętności, minimalizująć ryzyko przetrenowania i kontuzji</div></div></div>
-            <div className="advantage-point"><div className="advantage-pic-no4"></div><div className="advantage-title">Opisy treningów:<div className="advantage-text">Każdy trening ma swój zapis i nie zawsze widomo o co w nim chodzi. Stąd o każdym typie treningu można przeczytać w opisie, który jest dostępny na naszej stronie</div></div></div>
-            <div className="advantage-point"><div className="advantage-pic-no5"></div><div className="advantage-title">Różne ociążenia:<div className="advantage-text">Każdy typ treningu ma swoje obciążenie, które jest określone w planie</div></div></div>
-            <div className="advantage-point"><div className="advantage-pic-no6"></div><div className="advantage-title">Różne treningi:<div className="advantage-text">Żeby optymalnie przygotować się do zawodów należy stosować różnorodne bodźcce treningowe. Te bodźcce są zapewnione przez różne trenigi pojawiajace sie ultramaratonowym planie.</div></div></div>
-            <div className="advantage-point"><div className="advantage-pic-no7"></div><div className="advantage-title">Odpoczynek:<div className="advantage-text">Sztuką dobrego planu treningowego jest nie tylko dobór odpowiedniego treningu, ale rózniez dobre zaplanowanie dni na regenerację, która jest określona w planie</div></div></div>
-            <div className="advantage-point"><div className="advantage-pic-no8"></div><div className="advantage-title">Podział na okresy:<div className="advantage-text">Każdy treningu musi być podzielony na okresy. W naszym planie bedziesz miał odpowiednio - według prawidłowych proporcji - podzielony trening na właściwe okresy</div></div></div>
+
+            <div className="advantage-main-title">W treningu jest:</div>
+                        <div className="advantage-point">
+              <div className="advantage-pic-no1"></div>
+              <div className="advantage-title">Data rozpoczęcia:
+                <div className="advantage-text">trening możesz zacząć od dowolnej daty wpisując go do odpowiedzniego miejsca w formularzu</div>
+              </div>
+            </div>
+
+            <div className="advantage-point">
+              <div className="advantage-pic-no2"></div>
+              <div className="advantage-title">Szczyt formy:
+                <div className="advantage-text">Oprócz daty rozpoczęcia cyklu treningowego trzeba określić jego koniec. Ostatni dzień treningu to dzień startu</div>
+              </div>
+            </div>
+
+            <div className="advantage-point">
+              <div className="advantage-pic-no3"></div>
+              <div className="advantage-title">Progresja:
+                <div className="advantage-text">Trening jest dobrany tak, aby rowerzysta stopniowo rozwijał swoje umiejętności, minimalizująć ryzyko przetrenowania i kontuzji</div>
+              </div>
+            </div>
+
+            <div className="advantage-point">
+              <div className="advantage-pic-no4"></div>
+              <div className="advantage-title">Opisy treningów:
+                <div className="advantage-text">Każdy trening ma swój zapis i nie zawsze widomo o co w nim chodzi. Stąd o każdym typie treningu można przeczytać w opisie, który jest dostępny na naszej stronie</div>
+              </div>
+            </div>
+
+            <div className="advantage-point">
+              <div className="advantage-pic-no5"></div>
+              <div className="advantage-title">Różne ociążenia:
+                <div className="advantage-text">Każdy typ treningu ma swoje obciążenie, które jest określone w planie</div>
+              </div>
+            </div>
+
+            <div className="advantage-point">
+              <div className="advantage-pic-no6"></div>
+              <div className="advantage-title">Różne treningi:
+                <div className="advantage-text">Żeby optymalnie przygotować się do zawodów należy stosować różnorodne bodźcce treningowe. Te bodźcce są zapewnione przez różne trenigi pojawiajace sie ultramaratonowym planie.</div>
+              </div>
+            </div>
+
+            <div className="advantage-point">
+              <div className="advantage-pic-no7"></div>
+              <div className="advantage-title">Odpoczynek:
+                <div className="advantage-text">Sztuką dobrego planu treningowego jest nie tylko dobór odpowiedniego treningu, ale rózniez dobre zaplanowanie dni na regenerację, która jest określona w planie</div>
+              </div>
+            </div>
+
+            <div className="advantage-point">
+              <div className="advantage-pic-no8"></div>
+              <div className="advantage-title">Podział na okresy:
+                <div className="advantage-text">Każdy treningu musi być podzielony na okresy. W naszym planie bedziesz miał odpowiednio - według prawidłowych proporcji - podzielony trening na właściwe okresy</div>
+              </div>
+            </div>
+
           </div>
           <div className="col-1">
           </div>
         </div>
-        <div id="welcome-encourage-break"></div>
       </section>
 
       <section id="safety-entry">
@@ -150,37 +196,30 @@ export class Home extends Component {
           </div>
           <div className="chain-cnt col-10">
 
-            <div className="link"></div>
             <div className="chain-all-links">
               <div className="chain-link-no">1</div>
               <div className="chain-link-texts1">Wybierz "nowy trening"</div>
             </div>
-            <div className="link"></div>
 
             <div className="chain-all-links">
               <div className="chain-link-no">2</div>
-              <div className="chain-link-texts">Wypełnij formularz</div>
+              <div className="chain-link-texts2">Wypełnij formularz</div>
             </div>
-            <div className="link"></div>
-
 
             <div className="chain-all-links">
               <div className="chain-link-no">3</div>
-              <div className="chain-link-texts">Zaakceptuj dane</div>
+              <div className="chain-link-texts3">Zaakceptuj dane</div>
             </div>
-            <div className="link"></div>
 
             <div className="chain-all-links">
               <div className="chain-link-no">4</div>
-              <div className="chain-link-texts">Wyświetl plan</div>
+              <div className=" chain-link-texts4">Wyświetl plan</div>
             </div>
-            <div className="link"></div>
 
             <div className="chain-all-links">
               <div className="chain-link-no">5</div>
-              <div className="chain-link-texts">Zapisz plan</div>
+              <div className=" chain-link-texts5">Zapisz plan</div>
             </div>
-            <div className="link"></div>
           </div>
           <div className="col-1">
           </div>

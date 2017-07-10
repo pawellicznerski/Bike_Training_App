@@ -44,8 +44,8 @@ export class MovingNumbers extends Component {
   render(){
     return(
       <div className="moving-numbersAndKm" style={{borderSize:"1px",borderColor:"yellow"}}>
-        <div className={this.state.active?this.state.currentClassName:'moving-numbers0'} style={{borderSize:"1px",borderColor:"red"}}>{300+(200*this.state.noOfclass)}</div>
-        <div style={{borderSize:"1px",borderColor:"blue"}}> km</div>
+        <div className={this.state.active?this.state.currentClassName:'moving-numbers0'}>{300+(200*this.state.noOfclass)}</div>
+        <div> km</div>
       </div>
     )
   }//end of render

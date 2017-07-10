@@ -2,7 +2,9 @@
 @import "../modules/mixins";
 
 .footer-container{
-  background-color: black;
+  background-color: rgba(50,50,50,1);
+  // color: rgba(40,40,40,1);
+
   height: 180px;
   display: flex;
   flex-wrap: wrap;
