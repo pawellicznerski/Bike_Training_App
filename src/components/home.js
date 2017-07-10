@@ -88,8 +88,9 @@ export class Home extends Component {
   render(){
     return(
       <div>
+      <div onClick={this.returnToTop} className="show-return-btn" style={{display:this.state.topScrollBtn ? "block":"none"}}></div>
+
       <section id="home-entry">
-        <div onClick={this.returnToTop} className="show-return-btn" style={{display:this.state.topScrollBtn ? "block":"none"}}></div>
         <div className="row home-class" style={{backgroundPosition:this.state.position}}>
           <div className="col-1">
           </div>
@@ -104,15 +105,14 @@ export class Home extends Component {
           <div className="col-1">
           </div>
         </div>
-        
       </section>
-      <div id="welcome-encourage-break"></div>
+
       <section id="encourage-entry">
         <div className="row encourage-class">
           <div className="col-1"></div>
             <div className="encourage-text-cnt col-10">
               <div className="encourage-text">
-                  <div className="encourage-text-psc">Chcesz</div><div className="encourage-text-psc">przejechać</div> <MovingNumbers></MovingNumbers><div className="encourage-text-psc">km</div><div className="encourage-text-psc">i nie masz</div><div className="encourage-text-psc">planu</div><div className="encourage-text-psc">treningowego?</div>
+                  <p className="encourage-text-psc">Chcesz przejechać</p><p>&nbsp;</p><MovingNumbers></MovingNumbers><p>&nbsp;</p><p className="encourage-text-psc"> km i nie masz planu treningowego?</p>
                   <div className="encourage-text-final">Wiemy jak Ci pomóc!</div>
               </div>
             </div>
@@ -139,6 +139,7 @@ export class Home extends Component {
           <div className="col-1">
           </div>
         </div>
+        <div id="welcome-encourage-break"></div>
       </section>
 
       <section id="safety-entry">

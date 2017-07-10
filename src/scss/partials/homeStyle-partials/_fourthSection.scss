@@ -1,0 +1,86 @@
+@import "../../modules/variables";
+@import "../../modules/mixins";
+@import "../../modules/mediaQueryMixins";
+
+
+
+
+// SECTION 4 STYLING
+
+.chain-class{
+  // height: 200vh;
+  // background-image: $backgroundsection4-SVG;
+  // background-size: contain;
+  background-attachment: fixed;
+  background-color: 	rgba(230, 230, 230,0.8);
+  background-image: $backgroundMain1-SVG;
+
+}
+#chain-title{
+  background-color: $main-color;
+  // color:white;
+  height:10vh;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+
+}
+.chain-cnt{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  // border: 1px solid green;
+  .chain-all-links{
+    width:160px;
+    height:160px;
+    background-color: $main-color-opacity;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    .chain-link-no{
+      // opacity: 1;
+      // margin-top: 30px;
+      // border: 1px solid green;
+      // margin-bottom: 0px;
+      // display: flex;
+      // flex-wrap: wrap;
+      // justify-content: center;
+      // align-items: center;
+      font-weight: bold;
+      color: white;
+      // height: 9vh;
+      // width:42vh;
+      font-size: 70px;
+
+    }
+    .chain-link-texts1{
+      font-size: 20px;
+      font-weight: bold;
+      text-align:center;
+    }
+    .chain-link-texts{
+      // border: 1px solid green;
+
+      margin-bottom: 20px;
+      text-align:center;
+      font-weight: bold;
+      // color: white;
+      font-size: 22px;
+    }
+  }
+
+  .link{
+    height: 4vh;
+    width: 100%;
+    // background-image: $broadBelt-SVG;
+    // background-color: $main-color;
+    // background-size: contain;
+    // background-position: center;
+  }
+}

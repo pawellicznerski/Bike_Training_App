@@ -1,0 +1,23 @@
+@import "../modules/variables";
+@import "../modules/mixins";
+
+.footer-container{
+  background-color: black;
+  height: 180px;
+  display: flex;
+  flex-wrap: wrap;
+    .logo-white{
+    background-image: $logoWhite-SVG;
+    background-size:320px 120px;
+    background-position: center;
+    background-repeat: no-repeat;;
+    height: 140px;
+    width: 340px;
+  }
+    .copy-rights{
+    font-size: 15px;
+    color:white;
+    height: 50px;
+    width: 120px;
+  }
+}

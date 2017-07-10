@@ -10,6 +10,7 @@ import { TrainingPlanPDF }  from './components/trainingPlanPDF.js';
 import { TrainingDay }  from './components/trainingDay.js';
 import { Sticky }  from './components/sticky.js';
 import { Home }  from './components/home.js';
+import { FooterComponent }  from './components/footer.js';
 
 
 class App extends Component {
@@ -38,8 +39,8 @@ render() {
                 <NavLink to="/"><div className="menu-logo"> </div></NavLink>
                 <div className={this.state.active ? "nav-btns-cont0": "nav-btns-cont1"}>
                   <div className={this.state.active ? "menu-btn0": "menu-btn1"} onClick={this.toggleClass}></div>
-                  <NavLink to={`/wyswietltrening`} style={{ textDecoration: 'none'}} ><div className="nav-btns nav-btn1-colr"><p>stary plan</p></div></NavLink>
-                  <NavLink to={`/nowekonto`} style={{ textDecoration: 'none' }}><div className="nav-btns nav-btn2-colr"><p>nowy plan</p></div></NavLink>
+                  <NavLink to={`/wyswietltrening`} style={{ textDecoration: 'none'}} activeStyle="active-main-btns" ><div className="nav-btns nav-btn1-colr"><p>stary plan</p></div></NavLink>
+                  <NavLink to={`/nowekonto`} style={{ textDecoration: 'none' }} activeClassName="active-main-btns" ><div className="nav-btns nav-btn2-colr"><p>nowy plan</p></div></NavLink>
                 </div>
               </nav>
             </Sticky>
@@ -52,9 +53,7 @@ render() {
               <Route component={NoMatch}/>
             </Switch>
             <footer>
-              <div id="footer-container">
-
-              </div>
+              <FooterComponent></FooterComponent>
             </footer>
         </div>
       </div>

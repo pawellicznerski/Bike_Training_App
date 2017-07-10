@@ -1,83 +1,121 @@
 @import '../modules/variables';
 @import '../modules/mixins';
+@import "../modules/mediaQueryMixins";
 
 #row-1{
-  background-color: white;
+  background-color: rgba(255,255,255,0.9);
   display:flex;
   align-items: center;
-  height: ($nav-mobile-height)+($nav-mobile-heightmargin);
+  height: 46px;
   @include boxShadow(#888888);
+  @include tablet {
+    height: 66px;
+  }
+  @include laptop {
+    height: 72px;
+  }
   .menu-logo{
-    height: $nav-mobile-height;
-    width:$nav-mobile-height;
+    height: 37px;
+    width:37px;
     margin-left: 20px;
-    justify-content: flex-start;
     background-image: $logo-SVG2;
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
+    @include tablet{
+      height: 48px;
+      width:260px;
+      margin-left: 20px;
+      background-image: $logo-SVG;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    @include laptop {
+      height: 55px;
+      width:280px;
+      margin-left: 30px;
+    }
   }
   @for $i from 0 through 1 {
     .nav-btns-cont#{$i}{
-      // background-color: blue;
-      height: $nav-mobile-height+16px;
+      background-color: $main-color;
+      height: 46px;
+      width:210px;
       display:flex;
       align-items: center;
-      position: absolute;
-      right: ($side-nav-right)+(($side-nav-right*(-1))*$i);
       @include animationSideBar(all 0.5s ease);
+      justify-content: space-between;
+      position: absolute;
+      right: -158px+((-158px*(-1))*$i);
+      @include tablet{
+        right:0;
+        height: 56px;
+        background-color: rgba(255,255,255,0);
+        width:330px;
+        margin-right: 20px;
+      }
+      @include laptop{
+        right:0;
+        height: 60px;
+        background-color: rgba(255,255,255,0);
+        width:390px;
+        margin-right: 40px;
+      }
       .menu-btn#{$i}{
-        height:55px;
-        width:55px;
+        position: relative;
+        height:35px;
+        width:35px;
         margin-left: 10px;
-  //       -webkit-animation: rotation 2s infinite linear;
-  //       @-webkit-keyframes rotation {
-  //     from {
-  //         -webkit-transform: rotate(0deg);
-  //     }
-  //     to {
-  //         -webkit-transform: rotate(359deg);
-  //     }
-  // }
         @include animationMenuBtn(90deg*((-1)*$i))
         background-image: $menu-SVG;
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
+        @include tablet{
+          display: none;
+        }
       }
       .nav-btns{
-        height:60px;
-        width:60px;
-        border-radius: 50%;
-        margin-left: 20px;
-        p{
-          margin-top: 13px;
-          font-size: 14px;
-          font-weight: bold;
-          text-transform: uppercase;
-          text-align: center;
-          vertical-align: middle;
-        }
-      }
-      .nav-btn1-colr{
-        background-color: $main-color;
-        border: 1px solid white;
-        color: white;
-        &:hover{
-          background-color: black;
-          border: 3px solid $main-color;
-          color: $main-color;
-          font-family: Georgia, "Times New Roman", Times, serif;
-        }
-      }
-      .nav-btn2-colr{
+        height:30px;
+        width:70px;
+        border-radius: 10%;
+        margin-right: 5px;
+        display:flex;
+        align-items: flex-start;
+        justify-content:center;
         background-color: white;
-        border: 2px solid $main-color;
-        color: $main-color;
-        &:hover{
-          background-color: black;
-          border: 3px solid $main-color;
+        color: black;
+        @include tablet{
+          background-color: $main-color-opacity;
           color: white;
+          height:50px;
+          width:150px;
+          border-radius: 5%;
+          margin-right: 15px;
         }
-      }
-    }
+        @include laptop{
+          height:54px;
+          width:180px;
+          margin-right: 25px;
+        }
+        p{
+          margin-top: 10px;
+          font-size: 10px;
+          text-transform: uppercase;
+          @include tablet{
+            margin-top: 13px;
+            font-size: 20px;
+            font-weight: bold;
+          }
+        }
+        &:hover{
+          background-color: white;
+          border: 1px solid black;
+          color: black;
+          @include tablet{
+            background-color: rgba(240,240,240,0.9);
+          }
+        }
+      }//end of nav-btns
+    }//end of nav-btns-cont
   }//end of for
-}
+}// and of row-1
