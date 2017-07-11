@@ -82,10 +82,11 @@
         display:flex;
         align-items: flex-start;
         justify-content:center;
-        background-color: white;
+        @include linearGradientEf(-20deg,rgba(235,235,235,1),rgba(235,235,235,1) 47%,rgba(250,250,250,1) 50%,rgba(250,250,250,1) 100%);
         color: black;
         @include tablet{
-          background-color: $main-color-opacity;
+          // background-color: $main-color-opacity;
+          @include linearGradientEf(-15deg,rgba(0,228,0,0.8),rgba(0,228,0,0.8) 47%,$main-color-opacity 50%,$main-color-opacity 100%);
           color: white;
           height:50px;
           width:150px;
