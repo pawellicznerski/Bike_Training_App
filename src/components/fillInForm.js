@@ -33,24 +33,10 @@ export class FillInForm extends Component {
       renderPromptNumberOfDays: false,
       numberOfChosenTrainingWeeks:'',
       renderAreYouSureToGoToTraining: false,
-
-      style:{
-        border: '4px solid black',
-        minWidth:'100px',
-        minHeight:'400px',
-        display:'flex',
-        justifyContent:'middle',
-        flexDirection:'column'
-      },
-      style2:{
-        border: '1px solid black'
-      }
     };
     this.returnToMenu = this.returnToMenu.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleRegistrationData = this.handleRegistrationData.bind(this);
-
-
 } //props end
 
 handleRegistrationData =(e)=>{
@@ -263,12 +249,12 @@ showNumberOfWeeks=(e)=>{
 render(){
     const {isBlocking} = this.state;
     return (
-      <div>
+      <div id="all-cnt" className="col-12">
         <AreYouSureToGoToTraining returnToFillInForm={this.returnToFillInForm} loadingTrainingPlan={this.loadingTrainingPlan} {...this.state}></AreYouSureToGoToTraining>
         <Prompt when={isBlocking} message={"Niekóre pola sa wypełnione, czy na pewno chcesz wyjść?"}/>
-          <div style={this.state.style}>
+          <div id="fillInForm-cnt">
           <form onSubmit={this.handleRegistrationData}>
-            <div style={this.state.style2}>
+            <div className="inputs-cnts">
               <label>
                 {stringsFillInForm.loginFillInText}
                 <input
@@ -285,7 +271,7 @@ render(){
               <p style={{color:'red'}}>{this.state.emptyloginFieldWarning}</p>
             </div>
 
-            <div style={this.state.style2}>
+            <div className="inputs-cnts">
               <label>
                 {stringsFillInForm.emailFillInText}
                 <input
@@ -302,7 +288,7 @@ render(){
               <p style={{color:'red'}}>{this.state.emptyemailFieldWarning}</p>
             </div>
 
-            <div style={this.state.style2}>
+            <div className="inputs-cnts">
               <label>
                 {stringsFillInForm.weigthFillInText}
                 <input
@@ -320,7 +306,7 @@ render(){
               <p style={{color:'red'}}>{this.state.emptyweightFieldWarning}</p>
             </div>
 
-            <div style={this.state.style2}>
+            <div className="inputs-cnts">
               <label>
                 {stringsFillInForm.heightFillInText}
                 <input
@@ -338,7 +324,7 @@ render(){
               <p style={{color:'red'}}>{this.state.emptyheightFieldWarning}</p>
             </div>
 
-            <div style={this.state.style2}>
+            <div className="inputs-cnts">
               Wybierz swój poziom zaawansowania:<br/>
               <label>
                   Podstawowy
@@ -351,7 +337,7 @@ render(){
               <p style={{color:'red'}}>{this.state.emptyyourExperienceFieldWarning}</p>
             </div>
 
-            <div style={this.state.style2}>
+            <div className="inputs-cnts">
               {stringsFillInForm.trainingTypeFillInText}
               <label>
                 <input
@@ -370,7 +356,7 @@ render(){
             <p style={{color:'red'}}>{this.state.emptytrainingTypeFieldWarning}</p>
             </div>
 
-            <div style={this.state.style2}>
+            <div className="inputs-cnts">
               <label>
                 {stringsFillInForm.dateStartFillInText}
                 <input
@@ -387,7 +373,7 @@ render(){
             <p style={{color:'red'}}>{this.state.emptydateStartFieldWarning}</p>
             </div>
 
-            <div style={this.state.style2}>
+            <div className="inputs-cnts">
               <label>
                 {stringsFillInForm.dateFillInText}
                 <input

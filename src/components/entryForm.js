@@ -9,6 +9,7 @@ export class EntryForm extends Component {
   this.state = {
       login: 'Krzychu5',
       email: 'pawellicznerski@poczta.fm',
+      errorClass: false,
     };
 } //props end
 
@@ -17,6 +18,9 @@ handleRegistrationData = (e) => {
 
   if(this.state.login===""||this.state.email===""){
     alert("Żeby się zajerestrować musisz wpisać imię/login i email")
+    this.setState({
+      errorClass:true,
+    })
   } else {
       fetch(`http://localhost:3000/people?login=${this.state.login}&email=${this.state.email}`)
         .then(resp => {
@@ -27,8 +31,13 @@ handleRegistrationData = (e) => {
           }})
         .then(data => {
           if(data.length===0){
-           alert("ni ma takygo kunta, sprobuj jyszczy raz");
+           this.setState({
+             errorClass:true,
+           })
           } else {
+            this.setState({
+              errorClass:false,
+            })
             const dataFromServer = data[0];
             dataFromServer.newData =false;
             this.loadingTrainingPlanEntry(dataFromServer);
@@ -73,42 +82,45 @@ returnToMenu=(e)=>{
 render(){
   return (
     <section id="for-entry-bg">
-      <div className="col-1"></div>
-      <div className="col-10">
 
-        <div className="form-cnt">
-            <div>
-              <form onSubmit={this.handleRegistrationData}>
-                <div style={this.state.style2}>
-                  <label>
-                    {stringsLoginForm.nameLoginText}
-                    <input type="text"
-                    value={this.state.login}
-                    onChange={this.handleNameChange}
-                    />
-                  </label>
-                </div>
+          <div className="form-cnt">
+              <div className="entry-text">
+                Załaduj swój plan treningowy:
+              </div>
+                <form onSubmit={this.handleRegistrationData}>
+                  <div className="txt-cnt">
+                    <div className="form-txt">Login:</div>
+                    <label>
+                      <input
+                      className={this.state.errorClass?"errorClass":null}
+                      type="text"
+                      value={this.state.login}
+                      onChange={this.handleNameChange}
+                      placeholder={"login"}
+                      />
+                    </label>
+                    <div className={this.state.errorClass?"errorTextActive":"errorTextNonActive"}>Wpisz prawidłowy login</div>
+                  </div>
 
-                <div>
-                  <label>
-                  {stringsLoginForm.emailText}
-                    <input type="text"
-                    value={this.state.email}
-                    onChange={this.handleEmailChange}
-                    />
-                  </label>
-                </div>
+                  <div className="txt-cnt">
+                    <div className="form-txt">E-mail</div>
+                    <label>
+                      <input
+                      type="text"
+                      value={this.state.email}
+                      onChange={this.handleEmailChange}
+                      placeholder={"e-mail"}
+                      />
+                    </label>
+                    <div className={this.state.errorClass?"errorTextActive":"errorTextNonActive"}>Wpisz prawidłowy mail</div>
+                  </div>
+                  <div>
 
-                <div>
-                  <input type="submit" value="Wyświetl trening" />
-                </div>
-              </form>
-            </div>
-            <button onClick={this.returnToMenu}>{stringsLoginForm.backToMenuLoginForm}</button>
-        </div>
-
-      </div>
-      <div className="col-1"></div>
+                    <input type="submit" value="Wyświetl trening" />
+                  </div>
+                </form>
+          </div>
+          <button className="return-to-menu" onClick={this.returnToMenu}>Powrót do menu</button>
     </section>
     )
   }

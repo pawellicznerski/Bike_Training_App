@@ -28,7 +28,7 @@ render() {
                 <a href="https://www.facebook.com" target="_blank"><div className="fb"></div></a>
                 <a href="https://www.pinterest.com" target="_blank"><div className="pin"></div></a>
                 <a href="https://pl.linkedin.com/" target="_blank"><div className="lin"></div></a>
-                <a href="https://pl.pinterest.com/" target="_blank"><div className="g"></div></a>
+                <a href="https://plus.google.com/" target="_blank"><div className="g"></div></a>
             </div>
           </div>
           <div className="col-1"></div>
