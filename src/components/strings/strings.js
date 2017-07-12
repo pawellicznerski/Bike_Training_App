@@ -19,6 +19,7 @@ export const stringsFillInForm ={
 
   leavingFillInSiteWarning: "Masz wypełnione niektóre pola. Czy na pewno chcesz opuścić stronę?",
   inputSubmitValue:"jedziemy z koksem",
+  emptyFieldWarning: "Wypełnij puste pole",
   loginFormatWarning: "Login musi zawierać między 4 a 15 znaków, chociaż jedną literę i liczbę",
   emailFormatWarning: "Wpisz prawidłowy adres e-mail",
   emptyyourExperienceFieldWarning: "Zaznacz odpowiedni poziom zaawansowania",

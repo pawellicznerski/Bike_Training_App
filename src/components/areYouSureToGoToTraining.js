@@ -20,14 +20,14 @@ export class AreYouSureToGoToTraining extends Component {
   render() {
     const {renderNotEnoughTimeToPrepare,renderAreYouSureToGoToTraining,numberOfTrainingDays,suggestedValues,yourExperience,dateSuggestion,} = this.props;
     const currentSuggestedValue =(yourExperience===''||dateSuggestion==='')?"": (stringsRenderingSuggestions.suggestedValues[yourExperience][dateSuggestion]);
-    const renderedText = (renderNotEnoughTimeToPrepare)?<strong>Liczba dni treningowych to {numberOfTrainingDays} a sugerowana to {currentSuggestedValue} Czy jesteś pewny, że chcesz taki trening?</strong>:<strong>Czy jesteś pewny że podjałeś dobrą decyzję?</strong>;
+    const renderedText = (renderNotEnoughTimeToPrepare)?<p>Liczba dni treningowych to {numberOfTrainingDays} a sugerowana to {currentSuggestedValue} Czy jesteś pewny, że chcesz taki trening?</p>:<p>Czy jesteś pewny że podjałeś dobrą decyzję?</p>;
 
         if(renderNotEnoughTimeToPrepare||renderAreYouSureToGoToTraining){
           return (
           <div className="notEnoughTimeToPrepareWarningDiv" style={{color:'brown'}}>
-              {renderedText}
+              <div className='areyousure-txt'>{renderedText}</div>
               <button className="return-fillInForm-btn" onClick={this.returnToFillInForm}>Wróć do formularza</button>
-              <button className="load-trainingPlan-btn" onClick={this.loadingTrainingPlan}>Tak, zaladuj trening Men</button>
+              <button className="load-trainingPlan-btn" onClick={this.loadingTrainingPlan}>Tak, zaladuj trening</button>
           </div>
           )
         } else {

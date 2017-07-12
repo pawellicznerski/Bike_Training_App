@@ -12,17 +12,19 @@
     padding-bottom: 20px;
     background-color: rgba(50,50,50,1);
     display: flex;
+    // flex-wrap: wrap;
     justify-content: center;
     .logo-white{
-      height: 10vh;
-      width: 85vw;
+      height: 8vh;
+      width: 65vw;
+      margin-left: 10vw;
       // border: 1px solid yellow;
       background-image: $logoWhite-SVG;
       background-size:contain;
       background-position: center;
       background-repeat: no-repeat;
       @include mobile{
-        height: 15vh;
+        height: 10vh;
       };
     }//end of logo-white
 
