@@ -49,7 +49,7 @@ export class TrainingPlan extends Component {
       trainingPlanArr.push([]);
       trainingPlanArr[i].push(i+1);
       trainingPlanArr[i].push(currentDate);
-      const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      const weekday = ["n","pon","wt","śr","czwt","pt","sob"];
       const n = weekday[currentDateDay];
       trainingPlanArr[i].push(n);
 
@@ -61,7 +61,7 @@ export class TrainingPlan extends Component {
       const thirdTrainingQuarter = Math.round(secondTrainingHalf*0.7551);
       const fourthTrainingQuarter = Math.round(secondTrainingHalf-thirdTrainingQuarter);
 
-      const stages = ["Okres podstawowy - wczesny","Okres podstawowy - późny","Okres rozbudowy ","Okres przed startem","Tydzien startowy"];
+      const stages = ["Podstawowy - wczesny","Podstawowy - późny","Rozbudowy ","Przed startem","Tydzien startowy"];
       const typeOfExercise = ["Test","Regeneracyjny","Wytrzymałość tlenowa","Siła mieśniowa i szybkość(młynek)","Wytrzymałość siłowa","Wolne","Symulacja ultramaratonu","Wolne lub regeneracyjny"];
       const aerobicEnduraceExerc = ["Długa jazda","Symulacja ultramaratonu"];
       const testExerc = ["Max tempo przez 30 min."];

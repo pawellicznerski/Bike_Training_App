@@ -16,7 +16,7 @@ export class TrainingDay extends Component {
 
 renderTrDay=(arr)=> {
   return (
-    <div className="comment" key={arr[0]}>
+    <div className="training-day" key={arr[0]}>
     {arr[0]}{arr[1]}{arr[2]}{arr[3]}{arr[4]}{arr[5]}{arr[6]}
     </div>
   )
@@ -105,14 +105,19 @@ closeSaveInfoAndIsblock=()=>{
 
 render() {
   return (
-      <div className="App">
-        <SaveInfo {...this.state} closeSaveInfoAndIsblock={this.closeSaveInfoAndIsblock} removeAccountCondition={this.removeAccountCondition}></SaveInfo>
-        <button onClick={this.saveAccount}>Zapisz</button>
-        <button onClick={this.removeAccount}>Usuń konto</button>
-        <button onClick={this.loadPDF}>PDF</button>
-        <p>Plan treningowy użytkownika: {this.props.state.login}</p>
-        {this.props.bmiTip}
-        {this.props.trainingPlanArr.map(arr=>this.renderTrDay(arr))}
+      <div id="training-plan-bg">
+        <div id="training-plan-cnt">
+          <SaveInfo {...this.state} closeSaveInfoAndIsblock={this.closeSaveInfoAndIsblock} removeAccountCondition={this.removeAccountCondition}></SaveInfo>
+          <div className="side-btns-td" id="save-btn" onClick={this.saveAccount}>Zapisz</div>
+          <div className="side-btns-td" id="remove-tr-btn" onClick={this.removeAccount}>Usuń</div>
+          <div id="intro-user-info">
+            <p id="user-name">Plan treningowy użytkownika: {this.props.state.login}</p>
+            <p id="user-bmi">{this.props.bmiTip}</p>
+          </div>
+          <div id="all-trdays-cnt">
+            {this.props.trainingPlanArr.map(arr=>this.renderTrDay(arr))}
+          </div>
+        </div>
       </div>
   );
 }

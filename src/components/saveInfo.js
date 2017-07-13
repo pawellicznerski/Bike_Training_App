@@ -19,31 +19,31 @@ export class SaveInfo extends Component {
   render() {
       if(this.props.saveInfo){
         return (
-          <div>
-            <p>Trening został właśnie zapisany na Twoje konto</p>
-            <button onClick={this.closeSaveInfoAndIsblock}>OK</button>
+          <div className="notEnoughTimeToPrepareWarningDiv">
+            <p className="areyousure-txt">Trening został właśnie zapisany na Twoje konto</p>
+            <button className="return-fillInForm-btn" onClick={this.closeSaveInfoAndIsblock}>OK</button>
           </div>
         )
       } else if(this.props.isBlocking){
         return (
-          <div>
-            <p>Trening nie mógł być zapisany ponieważ te konto już istnieje lub ma przypisany trening</p>
-            <button onClick={this.closeSaveInfoAndIsblock}>OK</button>
+          <div className="notEnoughTimeToPrepareWarningDiv">
+            <p className="areyousure-txt">Trening nie mógł być zapisany ponieważ te konto już istnieje lub ma przypisany trening</p>
+            <button className="return-fillInForm-btn" onClick={this.closeSaveInfoAndIsblock}>OK</button>
           </div>
         )
       } else if(this.props.isBlockingRemove){
         return (
-          <div>
-            <p>Czy na pewno chcesz usunąć trening?</p>
-            <button onClick={this.removeAccountCondition}>Tak</button>
-            <button onClick={this.closeSaveInfoAndIsblock}>Nie</button>
+          <div className="notEnoughTimeToPrepareWarningDiv">
+            <p className="areyousure-txt">Czy na pewno chcesz usunąć trening?</p>
+            <button className="return-fillInForm-btn" onClick={this.removeAccountCondition}>Tak</button>
+            <button className="load-trainingPlan-btn" onClick={this.closeSaveInfoAndIsblock}>Nie</button>
           </div>
         )
       }  else if(this.props.removeInfo){
         return (
-          <div>
-            <p>Trening został usuniety.</p>
-            <button onClick={this.closeSaveInfoAndIsblock}>OK</button>
+          <div className="notEnoughTimeToPrepareWarningDiv">
+            <p className="areyousure-txt">Trening został usuniety.</p>
+            <button className="return-fillInForm-btn" onClick={this.closeSaveInfoAndIsblock}>OK</button>
           </div>
         )
       } else {
