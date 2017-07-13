@@ -21,14 +21,14 @@ export class SaveInfo extends Component {
         return (
           <div className="notEnoughTimeToPrepareWarningDiv">
             <p className="areyousure-txt">Trening został właśnie zapisany na Twoje konto</p>
-            <button className="return-fillInForm-btn" onClick={this.closeSaveInfoAndIsblock}>OK</button>
+            <button className="load-trainingPlan-btn" onClick={this.closeSaveInfoAndIsblock}>OK</button>
           </div>
         )
       } else if(this.props.isBlocking){
         return (
           <div className="notEnoughTimeToPrepareWarningDiv">
             <p className="areyousure-txt">Trening nie mógł być zapisany ponieważ te konto już istnieje lub ma przypisany trening</p>
-            <button className="return-fillInForm-btn" onClick={this.closeSaveInfoAndIsblock}>OK</button>
+            <button className="load-trainingPlan-btn" onClick={this.closeSaveInfoAndIsblock}>OK</button>
           </div>
         )
       } else if(this.props.isBlockingRemove){
@@ -43,7 +43,7 @@ export class SaveInfo extends Component {
         return (
           <div className="notEnoughTimeToPrepareWarningDiv">
             <p className="areyousure-txt">Trening został usuniety.</p>
-            <button className="return-fillInForm-btn" onClick={this.closeSaveInfoAndIsblock}>OK</button>
+            <button className="load-trainingPlan-btn" onClick={this.closeSaveInfoAndIsblock}>OK</button>
           </div>
         )
       } else {

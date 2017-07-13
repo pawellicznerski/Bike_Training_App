@@ -11,7 +11,7 @@ export class FillInForm extends Component {
   super(props);
   this.state = {
       isBlocking: false,
-      login: 'Krzychy5',
+      login: 'Krzychu5',
       email: 'pawellicznerski@poczta.fm',
       weight: '45',
       height: '167',
@@ -19,10 +19,10 @@ export class FillInForm extends Component {
       emptyyourExperienceFieldWarning:"",
       trainingType: '300',
       trainingTypeSuggestion: 0,
-      dateStart: '2017-09-01',
+      dateStart: '2017-08-01',
       emptydateStartFieldWarning:"",
       dateSuggestion:1,
-      dateEnd: '2018-10-02',
+      dateEnd: '2017-12-02',
       emptydateEndFieldWarning:"",
       renderNotEnoughTimeToPrepare: false,
       numberOfTrainingDays:"22",

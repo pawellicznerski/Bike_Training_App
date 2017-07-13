@@ -17,7 +17,14 @@ export class TrainingDay extends Component {
 renderTrDay=(arr)=> {
   return (
     <div className="training-day" key={arr[0]}>
-    {arr[0]}{arr[1]}{arr[2]}{arr[3]}{arr[4]}{arr[5]}{arr[6]}
+      <div className="initial-no-cnt"> <p>{arr[0]}<span>{arr[2]}</span></p> <p>{arr[1]}</p> </div>
+
+      <div className="decription-cnt">
+        <p><strong>Okres: </strong>{arr[3]}</p>
+        <p><strong>Rodzaj: </strong>{arr[4]}</p>
+        <p><strong>Typ: </strong>{arr[5]}</p>
+        <p><strong>Obciążenie: </strong>{arr[6]}</p>
+      </div>
     </div>
   )
 }
@@ -110,13 +117,11 @@ render() {
           <SaveInfo {...this.state} closeSaveInfoAndIsblock={this.closeSaveInfoAndIsblock} removeAccountCondition={this.removeAccountCondition}></SaveInfo>
           <div className="side-btns-td" id="save-btn" onClick={this.saveAccount}>Zapisz</div>
           <div className="side-btns-td" id="remove-tr-btn" onClick={this.removeAccount}>Usuń</div>
-          <div id="intro-user-info">
-            <p id="user-name">Plan treningowy użytkownika: {this.props.state.login}</p>
+          <div id="intro-user-cnt">
+            <p id="user-name">Użytkownik: {this.props.state.login}</p>
             <p id="user-bmi">{this.props.bmiTip}</p>
           </div>
-          <div id="all-trdays-cnt">
             {this.props.trainingPlanArr.map(arr=>this.renderTrDay(arr))}
-          </div>
         </div>
       </div>
   );
