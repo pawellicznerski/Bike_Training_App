@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router,Route,Link,NavLink, Switch } from 'react-router-dom';
+import { BrowserRouter as Router,Route,NavLink, Switch } from 'react-router-dom';
 import { EntryForm } from './components/entryForm.js';
 import { FillInForm } from './components/fillInForm.js';
-import { stringsApp } from './components/strings.js';
 import { NoMatch } from './components/noMatch.js';
 import { TrainingPlan }  from './components/trainingPlan.js';
 import { TrainingPlanPDF }  from './components/trainingPlanPDF.js';
-import { TrainingDay }  from './components/trainingDay.js';
 import { Sticky }  from './components/sticky.js';
 import { Home }  from './components/home.js';
 import { FooterComponent }  from './components/footer.js';

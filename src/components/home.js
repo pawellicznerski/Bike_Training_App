@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router,Route,Link,NavLink, Switch } from 'react-router-dom';
 import { MovingNumbers } from './movingNumbers.js';
-
+import { ReturnToTopBtn } from './commonPartials/returnToTopBtn';
 
 export class Home extends Component {
   constructor(props) {
@@ -16,8 +16,6 @@ export class Home extends Component {
     changeofstate:false,
     interval:1,
     };
-    this.handleScroll = this.handleScroll.bind(this)
-
   } //props end
 
   componentDidMount(){
@@ -27,8 +25,6 @@ export class Home extends Component {
         position: (this.state.position + 1),
         });
     }, 30);
-
-    window.addEventListener('scroll', this.handleScroll);
   }
 
   toggleClass(e) {
@@ -39,26 +35,7 @@ export class Home extends Component {
 
   componentWillUnmount(){
     clearInterval(this.intervalId);
-    // clearInterval(this.intervalId2);
-    // clearInterval(this.intervalId3);
-    window.removeEventListener('scroll', this.handleScroll);
   }
-
-  // window.onscroll = function() {scrollFunction()};
-  //
-  // function scrollFunction() {
-  //     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-  //         document.getElementById("myBtn").style.display = "block";
-  //     } else {
-  //         document.getElementById("myBtn").style.display = "none";
-  //     }
-  // }
-  //
-  // // When the user clicks on the button, scroll to the top of the document
-  // function topFunction() {
-  //     document.body.scrollTop = 0;
-  //     document.documentElement.scrollTop = 0;
-  // }
 
   moveDown(e){
     e.preventDefault();
@@ -66,29 +43,11 @@ export class Home extends Component {
     window.scrollTo(0,curentmove);
   }
 
-  handleScroll(e){
-    e.preventDefault();
-        if (window.scrollY > window.innerHeight-67) {
-          this.setState({
-            topScrollBtn:true,
-            });
-        } else if(window.scrollY < window.innerHeight-67){
-          this.setState({
-            topScrollBtn:false,
-            });
-        }
-  }
-
-  returnToTop(e){
-    e.preventDefault();
-    window.scrollTo(0,0);
-  }
-
-
   render(){
     return(
       <div>
-      <div onClick={this.returnToTop} className="show-return-btn" style={{display:this.state.topScrollBtn ? "block":"none"}}></div>
+
+      <ReturnToTopBtn></ReturnToTopBtn>
 
       <section id="home-entry">
         <div className="row home-class" style={{backgroundPosition:this.state.position}}>
@@ -126,7 +85,7 @@ export class Home extends Component {
           <div className="advantage-cnt col-10">
 
             <div className="advantage-main-title">W treningu jest:</div>
-                        <div className="advantage-point">
+              <div className="advantage-point">
               <div className="advantage-pic-no1"></div>
               <div className="advantage-title">Data rozpoczęcia:
                 <div className="advantage-text">trening możesz zacząć od dowolnej daty wpisując go do odpowiedzniego miejsca w formularzu</div>

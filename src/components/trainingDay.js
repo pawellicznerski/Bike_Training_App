@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Prompt } from 'react-router-dom';
 import { SaveInfo } from './saveInfo';
+import { ReturnToTopBtn } from './commonPartials/returnToTopBtn';
 
 export class TrainingDay extends Component {
   constructor(props) {
@@ -18,7 +19,6 @@ renderTrDay=(arr)=> {
   return (
     <div className="training-day" key={arr[0]}>
       <div className="initial-no-cnt"> <p>{arr[0]}<span>{arr[2]}</span></p> <p>{arr[1]}</p> </div>
-
       <div className="decription-cnt">
         <p><strong>Okres: </strong>{arr[3]}</p>
         <p><strong>Rodzaj: </strong>{arr[4]}</p>
@@ -45,6 +45,7 @@ loadPDF=()=>{
 } //end of loadingTrainingPlan
 
 saveAccount=()=>{
+  this.returnToTop();
   const newMember = this.props.state;
   const nameOfnewMember = this.props.state.login;
   fetch(`http://localhost:3000/people?login=${nameOfnewMember}`).then(resp => resp.json())
@@ -71,6 +72,7 @@ saveAccount=()=>{
 } //end of saveAccount
 
 removeAccount=()=>{
+  this.returnToTop();
   const newMember = this.props.state;
   const nameOfnewMember = this.props.state.login;
   fetch(`http://localhost:3000/people?login=${nameOfnewMember}`).then(resp => resp.json())
@@ -110,10 +112,15 @@ closeSaveInfoAndIsblock=()=>{
   })
 }
 
+returnToTop(){
+  window.scrollTo(0,0);
+}
+
 render() {
   return (
       <div id="training-plan-bg">
         <div id="training-plan-cnt">
+          <ReturnToTopBtn></ReturnToTopBtn>
           <SaveInfo {...this.state} closeSaveInfoAndIsblock={this.closeSaveInfoAndIsblock} removeAccountCondition={this.removeAccountCondition}></SaveInfo>
           <div className="side-btns-td" id="save-btn" onClick={this.saveAccount}>Zapisz</div>
           <div className="side-btns-td" id="remove-tr-btn" onClick={this.removeAccount}>Usuń</div>
@@ -121,7 +128,7 @@ render() {
             <p id="user-name">Użytkownik: {this.props.state.login}</p>
             <p id="user-bmi">{this.props.bmiTip}</p>
           </div>
-            {this.props.trainingPlanArr.map(arr=>this.renderTrDay(arr))}
+          {this.props.trainingPlanArr.map(arr=>this.renderTrDay(arr))}
         </div>
       </div>
   );

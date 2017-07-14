@@ -47,6 +47,30 @@
       "numberOfTrainingDays": 397,
       "newData": true,
       "id": 6
+    },
+    {
+      "login": "Krzychu5",
+      "email": "pawellicznerski@poczta.fm",
+      "weight": "45",
+      "height": "167",
+      "trainingType": "300",
+      "dateStart": "2017-08-01",
+      "dateEnd": "2017-12-02",
+      "numberOfTrainingDays": 124,
+      "newData": true,
+      "id": 7
+    },
+    {
+      "login": "Krzychu5swqqd",
+      "email": "pawellicznerski@poczta.fm",
+      "weight": "45",
+      "height": "167",
+      "trainingType": "300",
+      "dateStart": "2017-08-01",
+      "dateEnd": "2017-12-02",
+      "numberOfTrainingDays": 124,
+      "newData": true,
+      "id": 8
     }
   ]
 }
