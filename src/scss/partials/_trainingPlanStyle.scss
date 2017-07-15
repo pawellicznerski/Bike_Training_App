@@ -1,6 +1,8 @@
 @import '../modules/variables';
 @import '../modules/mixins';
 @import "../modules/mediaQueryMixins";
+@import "./common-partials/fullScreenWarningsStyles";
+
 
 #training-plan-bg{
   display: flex;
@@ -38,7 +40,6 @@
     writing-mode: vertical-lr;
     text-orientation: sideways-right;
     background-color: $main-color;
-    // @include linearGradientEf(-10deg,rgba(0,0,0,1),rgba(0,0,0,1) 47%,rgba(40,40,40,1) 50%,rgba(40,40,40,1) 100%);
     width:30px;
     height:70px;
     font-size: 15px;
@@ -96,10 +97,8 @@
     flex-wrap: wrap;
     justify-content: center;
     .initial-no-cnt{
-      // border: 1px solid red;
       width: 65px;
       height: 114px;
-      // background-color: yellow;
       text-align: center;
       vertical-align: middle;
       p{
@@ -151,57 +150,3 @@
     }
   }//training-day
 }//#training-plan-cnt
-
-.saveRemoveCNT{
-  top:0;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 50;
-  background-color: rgba(0,0,0,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  .saveRemove-txt{
-    font-size: 38px;
-    font-weight: bold;
-    color: rgba(250,250,250,1);
-    p{
-      margin-left: 8vw;
-      @include mobile2{
-        margin-left: 0;
-      };
-    }
-  }
-  .remove-btn{
-    font-size: 22px;
-    // text-transform: uppercase;
-    font-weight: bold;
-    color: rgba(255,255,255,1);
-    margin: 40px 0 40px 0;
-    border-radius: 10px;
-    width: 300px;
-    height: 80px;
-    // background-color: $main-color;
-    border: 0px solid blue;
-    border-radius: 2%;
-    @include linearGradientEf(-10deg,rgba(240,10,10,1),rgba(240,10,10,1) 47%,rgba(230,10,10,1) 50%,rgba(230,10,10,1) 100%);
-
-  }
-  .save-btn{
-    font-size: 22px;
-    // text-transform: uppercase;
-    font-weight: bold;
-    color: rgba(255,255,255,1);
-    margin: 40px 0 40px 0;
-    border-radius: 10px;
-    width: 300px;
-    height: 80px;
-    // background-color: $main-color;
-    border: 0px solid blue;
-    border-radius: 2%;
-    @include linearGradientEf(-10deg,rgba(10,240,10,1),rgba(10,240,10,1) 47%,rgba(10,230,10,1) 50%,rgba(10,230,10,1) 100%);
-
-  }
-}
