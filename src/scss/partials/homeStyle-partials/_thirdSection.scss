@@ -6,9 +6,7 @@
 
 //SECTION 3 STYLING
 
-.advantage-class{
-  // height: 1300px;
-}
+
 
 .advantage-main-title{
   height:80px;
@@ -27,7 +25,6 @@
 }
 .advantage-point{
   // border:1px solid orange;
-  // height:13vh;
   color: rgba(40,40,40,1);
   margin-top: 25px;
   width:88vw;
@@ -69,21 +66,8 @@
         background-image: $periods-SVG;
       }
       }
-      // @each $animal in puma, sea-slug, egret, salamander
-      // {
-      //   .#{$animal}-icon {
-      //     .sea-slug-icon {
-      //       background-image: url("/images/sea-slug.png");
-      //     }
-      //     background-image: url('/images/#{$animal}.png');
-      //   }
-      // }
   }
   .advantage-title{
-    // margin-top: 2px;
-    // margin-left: 6px;
-    // border:1px solid black;
-    // height:12vh
     color: rgba(40,40,40,1);
     margin-left: 7px;
     width:63vw;
@@ -109,12 +93,3 @@
     }//adv text
   }
 }//adv point
-
-// SECTION 4 BREAKING DIVS
-
-
-// #advantage-chain-break{
-//   // margin-bottom: -3px;
-//   height: 2vh;
-//   @include linearGradientEf(90deg,$main-color,$main-color 30px,#000 30px,#000 90px);
-// }

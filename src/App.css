@@ -1058,54 +1058,6 @@
       .select-cnt .single-down-error-FIF-nonactive {
         width: 800px; } }
 
-.notEnoughTimeToPrepareWarningDiv {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 50;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; }
-  .notEnoughTimeToPrepareWarningDiv .areyousure-txt {
-    font-size: 38px;
-    font-weight: bold;
-    color: #fafafa; }
-    .notEnoughTimeToPrepareWarningDiv .areyousure-txt p {
-      margin-left: 8vw; }
-      @media (min-width: 960px) {
-        .notEnoughTimeToPrepareWarningDiv .areyousure-txt p {
-          margin-left: 0; } }
-  .notEnoughTimeToPrepareWarningDiv .return-fillInForm-btn {
-    font-size: 22px;
-    font-weight: bold;
-    color: white;
-    margin: 40px 0 40px 0;
-    border-radius: 10px;
-    width: 300px;
-    height: 80px;
-    border: 0px solid blue;
-    border-radius: 2%;
-    background: repeating-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%);
-    background: -webkit-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%);
-    background: -o-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%);
-    background: -moz-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%); }
-  .notEnoughTimeToPrepareWarningDiv .load-trainingPlan-btn {
-    font-size: 22px;
-    font-weight: bold;
-    color: white;
-    margin: 40px 0 40px 0;
-    border-radius: 10px;
-    width: 300px;
-    height: 80px;
-    border: 0px solid blue;
-    border-radius: 2%;
-    background: repeating-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%);
-    background: -webkit-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%);
-    background: -o-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%);
-    background: -moz-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%); }
-
 #returnToMenu-FIF {
   font-size: 14px;
   text-transform: uppercase;
@@ -1364,54 +1316,6 @@
         background: -o-linear-gradient(-10deg, rgba(0, 210, 0, 0.8), rgba(0, 210, 0, 0.8) 47%, rgba(0, 230, 0, 0.8) 50%, rgba(0, 230, 0, 0.8) 100%);
         background: -moz-linear-gradient(-10deg, rgba(0, 210, 0, 0.8), rgba(0, 210, 0, 0.8) 47%, rgba(0, 230, 0, 0.8) 50%, rgba(0, 230, 0, 0.8) 100%); }
 
-.notEnoughTimeToPrepareWarningDiv {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 50;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; }
-  .notEnoughTimeToPrepareWarningDiv .areyousure-txt {
-    font-size: 38px;
-    font-weight: bold;
-    color: #fafafa; }
-    .notEnoughTimeToPrepareWarningDiv .areyousure-txt p {
-      margin-left: 8vw; }
-      @media (min-width: 960px) {
-        .notEnoughTimeToPrepareWarningDiv .areyousure-txt p {
-          margin-left: 0; } }
-  .notEnoughTimeToPrepareWarningDiv .return-fillInForm-btn {
-    font-size: 22px;
-    font-weight: bold;
-    color: white;
-    margin: 40px 0 40px 0;
-    border-radius: 10px;
-    width: 300px;
-    height: 80px;
-    border: 0px solid blue;
-    border-radius: 2%;
-    background: repeating-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%);
-    background: -webkit-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%);
-    background: -o-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%);
-    background: -moz-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%); }
-  .notEnoughTimeToPrepareWarningDiv .load-trainingPlan-btn {
-    font-size: 22px;
-    font-weight: bold;
-    color: white;
-    margin: 40px 0 40px 0;
-    border-radius: 10px;
-    width: 300px;
-    height: 80px;
-    border: 0px solid blue;
-    border-radius: 2%;
-    background: repeating-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%);
-    background: -webkit-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%);
-    background: -o-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%);
-    background: -moz-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%); }
-
 #training-plan-bg {
   display: flex;
   flex-wrap: wrap;
@@ -1548,6 +1452,54 @@
           width: 820px;
           padding: 6px 0px 0px 10px;
           margin-left: 19px; } }
+
+.fullScreenInfo-CNT {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+  .fullScreenInfo-CNT .fullScreenInfo-txt {
+    font-size: 38px;
+    font-weight: bold;
+    color: #fafafa; }
+    .fullScreenInfo-CNT .fullScreenInfo-txt p {
+      margin-left: 8vw; }
+      @media (min-width: 960px) {
+        .fullScreenInfo-CNT .fullScreenInfo-txt p {
+          margin-left: 0; } }
+  .fullScreenInfo-CNT .red-btn {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    margin: 40px 0 40px 0;
+    border-radius: 10px;
+    width: 300px;
+    height: 80px;
+    border: 0px solid blue;
+    border-radius: 2%;
+    background: repeating-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%);
+    background: -webkit-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%);
+    background: -o-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%);
+    background: -moz-linear-gradient(-10deg, #f00a0a, #f00a0a 47%, #e60a0a 50%, #e60a0a 100%); }
+  .fullScreenInfo-CNT .green-btn {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    margin: 40px 0 40px 0;
+    border-radius: 10px;
+    width: 300px;
+    height: 80px;
+    border: 0px solid blue;
+    border-radius: 2%;
+    background: repeating-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%);
+    background: -webkit-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%);
+    background: -o-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%);
+    background: -moz-linear-gradient(-10deg, #0af00a, #0af00a 47%, #0ae60a 50%, #0ae60a 100%); }
 
 * {
   padding: 0px;

@@ -24,10 +24,10 @@ export class AreYouSureToGoToTraining extends Component {
 
         if(renderNotEnoughTimeToPrepare||renderAreYouSureToGoToTraining){
           return (
-          <div className="notEnoughTimeToPrepareWarningDiv" style={{color:'brown'}}>
-              <div className='areyousure-txt'>{renderedText}</div>
-              <button className="return-fillInForm-btn" onClick={this.returnToFillInForm}>Wróć do formularza</button>
-              <button className="load-trainingPlan-btn" onClick={this.loadingTrainingPlan}>Tak, zaladuj trening</button>
+          <div className="fullScreenInfo-CNT">
+              <div className='fullScreenInfo-txt'>{renderedText}</div>
+              <button className="red-btn" onClick={this.returnToFillInForm}>Wróć do formularza</button>
+              <button className="green-btn" onClick={this.loadingTrainingPlan}>Tak, zaladuj trening</button>
           </div>
           )
         } else {
