@@ -20,7 +20,7 @@ export class AreYouSureToGoToTraining extends Component {
   render() {
     const {renderNotEnoughTimeToPrepare,renderAreYouSureToGoToTraining,numberOfTrainingDays,suggestedValues,yourExperience,dateSuggestion,} = this.props;
     const currentSuggestedValue =(yourExperience===''||dateSuggestion==='')?"": (stringsRenderingSuggestions.suggestedValues[yourExperience][dateSuggestion]);
-    const renderedText = (renderNotEnoughTimeToPrepare)?<p>Liczba dni treningowych to {numberOfTrainingDays} a sugerowana to {currentSuggestedValue} Czy jesteś pewny, że chcesz taki trening?</p>:<p>Czy jesteś pewny, że chcesz już wyświetlić plan treningowy?</p>;
+    const renderedText = (renderNotEnoughTimeToPrepare)?<p>Liczba dni treningowych to {numberOfTrainingDays} a sugerowana to {currentSuggestedValue} Czy jesteś pewny, że chcesz taki trening&#63;</p>:<p>Czy jesteś pewny, że chcesz już wyświetlić plan treningowy&#63;</p>;
 
         if(renderNotEnoughTimeToPrepare||renderAreYouSureToGoToTraining){
           return (
