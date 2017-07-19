@@ -15,7 +15,7 @@ export class FillInForm extends Component {
       email: '',
       weight: '',
       height: '',
-      yourExperience:'',
+      yourExperience:'0',
       emptyyourExperienceFieldWarning:"",
       trainingType: '',
       trainingTypeSuggestion: 0,
@@ -30,6 +30,7 @@ export class FillInForm extends Component {
       numberOfChosenTrainingWeeks:'0',
       renderAreYouSureToGoToTraining: false,
       renderMainWarning:false,
+      maxKm:"500"
     };
     this.returnToMenu = this.returnToMenu.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -83,7 +84,7 @@ handleDates=()=>{
         emptydateEndFieldWarning: "",
         renderMainWarning:false,
        });
-      if(numberOfTrainingDays2 < suggestedValues[this.state.yourExperience][this.state.dateSuggestion]){
+      if(Math.floor(numberOfTrainingDays2/7) < suggestedValues[this.state.yourExperience][this.state.dateSuggestion]){
          this.setState({
            renderNotEnoughTimeToPrepare: true,
            isBlocking: false,
@@ -388,7 +389,7 @@ render(){
                   value={this.state.trainingType}
                   placeholder="Wpisz dystans ultramaratonu:"
                   min="200"
-                  max="10000"
+                  max={this.state.maxKm}
                   title="Wpisz dystans od 200 do 10000"
                 />
               </label>

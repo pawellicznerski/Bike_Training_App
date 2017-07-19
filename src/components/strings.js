@@ -36,7 +36,7 @@ export const stringsRenderingSuggestions ={
   suggestedValues:
     [
       [300,40],
-      [600,40],
+      [600,35],
       ['no limits',30],
     ],
 }

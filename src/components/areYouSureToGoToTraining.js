@@ -5,6 +5,7 @@ export class AreYouSureToGoToTraining extends Component {
 
   returnToFillInForm=(e)=>{
     e.preventDefault();
+    window.scrollTo(0,0);
     if ( typeof this.props.returnToFillInForm === 'function' ){
         this.props.returnToFillInForm();
     }
@@ -12,6 +13,7 @@ export class AreYouSureToGoToTraining extends Component {
 
   loadingTrainingPlan=(e)=>{
     e.preventDefault();
+    window.scrollTo(0,0);
     if ( typeof this.props.loadingTrainingPlan === 'function' ){
         this.props.loadingTrainingPlan();
     }
@@ -20,18 +22,26 @@ export class AreYouSureToGoToTraining extends Component {
   render() {
     const {renderNotEnoughTimeToPrepare,renderAreYouSureToGoToTraining,numberOfTrainingDays,suggestedValues,yourExperience,dateSuggestion,} = this.props;
     const currentSuggestedValue =(yourExperience===''||dateSuggestion==='')?"": (stringsRenderingSuggestions.suggestedValues[yourExperience][dateSuggestion]);
-    const renderedText = (renderNotEnoughTimeToPrepare)?<p>Liczba dni treningowych to {numberOfTrainingDays} a sugerowana to {currentSuggestedValue} Czy jesteś pewny, że chcesz taki trening&#63;</p>:<p>Czy jesteś pewny, że chcesz już wyświetlić plan treningowy&#63;</p>;
+    const renderedText = (renderNotEnoughTimeToPrepare)?(<p>Liczba tygodni treningowych to {Math.floor(numberOfTrainingDays/7)} a sugerowana to {currentSuggestedValue} Wróć do formulrza i wybierz odpowiednią ilość tygodni treningowych.</p>):(<p>Czy jesteś pewny, że chcesz już wyświetlić plan treningowy</p>);
 
-        if(renderNotEnoughTimeToPrepare||renderAreYouSureToGoToTraining){
-          return (
-          <div className="fullScreenInfo-CNT">
-              <div className='fullScreenInfo-txt'>{renderedText}</div>
-              <button className="red-btn" onClick={this.returnToFillInForm}>Wróć do formularza</button>
-              <button className="green-btn" onClick={this.loadingTrainingPlan}>Tak, zaladuj trening</button>
-          </div>
-          )
-        } else {
-          return null;
-        }
+      if(renderNotEnoughTimeToPrepare){
+        return (
+        <div className="fullScreenInfo-CNT">
+            <div className='fullScreenInfo-txt'>{renderedText}</div>
+            <button className="red-btn" onClick={this.returnToFillInForm}>Wróć do formularza</button>
+        </div>
+        )
+      } else if(renderAreYouSureToGoToTraining){
+        return (
+        <div className="fullScreenInfo-CNT">
+            <div className='fullScreenInfo-txt'>{renderedText}&nbsp;&#63;</div>
+            <button className="red-btn" onClick={this.returnToFillInForm}>Wróć do formularza</button>
+            <button className="green-btn" onClick={this.loadingTrainingPlan}>Tak, zaladuj trening</button>
+        </div>
+        )
+      }
+      else{
+        return null;
+      }
     }
 };

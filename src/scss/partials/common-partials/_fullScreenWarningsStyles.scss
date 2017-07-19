@@ -3,6 +3,8 @@
 @import "../../modules/mediaQueryMixins";
 
 .fullScreenInfo-CNT{
+  top:0;
+  left:0;
   width: 100vw;
   height: 100vh;
   position: absolute;
@@ -13,6 +15,8 @@
   justify-content: center;
   flex-direction: column;
   .fullScreenInfo-txt{
+    margin-left: 4vw;
+    margin-right: 4vw;
     font-size: 38px;
     font-weight: bold;
     color: rgba(250,250,250,1);
@@ -25,14 +29,12 @@
   }
   .red-btn{
     font-size: 22px;
-    // text-transform: uppercase;
     font-weight: bold;
     color: rgba(255,255,255,1);
     margin: 40px 0 40px 0;
     border-radius: 10px;
     width: 300px;
     height: 80px;
-    // background-color: $main-color;
     border: 0px solid blue;
     border-radius: 2%;
     @include linearGradientEf(-10deg,rgba(240,10,10,1),rgba(240,10,10,1) 47%,rgba(230,10,10,1) 50%,rgba(230,10,10,1) 100%);

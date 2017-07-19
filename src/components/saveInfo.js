@@ -4,6 +4,7 @@ export class SaveInfo extends Component {
 
   closeSaveInfoAndIsblock=(e)=>{
     e.preventDefault();
+    window.scrollTo(0,0);
     if ( typeof this.props.closeSaveInfoAndIsblock === 'function' ){
         this.props.closeSaveInfoAndIsblock()
     }
@@ -11,6 +12,7 @@ export class SaveInfo extends Component {
 
   removeAccountCondition=(e)=>{
     e.preventDefault();
+    window.scrollTo(0,0);
     if ( typeof this.props.removeAccountCondition === 'function' ){
         this.props.removeAccountCondition()
     }
@@ -20,7 +22,7 @@ export class SaveInfo extends Component {
       if(this.props.saveInfo){
         return (
           <div className="fullScreenInfo-CNT">
-            <p className="fullScreenInfo-txt">Trening został właśnie zapisany na Twoje konto</p>
+            <div className="fullScreenInfo-txt">Trening został właśnie zapisany na Twoje konto</div>
             <button className="green-btn" onClick={this.closeSaveInfoAndIsblock}>OK</button>
           </div>
         )
