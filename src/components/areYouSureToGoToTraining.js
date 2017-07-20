@@ -22,7 +22,7 @@ export class AreYouSureToGoToTraining extends Component {
   render() {
     const {renderNotEnoughTimeToPrepare,renderAreYouSureToGoToTraining,numberOfTrainingDays,suggestedValues,yourExperience,dateSuggestion,} = this.props;
     const currentSuggestedValue =(yourExperience===''||dateSuggestion==='')?"": (stringsRenderingSuggestions.suggestedValues[yourExperience][dateSuggestion]);
-    const renderedText = (renderNotEnoughTimeToPrepare)?(<p>Liczba tygodni treningowych to {Math.floor(numberOfTrainingDays/7)} a sugerowana to {currentSuggestedValue} Wróć do formulrza i wybierz odpowiednią ilość tygodni treningowych.</p>):(<p>Czy jesteś pewny, że chcesz już wyświetlić plan treningowy</p>);
+    const renderedText = (renderNotEnoughTimeToPrepare)?`Liczba tygodni treningowych to ${Math.floor(numberOfTrainingDays/7)} a sugerowana to ${currentSuggestedValue}.  Wróć do formulrza i wybierz odpowiednią ilość tygodni treningowych.`:`Czy jesteś pewny, że chcesz już wyświetlić plan treningowy?`;
 
       if(renderNotEnoughTimeToPrepare){
         return (
@@ -34,7 +34,7 @@ export class AreYouSureToGoToTraining extends Component {
       } else if(renderAreYouSureToGoToTraining){
         return (
         <div className="fullScreenInfo-CNT">
-            <div className='fullScreenInfo-txt'>{renderedText}&nbsp;&#63;</div>
+            <p className='fullScreenInfo-txt'>{renderedText}</p>
             <button className="red-btn" onClick={this.returnToFillInForm}>Wróć do formularza</button>
             <button className="green-btn" onClick={this.loadingTrainingPlan}>Tak, zaladuj trening</button>
         </div>
