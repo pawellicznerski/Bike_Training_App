@@ -27,7 +27,7 @@ export class AreYouSureToGoToTraining extends Component {
       if(renderNotEnoughTimeToPrepare){
         return (
         <div className="fullScreenInfo-CNT">
-            <div className='fullScreenInfo-txt'>{renderedText}</div>
+            <p className='fullScreenInfo-txt'>{renderedText}</p>
             <button className="red-btn" onClick={this.returnToFillInForm}>Wróć do formularza</button>
         </div>
         )

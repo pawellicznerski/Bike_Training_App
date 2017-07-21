@@ -3,38 +3,63 @@
 @import "../../modules/mediaQueryMixins";
 
 .select-cnt{
+  border:1px solid blue;
+
   width: 100vw;
   height: 9vh;
   background-color: rgba(30,30,30,0.4);
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
   @include tablet{
     height: 47px;
     width: 800px;
   };
   .descr-select{
-    width: 100vw;
+    border:1px solid red;
+    width: 20vw;
+    height: 100%;
     text-align: center;
+    vertical-align: middle;
+    padding-top:  6px;
     font-size: 20px;
     @include tablet{
       width: 400px;
-      margin-top: 10px;
+      // margin-top: 10px;
     };
   }
-  input{
-    margin-left: 7px;
-    margin-bottom: 7px;
-    @include tablet{
-      margin-top: 15px;
-    };
+  label{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .input-CNT{
+      border:1px solid pink;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      input{
+        border:1px solid white;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        @include tablet{
+          margin-top: 15px;
+        };
+      }
+      .options-select{
+        font-size: 16px;
+        margin-left: 7px;
+        border:1px solid yellow;
+      }
+    }
   }
-  .options-select{
-    font-size: 16px;
-    margin-left: 7px;
 
-  }
+
   .single-down-error-FIF-active{
     text-align: center;
     width:100%;

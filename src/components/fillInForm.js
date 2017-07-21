@@ -15,7 +15,7 @@ export class FillInForm extends Component {
       email: '',
       weight: '',
       height: '',
-      yourExperience:'0',
+      yourExperience:'',
       emptyyourExperienceFieldWarning:"",
       trainingType: '',
       trainingTypeSuggestion: 0,
@@ -219,6 +219,7 @@ handleOnFocusEmail=(e)=>{
 
 //function which handles all input changes in the form
 handleInputChange =(e)=>{
+  // e.preventDefault();
   const target = e.target;
   const value = target.type === 'checkbox' ? target.checked : target.value;//potrzebne w razie dolączenia checkbox-a
   const name = target.name;
@@ -229,9 +230,25 @@ handleInputChange =(e)=>{
      [nameWarning]:'',
      isBlocking: true,
    });
+   if(name==="yourExperience"){
+    //  this.setState({
+    //     maxKm: stringsRenderingSuggestions[this.state.dateSuggestion][this.state.yourExperience],
+    //   });
+      console.log(this.state.yourExperience);
+   }
    this.loopForMainWarning();
-
 } //end of handleInputChange
+
+changeSuggestion=(e)=>{
+ if(e.target.id === 'input-1') {
+    this.setState({yourExperience: 0});
+  } else if(e.target.id === 'input-2') {
+    this.setState({yourExperience: 1});
+  } else{
+    this.setState({yourExperience: 2});
+  }
+}
+
 
 //handles btn which return to the home page
 returnToMenu=(e)=>{
@@ -368,12 +385,16 @@ render(){
             <div className="select-cnt">
               <p className="descr-select">Wybierz swój poziom zaawansowania:</p>
               <label>
-                <span className="options-select">Podstawowy</span>
-                <input type="radio" name="yourExperience" value="0" onChange={this.handleInputChange}/>
-                <span className="options-select">Średni</span>
-                <input type="radio" name="yourExperience" value="1" onChange={this.handleInputChange}/>
-                <span className="options-select">Zaawansowany</span>
-                <input type="radio" name="yourExperience" value="2" onChange={this.handleInputChange}/>
+
+                <p className="options-select">Podstawowy</p>
+                <input type="radio" name="yourExperience" value="0" id="input-1" onClick={this.changeSuggestion} checked={this.state.yourExperience === 0}/>
+
+                <p className="options-select">Średni</p>
+                <input type="radio" name="yourExperience" value="1" id="input-2" onClick={this.changeSuggestion} checked={this.state.yourExperience === 1}/>
+
+                <p className="options-select">Zaawansowany</p>
+                <input type="radio" name="yourExperience" value="2" id="input-3" onClick={this.changeSuggestion} checked={this.state.yourExperience === 2}/>
+
               </label>
               <p className={this.state.emptyyourExperienceFieldWarning?"single-down-error-FIF-active":"single-down-error-FIF-nonactive"}>{this.state.emptyyourExperienceFieldWarning}</p>
             </div>
