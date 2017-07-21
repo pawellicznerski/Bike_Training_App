@@ -230,22 +230,25 @@ handleInputChange =(e)=>{
      [nameWarning]:'',
      isBlocking: true,
    });
-   if(name==="yourExperience"){
-    //  this.setState({
-    //     maxKm: stringsRenderingSuggestions[this.state.dateSuggestion][this.state.yourExperience],
-    //   });
-      console.log(this.state.yourExperience);
-   }
    this.loopForMainWarning();
 } //end of handleInputChange
 
 changeSuggestion=(e)=>{
  if(e.target.id === 'input-1') {
-    this.setState({yourExperience: 0});
+    this.setState({
+      yourExperience: 0,
+      maxKm:"300"
+    });
   } else if(e.target.id === 'input-2') {
-    this.setState({yourExperience: 1});
+    this.setState({
+      yourExperience: 1,
+      maxKm:"600"
+    });
   } else{
-    this.setState({yourExperience: 2});
+    this.setState({
+      yourExperience: 2,
+      maxKm:"900"
+    });
   }
 }
 
@@ -310,7 +313,7 @@ render(){
         <Prompt when={this.state.isBlocking} message={"Niekóre pola sa wypełnione, czy na pewno chcesz wyjść?"}/>
           <div id="fillInForm-cnt">
             <p className="entry-text-FIF">Wypełnij formularz:</p>
-            <p className={this.state.renderMainWarning?"main-error-FIF-active":"main-error-FIF-nonactive"}>Wypełnij poprawnie pola!</p>
+            <p className={this.state.renderMainWarning?"main-error-FIF-active":"main-error-FIF-nonactive"}>Wypełnij poprawnie pola i zastosuj sie do sugestii!</p>
           <form onSubmit={this.handleRegistrationData}>
             <div className="inputs-cnts">
               <p className="descr-field">Login:</p>
@@ -385,16 +388,16 @@ render(){
             <div className="select-cnt">
               <p className="descr-select">Wybierz swój poziom zaawansowania:</p>
               <label>
+                <div id="select-options-cnt">
+                  <p className="options-select">Podstawowy</p>
+                  <input type="radio" name="yourExperience" value="0" id="input-1" onClick={this.changeSuggestion} checked={this.state.yourExperience === 0}/>
 
-                <p className="options-select">Podstawowy</p>
-                <input type="radio" name="yourExperience" value="0" id="input-1" onClick={this.changeSuggestion} checked={this.state.yourExperience === 0}/>
+                  <p className="options-select">Średni</p>
+                  <input type="radio" name="yourExperience" value="1" id="input-2" onClick={this.changeSuggestion} checked={this.state.yourExperience === 1}/>
 
-                <p className="options-select">Średni</p>
-                <input type="radio" name="yourExperience" value="1" id="input-2" onClick={this.changeSuggestion} checked={this.state.yourExperience === 1}/>
-
-                <p className="options-select">Zaawansowany</p>
-                <input type="radio" name="yourExperience" value="2" id="input-3" onClick={this.changeSuggestion} checked={this.state.yourExperience === 2}/>
-
+                  <p className="options-select">Zaawansowany</p>
+                  <input type="radio" name="yourExperience" value="2" id="input-3" onClick={this.changeSuggestion} checked={this.state.yourExperience === 2}/>
+                </div>
               </label>
               <p className={this.state.emptyyourExperienceFieldWarning?"single-down-error-FIF-active":"single-down-error-FIF-nonactive"}>{this.state.emptyyourExperienceFieldWarning}</p>
             </div>
@@ -411,7 +414,6 @@ render(){
                   placeholder="Wpisz dystans ultramaratonu:"
                   min="200"
                   max={this.state.maxKm}
-                  title="Wpisz dystans od 200 do 10000"
                 />
               </label>
             <p className={this.state.emptytrainingTypeFieldWarning?"single-down-error-FIF-active zindex20":"single-down-error-FIF-nonactive"}>{this.state.emptytrainingTypeFieldWarning}</p>
