@@ -109,8 +109,8 @@ scrollBlocker=(e)=>{
 handleIfWrongDate=()=>{
   console.log("wrong - druga data jest wczesniejsza");
   this.setState({
-    emptydateStartFieldWarning: "druga data nie może być starsza od pierwszej",
-    emptydateEndFieldWarning: "druga data nie może być starsza od pierwszej",
+    emptydateStartFieldWarning: "druga data nie może być starsza lub taka sam jak pierwsza",
+    emptydateEndFieldWarning: "druga data nie może być starsza lub taka sam jak pierwsza",
     renderMainWarning:true,
    });
 }//end of handleIfWrongDate
@@ -242,20 +242,21 @@ changeSuggestion=(e)=>{
     emptyyourExperienceFieldWarning: "",
     renderMainWarning:false,
   });
+  this.loopForMainWarning();
    if(e.target.id === 'input-1') {
     this.setState({
       yourExperience: 0,
-      maxKm:"300"
+      maxKm:stringsRenderingSuggestions.suggestedValues[0][1],
     });
   } else if(e.target.id === 'input-2') {
     this.setState({
       yourExperience: 1,
-      maxKm:"600"
+      maxKm:stringsRenderingSuggestions.suggestedValues[1][1],
     });
   } else{
     this.setState({
       yourExperience: 2,
-      maxKm:"900"
+      maxKm:stringsRenderingSuggestions.suggestedValues[2][1],
     });
   }
 }
