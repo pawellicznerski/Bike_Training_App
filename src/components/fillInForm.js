@@ -30,7 +30,7 @@ export class FillInForm extends Component {
       numberOfChosenTrainingWeeks:'0',
       renderAreYouSureToGoToTraining: false,
       renderMainWarning:false,
-      maxKm:"500"
+      maxKm:"300"
     };
     this.returnToMenu = this.returnToMenu.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -69,12 +69,15 @@ handleYourExperience=()=>{
    }
 }
 
+
 handleDates=()=>{
   const firstDate = new Date(this.state.dateStart);
   const secondDate = new Date(this.state.dateEnd);
   console.log("dotarło do handle dates");
     if(secondDate<=firstDate ) {
       this.handleIfWrongDate();
+    } else if(this.state.renderMainWarning){
+      return false;
     } else if(secondDate>firstDate ) {
       const {suggestedValues} = stringsRenderingSuggestions;
       const numberOfTrainingDays2 = (((secondDate-firstDate)+86400000)/86400000);
@@ -82,7 +85,6 @@ handleDates=()=>{
         numberOfTrainingDays: numberOfTrainingDays2,
         emptydateStartFieldWarning: "",
         emptydateEndFieldWarning: "",
-        renderMainWarning:false,
        });
       if(Math.floor(numberOfTrainingDays2/7) < suggestedValues[this.state.yourExperience][this.state.dateSuggestion]){
          this.setState({
@@ -103,8 +105,6 @@ scrollBlocker=(e)=>{
   e.preventDefault();
   window.scrollTo(0,0);
 }
-
-
 
 handleIfWrongDate=()=>{
   console.log("wrong - druga data jest wczesniejsza");
@@ -131,11 +131,8 @@ loopForMainWarning=()=>{
   //part resposible for rendering main warning in the form
   const dataFieldsNames =[this.state.emptyyourExperienceFieldWarning,this.state.emptyloginFieldWarning,this.state.emptyemailFieldWarning,this.state.emptyweightFieldWarning,this.state.emptyheightFieldWarning,this.state.emptytrainingTypeFieldWarning,this.state.emptydateStartFieldWarning,this.state.emptydateEndFieldWarning];
 
-
   for (var i = 0; i < dataFieldsNames.length; i++) {
     console.log(dataFieldsNames[i]);
-
-
     if(dataFieldsNames[i]){
       this.setState({
         renderMainWarning:true,
@@ -185,6 +182,7 @@ handleValidation=(name,blurredFieldData,basicDataFormat,currentWarningBlurText,c
     const nameWarning = `empty${name}FieldWarning`;
     this.setState({
       [nameWarning]: currentWarningBlurText,
+      renderMainWarning:true,
     })
     return false;
   } else {
@@ -223,8 +221,6 @@ handleOnFocusEmail=(e)=>{
    this.loopForMainWarning();
 }
 
-
-
 //function which handles all input changes in the form
 handleInputChange =(e)=>{
   // e.preventDefault();
@@ -242,7 +238,11 @@ handleInputChange =(e)=>{
 } //end of handleInputChange
 
 changeSuggestion=(e)=>{
- if(e.target.id === 'input-1') {
+  this.setState({
+    emptyyourExperienceFieldWarning: "",
+    renderMainWarning:false,
+  });
+   if(e.target.id === 'input-1') {
     this.setState({
       yourExperience: 0,
       maxKm:"300"
@@ -271,6 +271,7 @@ returnToFillInForm=()=>{
   this.setState({
     renderNotEnoughTimeToPrepare: false,
     renderAreYouSureToGoToTraining: false,
+    renderMainWarning:false,
    });
    window.removeEventListener('scroll', this.scrollBlocker);
 } //end of returnToFillInForm
