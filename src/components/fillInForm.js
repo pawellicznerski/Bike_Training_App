@@ -52,7 +52,7 @@ handleRegistrationData =(e)=>{
        });
     }
   }
-    this.handleloadingTrainingPlan()
+  this.handleloadingTrainingPlan()
 }
 
 handleloadingTrainingPlan=()=>{
@@ -61,7 +61,7 @@ handleloadingTrainingPlan=()=>{
 }
 
 handleYourExperience=()=>{
-  if(!this.state.yourExperience){
+  if(isNaN(this.state.yourExperience)){
     this.setState({
       emptyyourExperienceFieldWarning: "musisz wybrac jedną z opcji",
       renderMainWarning:true,
@@ -151,7 +151,6 @@ loopForMainWarning=()=>{
 handleOnBlur =(e)=>{
   e.preventDefault();
   const name = e.target.name;
-
   if(name==="login"){
     const blurredFieldData = this.state.login;
     const basicDataFormat = /(?=.*\d)(?=.*[A-Za-z]).{4,15}/;
@@ -246,17 +245,17 @@ changeSuggestion=(e)=>{
    if(e.target.id === 'input-1') {
     this.setState({
       yourExperience: 0,
-      maxKm:stringsRenderingSuggestions.suggestedValues[0][1],
+      maxKm:stringsRenderingSuggestions.suggestedValues[0][0],
     });
   } else if(e.target.id === 'input-2') {
     this.setState({
       yourExperience: 1,
-      maxKm:stringsRenderingSuggestions.suggestedValues[1][1],
+      maxKm:stringsRenderingSuggestions.suggestedValues[1][0],
     });
   } else{
     this.setState({
       yourExperience: 2,
-      maxKm:stringsRenderingSuggestions.suggestedValues[2][1],
+      maxKm:stringsRenderingSuggestions.suggestedValues[2][0],
     });
   }
 }
@@ -307,7 +306,11 @@ showNumberOfWeeks=(e)=>{
   const numberOfChosenTrainingWeeks = Math.floor(numberOfTrainingDays/7)
 
   if(secondDate<=firstDate||isNaN(numberOfChosenTrainingWeeks)) {
-    this.handleIfWrongDate()
+    this.setState({
+      emptydateStartFieldWarning: "obie daty musza być wypełnione",
+      emptydateEndFieldWarning: "obie daty musza być wypełnione",
+      renderMainWarning:true,
+     })
   } else {
     this.setState({
       renderPromptNumberOfDays: true,
