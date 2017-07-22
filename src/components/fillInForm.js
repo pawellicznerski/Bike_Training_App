@@ -89,14 +89,22 @@ handleDates=()=>{
            renderNotEnoughTimeToPrepare: true,
            isBlocking: false,
           });
+        window.addEventListener('scroll', this.scrollBlocker);
       } else {
         this.setState({
           isBlocking: false,
           renderAreYouSureToGoToTraining: true,
          });
+         window.addEventListener('scroll', this.scrollBlocker);
       }
     }
 }
+scrollBlocker=(e)=>{
+  e.preventDefault();
+  window.scrollTo(0,0);
+}
+
+
 
 handleIfWrongDate=()=>{
   console.log("wrong - druga data jest wczesniejsza");
@@ -264,6 +272,7 @@ returnToFillInForm=()=>{
     renderNotEnoughTimeToPrepare: false,
     renderAreYouSureToGoToTraining: false,
    });
+   window.removeEventListener('scroll', this.scrollBlocker);
 } //end of returnToFillInForm
 
 loadingTrainingPlan=()=>{
@@ -271,6 +280,7 @@ loadingTrainingPlan=()=>{
     renderNotEnoughTimeToPrepare: false,
     renderAreYouSureToGoToTraining: false,
    });
+   window.removeEventListener('scroll', this.scrollBlocker);
    const loadingPlanLogin= this.state.login;
    this.props.history.push({pathname: `/nowekonto/trainingPlan/${loadingPlanLogin}`,
      state: {

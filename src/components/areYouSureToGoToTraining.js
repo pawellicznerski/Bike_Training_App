@@ -5,7 +5,6 @@ export class AreYouSureToGoToTraining extends Component {
 
   returnToFillInForm=(e)=>{
     e.preventDefault();
-    window.scrollTo(0,0);
     if ( typeof this.props.returnToFillInForm === 'function' ){
         this.props.returnToFillInForm();
     }
@@ -13,7 +12,6 @@ export class AreYouSureToGoToTraining extends Component {
 
   loadingTrainingPlan=(e)=>{
     e.preventDefault();
-    window.scrollTo(0,0);
     if ( typeof this.props.loadingTrainingPlan === 'function' ){
         this.props.loadingTrainingPlan();
     }

@@ -45,7 +45,8 @@ loadPDF=()=>{
 } //end of loadingTrainingPlan
 
 saveAccount=()=>{
-  this.returnToTop();
+  this.scrollBlocker();
+  window.addEventListener('scroll', this.scrollBlocker);
   const newMember = this.props.state;
   const nameOfnewMember = this.props.state.login;
   fetch(`http://localhost:3000/people?login=${nameOfnewMember}`).then(resp => resp.json())
@@ -72,9 +73,11 @@ saveAccount=()=>{
 } //end of saveAccount
 
 removeAccount=()=>{
-  this.returnToTop();
+  this.scrollBlocker();
+  window.addEventListener('scroll', this.scrollBlocker);
   const newMember = this.props.state;
   const nameOfnewMember = this.props.state.login;
+
   fetch(`http://localhost:3000/people?login=${nameOfnewMember}`).then(resp => resp.json())
     .then(data => {
       if(data.length!==0){
@@ -101,6 +104,7 @@ removeAccountCondition=()=>{
     this.setState({
       isBlockingRemove:false,
     })
+    window.removeEventListener('scroll', this.scrollBlocker);
 }
 
 closeSaveInfoAndIsblock=()=>{
@@ -110,9 +114,10 @@ closeSaveInfoAndIsblock=()=>{
     removeInfo:false,
     isBlockingRemove:false,
   })
+  window.removeEventListener('scroll', this.scrollBlocker);
 }
 
-returnToTop(){
+scrollBlocker(){
   window.scrollTo(0,0);
 }
 
