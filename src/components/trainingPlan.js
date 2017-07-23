@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import {stringsTrainingPlan} from './strings.js';
+import { stringsTrainingPlan }  from './stringsAndConsts/strings.js';
 import {TrainingDay} from './trainingDay.js';
 import { Prompt } from 'react-router-dom';
 
@@ -19,7 +19,6 @@ export class TrainingPlan extends Component {
 
   bmiTip=()=>{
     const {weight,height} = this.props.location.state;
-    // const bmiArr=[[16.99,"Jesteś wygłodzony - skonsultuj się z lekarzem"],[18.49,"Masz niedowagę - musisz przytyć"],[19.5,"Wartość prawidłowa (dolna granica) - musisz pilnować, żeby twoja waga nie spadła. Możesz również lekko przytyć."],[21.5,"Wartość prawidłowa - bardzo dobra dla ultramaratonów"],[23.5,"Wartość prawidłowa (górna granica) - do ultramaratonów może być trochę niższa"],[24.99, "Wartość nieprawidłowa - należy"],[16],[16]];
     const bmi = this.roundBmi((weight/(Math.pow((height/100),2))),2);
     const suggestedlowWeight = this.roundBmi(21*(Math.pow((height/100),2)),1);
     const suggestedhighWeight = this.roundBmi(23*(Math.pow((height/100),2)),1);
@@ -62,7 +61,7 @@ export class TrainingPlan extends Component {
       const fourthTrainingQuarter = Math.round(secondTrainingHalf-thirdTrainingQuarter);
 
       const stages = ["Podstawowy - wczesny","Podstawowy - późny","Rozbudowy ","Przed startem","Tydzien startowy"];
-      const typeOfExercise = ["Test","Regeneracyjny","Wytrzymałość tlenowa","Siła mieśniowa i szybkość(młynek)","Wytrzymałość siłowa","Wolne","Symulacja ultramaratonu","Wolne lub regeneracyjny"];
+      const typeOfExercise = ["Test","Regeneracyjny","Wytrzymałość tlenowa","Siła i szybkość","Wytrzymałość siłowa","Wolne","Symulacja ultramaratonu","Wolne lub regeneracyjny"];
       const aerobicEnduraceExerc = ["Długa jazda","Symulacja ultramaratonu"];
       const testExerc = ["Max tempo przez 30 min."];
       const stregthEnduranceExerc = ["Interwał"];
@@ -80,7 +79,7 @@ export class TrainingPlan extends Component {
       const regenerationTr = [typeOfExercise[1],regenerationExerc[1],`${Math.round(trainingType*(0.05+(0.005*i)))}km`];
       const breakDay = [typeOfExercise[5],'',''];
       const regeOrBreak = [`${typeOfExercise[5]} lub ${typeOfExercise[1]}`,regenerationExerc[1],`${Math.round(trainingType*(0.05+(0.005*i)))}km`];
-      const strengthAndSpeed = [typeOfExercise[3],`${muscleStrengthExerc[0]} i ${speedExerc[0]}`,`Siłowy:${Math.round(0.15*(0.5*i))}(${Math.round(0.17*(0.5*i))}x(8-14)cad.), Szybkościowy:${Math.round(0.15*(0.5*i))}x(${Math.round(0.17*(0.5*i))}x${1+((Math.round(0.17*(0.4*i)))/10)})`];
+      const strengthAndSpeed = [typeOfExercise[3],`${muscleStrengthExerc[0]} i ${speedExerc[0]}`,`Siła:${Math.round(0.15*(0.5*i))}x(${Math.round(0.17*(0.5*i))}x(8-14)cad.) Szybkość:${Math.round(0.15*(0.5*i))}x(${Math.round(0.17*(0.5*i))}x${1+((Math.round(0.17*(0.4*i)))/10)}min)`];
       const aerobicEndTr = [typeOfExercise[2],aerobicEnduraceExerc[0],`Czas:${Math.floor((80+(Math.round(1.428571429*i)))/60)}g${(80+(Math.round(1.428571429*i)))%60}min`];
       const strengthEndTr = [typeOfExercise[4],stregthEnduranceExerc[0],`2x${Math.round(0.67*(0.3*i))}min`];
       const ultraTr = [typeOfExercise[6],aerobicEnduraceExerc[1],`Dystans: ${Math.round((trainingType*0.4)+(trainingType/(stage4/7)*(1.428571429*i)))}`];

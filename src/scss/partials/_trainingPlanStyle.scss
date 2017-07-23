@@ -124,16 +124,19 @@
     .decription-cnt{
       font-size: 15px;
       display: flex;
-      flex-direction: column;
+      flex-flow: wrap column;
       padding: 3px 0px 0px 4px;
       height: 117px;
       // border: 1px solid blue;
-      width:225px;
+      width:60vw;
       margin-left: 7px;
       @include linearGradientEf(-18deg,rgba(20,20,20,1),rgba(20,20,20,1) 47%,rgba(40,40,40,1) 50%,rgba(40,40,40,1) 100%);
       @include mobile{
         width:400px;
         font-size: 18px;
+      };
+      @include tablet{
+        width:510px;
       };
       @include laptop{
         width:700px;
@@ -146,6 +149,48 @@
         padding: 6px 0px 0px 10px;
         margin-left: 19px;
       };
+      p{
+        // border: 1px solid red;
+        width:48vw;
+        font-size: 13.2px;
+        @include mobile{
+          font-size: 16px;
+          width:300px;
+        };
+        @include tablet{
+          font-size: 17px;
+          width:425px;
+        };
+        @include laptop{
+          font-size: 20px;
+          width:530px;
+        };
+      }
+      .infoIcon-CNT{
+        margin: 33px 5px 0 0;
+        // margin-top: 33px;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background-image: $iconInfo-SVG;
+        background-color: white;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: blue;
+        border-radius: 50%;
+        border: 3px solid white;
+
+        @include mobile{
+          width: 45px;
+          height: 45px;
+        };
+        @include mobile{
+          margin-top: 25px;
+          width: 55px;
+          height: 55px;
+        };
+      }
     }
   }//training-day
 }//#training-plan-cnt

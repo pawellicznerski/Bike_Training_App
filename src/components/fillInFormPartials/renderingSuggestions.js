@@ -1,9 +1,10 @@
 import React, { Component }  from 'react';
-import { stringsRenderingSuggestions }  from '../strings/strings.js';
+import { stringsRenderingSuggestions }  from '../stringsAndConsts/strings.js';
 
 export class HandleRenderingSuggestions extends Component {
 
   contentOfSuggestion(yourExperience,placeOfRendering) {
+    console.log(yourExperience,placeOfRendering);
       if(yourExperience===''){
         return <p className="formSuggestion zindex30">Wybierz najpierw poziom zaawansowania</p>
       }if(placeOfRendering===0){

@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import {stringsLoginForm} from './strings.js';
+import { stringsLoginForm }  from './stringsAndConsts/strings.js';
 import {TrainingPlan} from './trainingPlan.js';
 import {Prompt} from 'react-router-dom';
 

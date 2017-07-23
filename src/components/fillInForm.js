@@ -1,9 +1,9 @@
 import React, { Component }  from 'react';
-import { stringsFillInForm, stringsRenderingSuggestions } from './strings.js';
+import {  stringsFillInForm, stringsRenderingSuggestions  }  from './stringsAndConsts/strings.js';
 import { TrainingPlan } from './trainingPlan.js';
 import { HandleRenderingSuggestions } from './fillInFormPartials/renderingSuggestions.js';
 import { BrowserRouter as Router,Route,Link,NavLink, Switch, Prompt } from 'react-router-dom';
-import { currentDateNumberMinusOneDay, currentDate, currentDateMinusOne }  from './handleMinDate.js';
+import { currentDateNumberMinusOneDay, currentDate, currentDateMinusOne  }  from './stringsAndConsts/handleMinDate.js';
 import { AreYouSureToGoToTraining }  from './areYouSureToGoToTraining.js';
 
 export class FillInForm extends Component {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Prompt } from 'react-router-dom';
 import { SaveInfo } from './saveInfo';
 import { ReturnToTopBtn } from './commonPartials/returnToTopBtn';
+import { InfoIcon } from './trainingPlanPartials/infoIcon';
 
 export class TrainingDay extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ renderTrDay=(arr)=> {
         <p><strong>Rodzaj: </strong>{arr[4]}</p>
         <p><strong>Typ: </strong>{arr[5]}</p>
         <p><strong>Obciążenie: </strong>{arr[6]}</p>
+        <InfoIcon type={arr[4]}></InfoIcon>
       </div>
     </div>
   )

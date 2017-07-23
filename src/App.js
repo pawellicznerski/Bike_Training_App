@@ -37,8 +37,8 @@ render() {
                 <NavLink to="/"><div className="menu-logo"> </div></NavLink>
                 <div className={this.state.active ? "nav-btns-cont0": "nav-btns-cont1"}>
                   <div className={this.state.active ? "menu-btn0": "menu-btn1"} onClick={this.toggleClass}></div>
-                  <NavLink to={`/wyswietltrening`} style={{ textDecoration: 'none'}} ><div className="nav-btns nav-btn1-colr"><p>stary plan</p></div></NavLink>
-                  <NavLink to={`/nowekonto`} style={{ textDecoration: 'none' }} ><div className="nav-btns nav-btn2-colr"><p>nowy plan</p></div></NavLink>
+                  <NavLink to={`/wyswietltrening`} style={{ textDecoration: 'none'}} ><div className="nav-btns nav-btn1-colr"><p>logowanie</p></div></NavLink>
+                  <NavLink to={`/nowekonto`} style={{ textDecoration: 'none' }} ><div className="nav-btns nav-btn2-colr"><p>nowe konto</p></div></NavLink>
                 </div>
               </nav>
             </Sticky>

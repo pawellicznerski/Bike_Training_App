@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import {stringsRenderingSuggestions } from './strings.js';
+import { stringsRenderingSuggestions }  from './stringsAndConsts/strings.js';
 
 export class AreYouSureToGoToTraining extends Component {
 
