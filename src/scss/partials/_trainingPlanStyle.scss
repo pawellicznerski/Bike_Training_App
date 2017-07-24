@@ -1,6 +1,7 @@
 @import '../modules/variables';
 @import '../modules/mixins';
 @import "../modules/mediaQueryMixins";
+@import "./trainingPlanStyle-partials/infoWindowStyle";
 
 
 #training-plan-bg{
@@ -50,6 +51,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     @include boxShadow(grey);
   }
   #save-btn{
@@ -172,6 +174,7 @@
         justify-content: center;
         width: 34px;
         height: 34px;
+        cursor:pointer;
         background-image: $iconInfo-SVG;
         background-color: white;
         background-size: contain;

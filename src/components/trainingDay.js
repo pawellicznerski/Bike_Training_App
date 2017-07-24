@@ -74,6 +74,7 @@ saveAccount=()=>{
     });
 } //end of saveAccount
 
+
 removeAccount=()=>{
   this.scrollBlocker();
   window.addEventListener('scroll', this.scrollBlocker);
