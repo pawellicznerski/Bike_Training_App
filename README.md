@@ -8,24 +8,20 @@ As ultramarathon is ma passion and I keen on developing my frontend skills, I ke
 
 If you do not have time to analyse the code I suggest you at least see the print screens of my web page which you can see on my github.
 
-https://github.com/pawellicznerski/Bike_Training_App/blob/master/01-home.png
-
-Bike_Training_App/01-home.png
-Bike_Training_App/02-entry.png
-Bike_Training_App/03-register.png
-Bike_Training_App/04-trainingplan.png
-Bike_Training_App/05-fullscreeninfo.png
-Bike_Training_App/06-endOfthe training.png
-Bike_Training_App/07-home2.png
-Bike_Training_App/08-homeMobile.png
-Bike_Training_App/09-homeMobile2.png
-Bike_Training_App/10-entryMobile.png
-Bike_Training_App/11-trainingPlanMobile.png
-Bike_Training_App/12-fullscreenInfoMobile.png
-Bike_Training_App/13-fullscreeninfo2.png
-Bike_Training_App/14-registerformEntry.png
-Bike_Training_App/15-fullscreeninfo2.png
-
-
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/01-home.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/02-entry.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/03-register.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/04-trainingplan.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/05-fullscreeninfo.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/06-endOfthe%20training.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/07-home2.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/08-homeMobile.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/09-homeMobile2.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/10-entryMobile.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/11-trainingPlanMobile.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/12-fullscreenInfoMobile.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/13-fullscreeninfo2.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/14-registerformEntry.png
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/zdjecia-strony/15-fullscreeninfo2.png
 
 Hope you enjoy it!
