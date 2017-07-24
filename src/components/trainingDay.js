@@ -16,19 +16,30 @@ export class TrainingDay extends Component {
     };
   } //props end
 
-renderTrDay=(arr)=> {
-  return (
-    <div className="training-day" key={arr[0]}>
-      <div className="initial-no-cnt"> <p>{arr[0]}<span>{arr[2]}</span></p> <p>{arr[1]}</p> </div>
-      <div className="decription-cnt">
-        <p><strong>Okres: </strong>{arr[3]}</p>
-        <p><strong>Rodzaj: </strong>{arr[4]}</p>
-        <p><strong>Typ: </strong>{arr[5]}</p>
-        <p><strong>Obciążenie: </strong>{arr[6]}</p>
-        <InfoIcon type={arr[4]}></InfoIcon>
+renderTrDay=(arr,trainingPlanArr)=> {
+  if(trainingPlanArr.length===arr[0]){
+    return(
+      <div className="training-day" key={arr[0]}>
+        <div className="initial-no-cnt"> <p className="lastday">{arr[0]}<span>{arr[2]}</span></p> <p>{arr[1]}</p> </div>
+        <div className="decription-cnt">
+          <p className="lastdescription">To jest dzień twojego startu. Życzymy powodzenia!</p>
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return (
+      <div className="training-day" key={arr[0]}>
+        <div className="initial-no-cnt"> <p>{arr[0]}<span>{arr[2]}</span></p> <p>{arr[1]}</p> </div>
+        <div className="decription-cnt">
+          <p><strong>Okres: </strong>{arr[3]}</p>
+          <p><strong>Rodzaj: </strong>{arr[4]}</p>
+          <p><strong>Typ: </strong>{arr[5]}</p>
+          <p><strong>Obciążenie: </strong>{arr[6]}</p>
+          <InfoIcon type={arr[4]}></InfoIcon>
+        </div>
+      </div>
+    )
+  }
 }
 
 loadPDF=()=>{
@@ -136,7 +147,7 @@ render() {
             <p id="user-name">Użytkownik: {this.props.state.login}</p>
             <p id="user-bmi">{this.props.bmiTip}</p>
           </div>
-          {this.props.trainingPlanArr.map(arr=>this.renderTrDay(arr))}
+          {this.props.trainingPlanArr.map(arr=>this.renderTrDay(arr,this.props.trainingPlanArr))}
         </div>
       </div>
   );

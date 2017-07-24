@@ -1474,6 +1474,11 @@
         background: -moz-linear-gradient(-18deg, #00be00, #00be00 47%, #00e600 50%, #00e600 100%);
         display: flex;
         flex-direction: column; }
+      #training-plan-cnt .training-day .initial-no-cnt .lastday {
+        background: repeating-linear-gradient(-18deg, #be0000, #be0000 47%, #e60000 50%, #e60000 100%);
+        background: -webkit-linear-gradient(-18deg, #be0000, #be0000 47%, #e60000 50%, #e60000 100%);
+        background: -o-linear-gradient(-18deg, #be0000, #be0000 47%, #e60000 50%, #e60000 100%);
+        background: -moz-linear-gradient(-18deg, #be0000, #be0000 47%, #e60000 50%, #e60000 100%); }
       #training-plan-cnt .training-day .initial-no-cnt span {
         margin: -3px 0 0px 0;
         font-size: 18px; }
@@ -1531,6 +1536,10 @@
           #training-plan-cnt .training-day .decription-cnt p {
             font-size: 20px;
             width: 530px; } }
+      #training-plan-cnt .training-day .decription-cnt .lastdescription {
+        margin: 33px 5px 0 20px;
+        width: 60vw;
+        font-size: 30px; }
       #training-plan-cnt .training-day .decription-cnt .infoIcon-CNT {
         margin: 33px 5px 0 0;
         justify-content: center;

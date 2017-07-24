@@ -111,6 +111,9 @@
         display: flex;
         flex-direction: column;
       }
+      .lastday{
+        @include linearGradientEf(-18deg,rgba(190,0,0,1),rgba(190,0,0,1) 47%,rgba(230,0,0,1) 50%,rgba(230,0,0,1) 100%);
+      }
       span{
         margin: -3px 0 0px 0;
         font-size: 18px;
@@ -167,6 +170,11 @@
           font-size: 20px;
           width:530px;
         };
+      }
+      .lastdescription{
+        margin: 33px 5px 0 20px;
+        width:60vw;
+        font-size: 30px;
       }
       .infoIcon-CNT{
         margin: 33px 5px 0 0;
