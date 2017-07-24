@@ -8,4 +8,22 @@ As ultramarathon is ma passion and I keen on developing my frontend skills, I ke
 
 If you do not have time to analyse the code I suggest you at least see the print screens of my web page which you can see on my github.
 
+Bike_Training_App/01-home.png
+Bike_Training_App/02-entry.png
+Bike_Training_App/03-register.png
+Bike_Training_App/04-trainingplan.png
+Bike_Training_App/05-fullscreeninfo.png
+Bike_Training_App/06-endOfthe training.png
+Bike_Training_App/07-home2.png
+Bike_Training_App/08-homeMobile.png
+Bike_Training_App/09-homeMobile2.png
+Bike_Training_App/10-entryMobile.png
+Bike_Training_App/11-trainingPlanMobile.png
+Bike_Training_App/12-fullscreenInfoMobile.png
+Bike_Training_App/13-fullscreeninfo2.png
+Bike_Training_App/14-registerformEntry.png
+Bike_Training_App/15-fullscreeninfo2.png
+
+
+
 Hope you enjoy it!
