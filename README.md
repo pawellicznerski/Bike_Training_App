@@ -8,6 +8,8 @@ As ultramarathon is ma passion and I keen on developing my frontend skills, I ke
 
 If you do not have time to analyse the code I suggest you at least see the print screens of my web page which you can see on my github.
 
+https://github.com/pawellicznerski/Bike_Training_App/blob/master/01-home.png
+
 Bike_Training_App/01-home.png
 Bike_Training_App/02-entry.png
 Bike_Training_App/03-register.png
