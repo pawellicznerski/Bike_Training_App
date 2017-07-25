@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import { stringsTrainingPlan }  from './stringsAndConsts/strings.js';
 import {TrainingDay} from './trainingDay.js';
 import { Prompt } from 'react-router-dom';
+import { MoveToDay } from './trainingPlanPartials/moveToDay';
 
 
 export class TrainingPlan extends Component {
@@ -128,10 +129,11 @@ export class TrainingPlan extends Component {
     }
     return trainingPlanArr;
    } //and of making training periods
-
+at
   render(){
       return <div className="training-grid">
               <Prompt when={this.state.isBlocking} message={"Jeżeli wyjdziesz wszystkie pola zostana utracone?"}/>
+              <MoveToDay></MoveToDay>
               <TrainingDay trainingPlanArr={this.makingTrainingPeriods()} bmiTip={this.bmiTip()} state={this.props.location.state} history={this.props.history}></TrainingDay>
             </div>
   }//render end

@@ -1376,6 +1376,14 @@
       .showInfoText-active .green-btn {
         margin: 60px 0 40px 0; } }
 
+#moveToDay-CNT {
+  position: fixed;
+  right: 0;
+  top: 10vh;
+  width: 100px;
+  height: 70px;
+  background-color: red; }
+
 #training-plan-bg {
   display: flex;
   flex-wrap: wrap;
