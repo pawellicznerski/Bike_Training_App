@@ -11,9 +11,41 @@ export class MoveToDay extends Component {
       scrollX:"",
       scrollY:"",
     };
-  // this.handleScroll = this.handleScroll.bind(this)
+  this.handleScroll = this.handleScroll.bind(this)
   } //props end
 
+  componentDidMount(){
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll(e){
+    e.preventDefault();
+    const x=window.scrollX;
+    const y=window.scrollY;
+    // window.onscroll=function(){window.scrollTo(x, y);};
+    this.setState({
+      scrollX: x,
+      scrollY:y,
+    })
+  // if (window.scrollY > window.innerHeight-67) {
+  //   this.setState({
+  //     topScrollBtn:true,
+  //     });
+  // } else if(window.scrollY < window.innerHeight-67){
+  //   this.setState({
+  //     topScrollBtn:false,
+  //     });
+  // }
+  }
+
+  returnToTop(e){
+    e.preventDefault();
+    window.scrollTo(0,0);
+  }
 
   closeInfoWindow=(e)=>{
     e.preventDefault();
@@ -25,37 +57,28 @@ export class MoveToDay extends Component {
 
   showInfo=(e)=>{
     e.preventDefault();
-    const infoTextArr= [["Test",test],["Regeneracyjny",regeneration],["Wytrzymałość tlenowa",aerobicEndurance],["Siła i szybkość",strenghtAndSpeed],["Wytrzymałość siłowa",strenghtEndurance],["Wolne",dayOff],["Symulacja ultramaratonu",marathonSimulation],["Wolne lub Regeneracyjny",dayOffOrRegeneration]];
 
-    for (var i = 0; i < infoTextArr.length; i++) {
-      if(infoTextArr[i][0]===this.props.type){
-        this.disableScrolling()
-        this.setState({
-          showInfoText:true,
-          currentText:infoTextArr[i][1],
-        })
-      }
-    }
   }
-  disableScrolling(){
-      const x=window.scrollX;
-      const y=window.scrollY;
-      window.onscroll=function(){window.scrollTo(x, y);};
-      this.setState({
-        scrollX: x,
-        scrollY:y,
-      })
+  handleInputChange=()=>{
+
   }
 
-  enableScrolling(){
-      window.onscroll=function(){};
-  }
 
 
   render() {
         return (
           <div id="moveToDay-CNT">
-
+            <p>{this.state.scrollY}</p>
+              <input
+                type="number"
+                value={this.state.weight}
+                onChange={this.handleInputChange}
+                placeholder="Wpisz dzień"
+                min="1"
+                max=""
+                pattern="[3-9]/d$"
+                name="noDay"
+              />
           </div>
         )
       }
