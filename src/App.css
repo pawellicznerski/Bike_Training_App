@@ -1380,9 +1380,11 @@
   position: fixed;
   right: 0;
   top: 10vh;
-  width: 100px;
+  width: 140px;
   height: 70px;
   background-color: red; }
+  #moveToDay-CNT input {
+    width: 100%; }
 
 #training-plan-bg {
   display: flex;

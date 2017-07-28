@@ -425,7 +425,6 @@ render(){
                   onChange={this.handleInputChange}
                   name="trainingType"
                   type="number"
-                  value={this.state.trainingType}
                   placeholder="Wpisz dystans ultramaratonu:"
                   min="200"
                   max={this.state.maxKm}

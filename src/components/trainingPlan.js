@@ -23,8 +23,8 @@ export class TrainingPlan extends Component {
     const bmi = this.roundBmi((weight/(Math.pow((height/100),2))),2);
     const suggestedlowWeight = this.roundBmi(21*(Math.pow((height/100),2)),1);
     const suggestedhighWeight = this.roundBmi(23*(Math.pow((height/100),2)),1);
-    const bmiInfo = `Optymalny BMI dla ultramaratonistów jest pomiedzy 21 a 23. Twoj BMI to ${bmi}. Przy wzroscie użytkownika sugerowana waga jest pomiędzy: ${suggestedlowWeight}kg a ${suggestedhighWeight}kg`
-  return bmiInfo;
+    const bmiInfo = `Optymalny BMI dla ultramaratonistów jest pomiedzy 21 a 23. Twoj BMI to ${bmi}. Przy wzroscie użytkownika sugerowana waga jest pomiędzy: ${suggestedlowWeight}kg a ${suggestedhighWeight}kg`;
+    return bmiInfo;
   }
 
   makingTrainingPeriods=()=>{
@@ -129,11 +129,11 @@ export class TrainingPlan extends Component {
     }
     return trainingPlanArr;
    } //and of making training periods
-at
+
   render(){
       return <div className="training-grid">
               <Prompt when={this.state.isBlocking} message={"Jeżeli wyjdziesz wszystkie pola zostana utracone?"}/>
-              <MoveToDay></MoveToDay>
+              <MoveToDay data={this.props.location.state}></MoveToDay>
               <TrainingDay trainingPlanArr={this.makingTrainingPeriods()} bmiTip={this.bmiTip()} state={this.props.location.state} history={this.props.history}></TrainingDay>
             </div>
   }//render end
