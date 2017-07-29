@@ -34,7 +34,7 @@ export class MoveToDay extends Component {
     if(this.state.activateHandleScroll){
       this.setState({
         scrollY:y,
-        currentMiddleScreenDay:Math.floor((this.state.scrollY)/134)+2,
+        currentMiddleScreenDay:Math.floor((this.state.scrollY)/134)+1,
         currentMiddleScreenDate:new Date(((this.state.currentMiddleScreenDay-1)*86400000)+dateStartNo).toJSON().slice(0,10),
       })
     } else {
@@ -46,7 +46,7 @@ export class MoveToDay extends Component {
 
   scrollToDayDate(e){
     e.preventDefault();
-    const yValue = ((this.state.currentMiddleScreenDay-2)*134);
+    const yValue = ((this.state.currentMiddleScreenDay-1)*134);
     this.setState({
       activateHandleScroll:false,
     })
@@ -70,7 +70,9 @@ export class MoveToDay extends Component {
          currentMiddleScreenDay:Math.floor((new Date(value)-dateStartNo)/86400000)+1,
        });
      }
+  }
 
+  handleToDateField=()=>{
   }
 
 
@@ -78,7 +80,14 @@ export class MoveToDay extends Component {
   render() {
         return (
           <div id="moveToDay-CNT">
-            <p>{this.state.scrollY}</p>
+
+          <div id="btn-cnt" >
+            <button onClick={this.handleToDateField}>Wyszukaj dzień</button>
+          </div>
+
+          <div id="moveToDay-field">
+          <form onSubmit={this.scrollToDayDate}>
+            <p className="">dnia:</p>
               <div className="inputs-cnts">
                 <label>
                   <input
@@ -87,11 +96,15 @@ export class MoveToDay extends Component {
                     onChange={this.handleInputChangeMoveToField}
                     type="number"
                     placeholder={this.state.currentMiddleScreenDay}
+                    max={this.props.data.numberOfTrainingDays}
+                    min="1"
+                    title="Wpisz właściwy dzień."
                   />
                 </label>
               </div>
 
               <div className="inputs-cnts">
+                <p className="">data:</p>
                 <label>
                   <input
                   type="date"
@@ -100,12 +113,14 @@ export class MoveToDay extends Component {
                   name="currentMiddleScreenDate"
                   min={this.props.data.dateStart}
                   max={this.props.data.dateEnd}
-                  title="Wpisz właściwą datę"
+                  title="Wpisz właściwą datę."
                   />
                 </label>
               </div>
-              <button id="returnToMenu-FIF" onClick={this.scrollToDayDate}>Powrót do menu</button>
-          </div>
+              <button className="" type="submit">Przjdź do:</button>
+          </form>
+        </div>
+      </div>
         )
       }
 };

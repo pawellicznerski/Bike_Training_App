@@ -137,19 +137,19 @@ scrollBlocker(){
 
 render() {
   return (
-      <div id="training-plan-bg">
-        <div id="training-plan-cnt">
-          <ReturnToTopBtn></ReturnToTopBtn>
-          <SaveInfo {...this.state} closeSaveInfoAndIsblock={this.closeSaveInfoAndIsblock} removeAccountCondition={this.removeAccountCondition}></SaveInfo>
-          <div className="side-btns-td" id="save-btn" onClick={this.saveAccount}>Zapisz</div>
-          <div className="side-btns-td" id="remove-tr-btn" onClick={this.removeAccount}>Usuń</div>
-          <div id="intro-user-cnt">
-            <p id="user-name">Użytkownik: {this.props.state.login}</p>
-            <p id="user-bmi">{this.props.bmiTip}</p>
-          </div>
-          {this.props.trainingPlanArr.map(arr=>this.renderTrDay(arr,this.props.trainingPlanArr))}
+    <div id="training-plan-bg">
+      <div id="training-plan-cnt">
+        <ReturnToTopBtn></ReturnToTopBtn>
+        <SaveInfo {...this.state} closeSaveInfoAndIsblock={this.closeSaveInfoAndIsblock} removeAccountCondition={this.removeAccountCondition}></SaveInfo>
+        <div className="side-btns-td" id="save-btn" onClick={this.saveAccount}>Zapisz</div>
+        <div className="side-btns-td" id="remove-tr-btn" onClick={this.removeAccount}>Usuń</div>
+        <div id="intro-user-cnt">
+          <p id="user-name">Użytkownik: {this.props.state.login}</p>
+          <p id="user-bmi">{this.props.bmiTip}</p>
         </div>
+        {this.props.trainingPlanArr.map(arr=>this.renderTrDay(arr,this.props.trainingPlanArr))}
       </div>
+    </div>
   );
 }
 

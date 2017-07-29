@@ -1378,13 +1378,26 @@
 
 #moveToDay-CNT {
   position: fixed;
-  right: 0;
+  right: 10px;
   top: 10vh;
   width: 140px;
   height: 70px;
-  background-color: red; }
-  #moveToDay-CNT input {
-    width: 100%; }
+  background-color: red;
+  display: flex;
+  flex-wrap: wrap; }
+  #moveToDay-CNT #btn-cnt {
+    width: 30px;
+    height: 100%;
+    background-color: blue;
+    writing-mode: vertical-lr;
+    text-orientation: sideways-right; }
+    #moveToDay-CNT #btn-cnt button {
+      width: 100%;
+      height: 100%;
+      writing-mode: vertical-lr;
+      text-orientation: sideways-right; }
+  #moveToDay-CNT #moveToDay-field input {
+    width: 70%; }
 
 #training-plan-bg {
   display: flex;
@@ -1547,9 +1560,13 @@
             font-size: 20px;
             width: 530px; } }
       #training-plan-cnt .training-day .decription-cnt .lastdescription {
-        margin: 33px 5px 0 20px;
+        margin: 10px 5px 0 10px;
         width: 60vw;
-        font-size: 30px; }
+        font-size: 20px; }
+        @media (min-width: 768px) {
+          #training-plan-cnt .training-day .decription-cnt .lastdescription {
+            margin: 25px 5px 0 20px;
+            font-size: 30px; } }
       #training-plan-cnt .training-day .decription-cnt .infoIcon-CNT {
         margin: 33px 5px 0 0;
         justify-content: center;

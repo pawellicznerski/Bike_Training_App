@@ -173,9 +173,13 @@
         };
       }
       .lastdescription{
-        margin: 33px 5px 0 20px;
+        margin: 10px 5px 0 10px;
         width:60vw;
-        font-size: 30px;
+        font-size: 20px;
+        @include tablet{
+          margin: 25px 5px 0 20px;
+          font-size: 30px;
+        };
       }
       .infoIcon-CNT{
         margin: 33px 5px 0 0;
